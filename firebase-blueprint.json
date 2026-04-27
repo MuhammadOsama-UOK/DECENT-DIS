@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "Customer inquiry for renovation or scrap services.",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "type": { "type": "string", "enum": ["renovation", "scrap"] },
+        "service": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["fullName", "phone", "type", "createdAt"]
+    },
+    "ScrapRate": {
+      "title": "Scrap Rate",
+      "description": "Market rate for scrap items with category and unit.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "urduName": { "type": "string" },
+        "price": { "type": "number" },
+        "unit": { "type": "string", "enum": ["kg", "unit", "ton"] },
+        "category": { "type": "string", "enum": ["Metals", "E-Waste", "Machinery", "Others"] },
+        "trend": { "type": "string", "enum": ["up", "down", "stable"] }
+      },
+      "required": ["name", "urduName", "price", "unit", "category", "trend"]
+    },
+    "SiteSettings": {
+      "title": "Site Settings",
+      "description": "Global configuration for contact and site behavior.",
+      "type": "object",
+      "properties": {
+        "adminEmail": { "type": "string" },
+        "phone1": { "type": "string" },
+        "phone2": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Collection of customer leads."
+    },
+    "/scrap_rates/{rateId}": {
+      "schema": "ScrapRate",
+      "description": "Collection of categorized scrap rates."
+    },
+    "/config/site_settings": {
+      "schema": "SiteSettings",
+      "description": "Singleton configuration document."
+    }
+  }
+}

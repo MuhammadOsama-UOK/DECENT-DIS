@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // 1. ALLOW PUBLIC TO READ SITE SETTINGS
+    // Your app needs to read this to load the page layout/config
+    match /site_settings/contact_info {
+      allow read: if true;
+      allow write: if request.auth != null; // Keep writes locked (admin only)
+    }
+
+    // 2. ALLOW PUBLIC TO CREATE LEADS
+    // Allows users to fill out your form
+    match /leads/{leadId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null; 
+    }
+
+    // 3. ALLOW PUBLIC TO READ SCRAP RATES
+    match /scrap_rates/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /selling_scrap/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /test/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // 4. Fallback for any other collection (Requires user to be logged in)
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

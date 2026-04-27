@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Nastaliq+Urdu:wght@400..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-blue: #3B82F6;
+  --color-primary-green: #00D9A5;
+  --color-primary-yellow: #EAB308;
+  --color-whatsapp: #25D366;
+  --color-dark-bg: #0B0F19;
+  --color-card-bg: #1F2937;
+  
+  --font-sans: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-urdu: "Noto Nastaliq Urdu", serif;
+
+  --radius-card: 24px;
+  --radius-card-large: 32px;
+  --radius-button: 12px;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white font-sans antialiased overflow-x-hidden;
+  }
+
+  .urdu-text {
+    @apply font-urdu leading-relaxed;
+    direction: rtl;
+  }
+}
+
+/* Redesign Animations */
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes floatMove {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomBg {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.animate-hero {
+  animation: heroFloat 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: floatMove 5s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fadeInUp 1s ease-out;
+}
+
+.glass-button-container {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 25px;
+  border-radius: 20px;
+  display: inline-flex;
+  gap: 15px;
+  margin-top: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.slide-overlay {
+  background: linear-gradient(to right, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.4) 100%);
+}
+
+@media (max-width: 768px) {
+  .slide-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,1) 30%, rgba(0,0,0,0.2) 100%);
+  }
+}
+
+.glass-form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+.hover-blur-zoom {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover .hover-blur-zoom {
+  filter: blur(4px) brightness(1.1);
+  transform: scale(1.05);
+}
+
+
+.nav-link {
+  @apply text-sm font-medium hover:text-gray-300 transition-colors cursor-pointer;
+}
+
+.nav-link-active {
+  @apply text-primary-blue border-b-2 border-primary-blue pb-1;
+}
+
+

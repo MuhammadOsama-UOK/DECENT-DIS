@@ -1,0 +1,12 @@
+{
+  "name": "Decent Disposal",
+  "description": "Luxury Interior Renovation and Industrial Scrap Management platform in Karachi, Pakistan. High-performance bilingual (English/Urdu) service for residential and industrial clients.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "Bilingual support (Urdu/English)",
+    "Real-time scrap rate tracking",
+    "Lead management system",
+    "Portfolio gallery",
+    "WhatsApp business integration"
+  ]
+}

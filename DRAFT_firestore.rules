@@ -1,0 +1,67 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 0. Global Deny-All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 1. Reusable Helpers
+    function isSignedIn() { return request.auth != null; }
+    function isAdmin() { 
+      return isSignedIn() && (
+        request.auth.token.email == 'decentdisposal12@gmail.com' && request.auth.token.email_verified == true
+      );
+    }
+    function incoming() { return request.resource.data; }
+    function existing() { return resource.data; }
+    function isValidId(id) { return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); }
+
+    // 2. Validation Helpers
+    function isValidInquiry(data) {
+      return data.keys().hasAll(['name', 'phone', 'createdAt', 'status']) &&
+             data.keys().size() <= 10 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.phone is string && data.phone.size() >= 7 && data.phone.size() <= 20 &&
+             data.status in ['new', 'pending', 'completed'] &&
+             data.createdAt == request.time;
+    }
+
+    function isValidScrapRequest(data) {
+      return data.keys().hasAll(['name', 'phone', 'scrapType', 'createdAt', 'status']) &&
+             data.keys().size() <= 12 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.phone is string && data.phone.size() >= 7 && data.phone.size() <= 20 &&
+             data.scrapType is string && data.scrapType.size() <= 50 &&
+             data.status in ['new', 'scheduled', 'paid', 'cancelled'] &&
+             data.createdAt == request.time;
+    }
+
+    function isValidRenovationRequest(data) {
+      return data.keys().hasAll(['name', 'phone', 'projectType', 'createdAt', 'status']) &&
+             data.keys().size() <= 15 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.phone is string && data.phone.size() >= 7 && data.phone.size() <= 20 &&
+             data.projectType is string && data.projectType.size() <= 50 &&
+             data.status in ['new', 'survey-scheduled', 'quoted', 'in-progress', 'completed'] &&
+             data.createdAt == request.time;
+    }
+
+    // 3. Collection Rule Blocks
+    
+    match /contact_inquiries/{id} {
+      allow create: if isValidInquiry(incoming());
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /scrap_requests/{id} {
+      allow create: if isValidScrapRequest(incoming());
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /renovation_requests/{id} {
+      allow create: if isValidRenovationRequest(incoming());
+      allow read, update, delete: if isAdmin();
+    }
+  }
+}

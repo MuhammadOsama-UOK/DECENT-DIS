@@ -1,0 +1,10 @@
+{
+  "projectId": "decent-disposal",
+  "appId": "1:580660470930:web:d56c4fa3b3cf460e1cf24b",
+  "apiKey": "AIzaSyDcs_e8pW829mEjAX5mxQIhnwnnDZAsLAk",
+  "authDomain": "decent-disposal.firebaseapp.com",
+  "firestoreDatabaseId": "main-db",
+  "storageBucket": "decent-disposal.firebasestorage.app",
+  "messagingSenderId": "580660470930",
+  "measurementId": ""
+}
