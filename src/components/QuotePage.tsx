@@ -152,7 +152,7 @@ export default function QuotePage() {
              <div className="absolute top-0 left-0 w-2 h-full bg-primary-green"></div>
              <div className="flex items-center gap-3 mb-8">
                 <Scale className="w-8 h-8 text-primary-green" />
-                <h2 className="text-2xl font-black text-gray-900 font-montserrat uppercase">Scrap Purchasing</h2>
+                <h2 className="text-2xl font-black text-gray-900 font-montserrat uppercase">Sell Your Scrap Now</h2>
              </div>
              
              <form onSubmit={subScrap(onScrapSubmit)} className="space-y-6">
@@ -176,29 +176,51 @@ export default function QuotePage() {
           </motion.div>
         </div>
 
-        <div className="mt-20 bg-dark-bg p-12 rounded-[40px] flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 text-center border border-white/5 shadow-2xl">
-           <div>
+        <div className="mt-12 md:mt-20 bg-dark-bg p-8 md:p-12 rounded-[30px] md:rounded-[40px] flex flex-col md:flex-row items-center justify-center gap-8 md:gap-24 text-center border border-white/5 shadow-2xl overflow-hidden w-full max-w-full">
+           <div className="w-full">
               <p className="text-[10px] uppercase font-black tracking-widest text-gray-500 mb-2">Direct Phone</p>
-              <p className="text-xl md:text-2xl font-black text-white tracking-widest">{contactPhone}</p>
+              <p className="text-lg sm:text-xl md:text-2xl font-black text-white md:tracking-widest">{contactPhone}</p>
            </div>
            <div className="w-[1px] h-12 bg-white/10 hidden md:block"></div>
-           <div>
+           <div className="w-full">
               <p className="text-[10px] uppercase font-black tracking-widest text-gray-500 mb-2">Email Official</p>
-              <p className="text-xl md:text-2xl font-black text-white tracking-widest">{contactEmail}</p>
+              <p className="text-base sm:text-lg md:text-2xl font-black text-white md:tracking-widest break-words overflow-wrap-normal bg-clip-text w-full px-2" style={{wordBreak: "break-word"}}>{contactEmail}</p>
            </div>
         </div>
       </div>
 
       <AnimatePresence>
         {successLead && (
-          <div className="fixed inset-0 z-[500] flex items-center justify-center p-6">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSuccessLead(null)} className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="bg-white rounded-[40px] p-10 md:p-12 max-w-lg w-full relative shadow-2xl text-center">
-              <button onClick={() => setSuccessLead(null)} className="absolute top-6 right-6 text-gray-400 hover:text-black"><X className="w-6 h-6" /></button>
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"><CheckCircle2 className="w-10 h-10 text-green-600" /></div>
-              <h3 className="text-3xl font-black text-gray-900 mb-4 uppercase tracking-tighter tracking-widest">Submission OK</h3>
-              <p className="text-gray-600 mb-10 leading-relaxed font-bold">We will contact you shortly.</p>
-              <button onClick={handleWhatsAppChat} className="w-full bg-whatsapp text-white py-5 rounded-2xl flex items-center justify-center gap-3 font-bold uppercase tracking-widest hover:opacity-90 transition-all shadow-xl active:scale-95"><MessageCircle className="w-6 h-6" /> WhatsApp Support</button>
+          <div className="fixed inset-0 z-[500] flex items-center justify-center p-4 sm:p-6">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSuccessLead(null)} className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+            <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} className="bg-white rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 md:p-12 max-w-[95%] sm:max-w-lg w-full max-h-[90vh] overflow-y-auto relative shadow-2xl text-center border border-gray-100 mx-auto">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-green-600"></div>
+              <button onClick={() => setSuccessLead(null)} className="absolute top-4 right-4 sm:top-6 sm:right-6 text-gray-400 hover:text-black transition-colors bg-gray-100 hover:bg-gray-200 p-2 rounded-full z-10"><X className="w-4 h-4 sm:w-5 sm:h-5" /></button>
+              
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 relative mt-2 sm:mt-0">
+                <div className="absolute inset-0 bg-green-100 rounded-full animate-ping opacity-20"></div>
+                <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-green-500" />
+              </div>
+              
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 mb-2 sm:mb-4 tracking-tight">Request Received!</h3>
+              <p className="text-gray-600 mb-6 sm:mb-8 leading-relaxed font-medium text-sm sm:text-base md:text-lg px-2 sm:px-4">
+                Thank you for choosing Decent Disposal. Our experts are reviewing your details.
+              </p>
+              
+              <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 border border-gray-100 text-left">
+                <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2 text-sm sm:text-base">
+                  <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                  Fast-Track Your Request
+                </h4>
+                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed mb-4">
+                  Want an immediate quote? Send us a message on WhatsApp with pictures of your items or project site for a faster response.
+                </p>
+                <button onClick={handleWhatsAppChat} className="w-full bg-[#25D366] text-white py-3 sm:py-4 rounded-xl flex items-center justify-center gap-2 sm:gap-3 font-bold hover:bg-[#20bd5a] transition-all shadow-lg hover:shadow-xl active:scale-[0.98] text-sm sm:text-base">
+                  <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" /> Chat on WhatsApp Now
+                </button>
+              </div>
+
+              <button onClick={() => setSuccessLead(null)} className="text-gray-400 font-medium hover:text-gray-600 text-xs sm:text-sm underline underline-offset-4 pb-2 sm:pb-0">Skip for now</button>
             </motion.div>
           </div>
         )}

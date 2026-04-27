@@ -162,9 +162,9 @@ function MainLayout() {
                  <MapPin className="w-4 h-4 text-yellow-500 group-hover:scale-110 transition-transform" />
                  <span className="font-medium">{contactAddress}</span>
               </div>
-              <div className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer group">
-                 <Globe className="w-4 h-4 text-yellow-500 group-hover:scale-110 transition-transform" />
-                 <span className="font-medium">{contactEmail}</span>
+              <div className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer group w-full">
+                 <Globe className="w-4 h-4 text-yellow-500 group-hover:scale-110 transition-transform shrink-0" />
+                 <span className="font-medium break-all text-left">{contactEmail}</span>
               </div>
             </div>
           </div>

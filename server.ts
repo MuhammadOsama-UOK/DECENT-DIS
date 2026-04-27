@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import { createServer as createViteServer } from "vite";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import { initializeApp, cert, getApps } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import { getAuth } from "firebase-admin/auth";
@@ -120,18 +120,11 @@ async function startServer() {
   // Init Firebase Admin
   await initAdmin();
 
-  // Verify SMTP on start
-  if (process.env.SMTP_USER && process.env.SMTP_PASS) {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      }
-    });
-    transporter.verify().then(() => console.log("SMTP Ready")).catch(e => console.error("SMTP Error", e));
+  // Verify Resend on start (optional, but good to know if key exists)
+  if (process.env.RESEND_API_KEY) {
+    console.log("Resend API Key found. Ready to send emails.");
+  } else {
+    console.warn("No RESEND_API_KEY found in environment variables. Emails will not be sent.");
   }
 
   // Logging middleware
@@ -162,18 +155,8 @@ async function startServer() {
       res.status(200).json({ success: true, id: docRef.id });
 
       // 2. Perform email notifications in background
-      if (process.env.SMTP_USER && process.env.SMTP_PASS) {
-        const transporter = nodemailer.createTransport({
-          host: "smtp.gmail.com",
-          port: 465,
-          secure: true, // Use SSL/TLS
-          auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS,
-          },
-          debug: true, // Show debug output
-          logger: true // Log information in console
-        });
+      if (process.env.RESEND_API_KEY) {
+        const resend = new Resend(process.env.RESEND_API_KEY);
 
         const adminEmail = "decentdisposal12@gmail.com";
         const subject = type === 'renovation' ? "New Renovation Lead!" : "New Scrap Inquiry!";
@@ -184,54 +167,95 @@ async function startServer() {
         // Handle emails individually so one failure doesn't block the other or go unnoticed
         const sendAdminEmail = async () => {
           try {
-            await transporter.sendMail({
-              from: `"Decent Disposal Lead" <${process.env.SMTP_USER}>`,
+            const { data: resData, error } = await resend.emails.send({
+              from: "onboarding@resend.dev",
               to: adminEmail,
               subject: subject,
               html: `
-                <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-                  <h2 style="color: #1a2e44;">${subject}</h2>
-                  <hr />
-                  ${Object.entries(data).map(([key, value]) => `<p><strong>${key}:</strong> ${value}</p>`).join('')}
-                  <hr />
-                  <p style="font-size: 12px; color: #666;">Submitted at: ${new Date().toLocaleString()}</p>
+                <div style="font-family: Arial, sans-serif; padding: 30px; background-color: #f4f7f6; max-width: 600px; margin: 0 auto; border-radius: 8px;">
+                  <div style="background-color: #000000; padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
+                    <h1 style="color: #22c55e; margin: 0; font-size: 24px; text-transform: uppercase; letter-spacing: 2px;">${subject}</h1>
+                  </div>
+                  <div style="background-color: #ffffff; padding: 30px; border-radius: 0 0 8px 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                    <p style="font-size: 16px; color: #333; margin-bottom: 20px;">You have received a new lead from the website.</p>
+                    <table style="width: 100%; border-collapse: collapse;">
+                      ${Object.entries(data).map(([key, value]) => `
+                        <tr>
+                          <td style="padding: 12px 15px; border-bottom: 1px solid #eee; font-weight: bold; color: #555; width: 35%; text-transform: capitalize;">${key.replace(/([A-Z])/g, ' $1').trim()}</td>
+                          <td style="padding: 12px 15px; border-bottom: 1px solid #eee; color: #222;">${value || '-'}</td>
+                        </tr>
+                      `).join('')}
+                    </table>
+                    <div style="margin-top: 30px; text-align: center;">
+                      <a href="https://wa.me/${data.phone ? data.phone.replace(/[\s+]/g, '') : ''}" style="display: inline-block; background-color: #25D366; color: white; text-decoration: none; padding: 12px 25px; border-radius: 5px; font-weight: bold;">Message Client on WhatsApp</a>
+                    </div>
+                    <p style="font-size: 12px; color: #999; margin-top: 30px; text-align: center;">Submitted at: ${new Date().toLocaleString()}</p>
+                  </div>
                 </div>
               `,
             });
-            console.log("Admin notification email sent successfully.");
+            
+            if (error) {
+              console.error("ADMIN EMAIL FAILED:", error);
+            } else {
+              console.log("Admin notification email sent successfully:", resData);
+            }
           } catch (e) {
-            console.error("ADMIN EMAIL FAILED:", e);
+            console.error("ADMIN EMAIL FAILED (Exception):", e);
           }
         };
 
         const sendUserEmail = async () => {
           if (!data.email) return;
           try {
-            await transporter.sendMail({
-              from: `"Decent Disposal" <${process.env.SMTP_USER}>`,
+            const { data: resData, error } = await resend.emails.send({
+              from: "onboarding@resend.dev",
               to: data.email,
-              subject: "Your Request is Now with Karachi's Best - Decent Disposal",
+              subject: "Request Received - Decent Disposal",
               html: `
-                <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 40px; color: #1a2e44; line-height: 1.6; max-width: 600px; margin: auto; border: 1px solid #efefef; border-radius: 20px;">
-                  <div style="text-align: center; margin-bottom: 30px;">
-                    <div style="background: #f1c40f; color: black; display: inline-block; padding: 10px 20px; font-weight: 900; border-radius: 5px; font-size: 24px; margin-bottom: 10px;">DD</div>
-                    <h1 style="margin: 0; font-size: 28px; color: #000; letter-spacing: -1px;">THANK YOU FOR REACHING OUT!</h1>
+                <div style="font-family: Arial, sans-serif; padding: 30px; background-color: #f9f9f9; max-width: 600px; margin: 0 auto; border-radius: 8px;">
+                  <div style="background-color: #000000; padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
+                    <h1 style="margin: 0; font-size: 28px; color: #ffffff; letter-spacing: 1px;">DECENT <span style="color: #22c55e;">DISPOSAL</span></h1>
                   </div>
-                  <p>Hello <strong>${data.fullName || data.name || 'Valued Partner'}</strong>,</p>
-                  <p>We've received your inquiry regarding <strong>${type === 'renovation' ? 'Office Renovation' : 'Scrap Disposal'}</strong>. Our site experts will contact you within <strong>2 business hours</strong>.</p>
-                  <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; border-left: 4px solid #f1c40f;">
-                     <p><strong>Trust & Quality:</strong> Karachi's premier choice for asset management.</p>
-                  </div>
-                  <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;" />
-                  <div style="text-align: center; font-size: 12px; color: #999;">
-                    The Decent Disposal Team | SITE, Karachi
+                  <div style="background-color: #ffffff; padding: 40px 30px; border-radius: 0 0 8px 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center;">
+                    <h2 style="color: #111; margin-top: 0; font-size: 24px;">Thank you for your request!</h2>
+                    <p style="color: #555; font-size: 16px; line-height: 1.6; margin-bottom: 25px;">
+                      Dear <strong>${data.fullName || data.name || 'Valued Client'}</strong>,<br><br>
+                      We have successfully received your inquiry regarding <strong>${type === 'renovation' ? 'Office Renovation' : 'Scrap Disposal'}</strong>. Our dedicated experts are reviewing your details and will reach out to you very soon to discuss the next steps.
+                    </p>
+                    
+                    <div style="background-color: #f0fdf4; border-left: 4px solid #22c55e; padding: 20px; margin-bottom: 30px; text-align: left; border-radius: 0 8px 8px 0;">
+                      <h3 style="color: #166534; margin-top: 0; margin-bottom: 10px; font-size: 18px;">Want a faster response?</h3>
+                      <p style="color: #15803d; margin: 0; font-size: 15px; line-height: 1.5;">For immediate assistance or to share pictures of your items/project, please reach out directly to our support team on WhatsApp. Priority is given to WhatsApp inquiries.</p>
+                      
+                      <div style="margin-top: 20px; text-align: center;">
+                        <a href="https://wa.me/923313141853" style="display: inline-block; background-color: #25D366; color: white; text-decoration: none; padding: 14px 30px; border-radius: 8px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(37, 211, 102, 0.3);">
+                          Chat with us on WhatsApp
+                        </a>
+                      </div>
+                    </div>
+
+                    <p style="color: #777; font-size: 14px; line-height: 1.6; text-align: left;">
+                      At Decent Disposal, we pride ourselves on providing Karachi's most transparent and professional services. You're in good hands.
+                    </p>
+                    
+                    <hr style="border: 0; border-top: 1px solid #eaeaea; margin: 30px 0;" />
+                    <p style="font-size: 12px; color: #aaa; margin: 0;">
+                      The Decent Disposal Team | SITE, Karachi<br>
+                      Call us: 0331 3141853 | 0310 2617722
+                    </p>
                   </div>
                 </div>
               `,
             });
-            console.log("Customer thank-you email sent successfully.");
+            
+            if (error) {
+              console.error("USER EMAIL FAILED:", error);
+            } else {
+              console.log("Customer thank-you email sent successfully:", resData);
+            }
           } catch (e) {
-            console.error("USER EMAIL FAILED:", e);
+            console.error("USER EMAIL FAILED (Exception):", e);
           }
         };
 
