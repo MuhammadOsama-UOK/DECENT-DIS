@@ -51,7 +51,7 @@ export default function QuotePage() {
     setIsRenovationSubmitting(true);
     const loadingToast = toast.loading("Submitting your renovation request...");
     try {
-      const response = await fetch('/api/leads/submit', {
+      const response = await fetch('/api/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: 'renovation', data })
@@ -73,7 +73,7 @@ export default function QuotePage() {
     setIsScrapSubmitting(true);
     const loadingToast = toast.loading("Submitting your scrap inquiry...");
     try {
-      const response = await fetch('/api/leads/submit', {
+      const response = await fetch('/api/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: 'scrap', data })

@@ -136,7 +136,7 @@ async function startServer() {
   });
 
   // API Routes
-  app.post("/api/leads/submit", async (req, res) => {
+  app.post("/api/send", async (req, res) => {
     const { type, data } = req.body;
     
     try {
