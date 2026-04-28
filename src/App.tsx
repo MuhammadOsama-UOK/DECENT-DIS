@@ -6,6 +6,7 @@ import PortfolioPage from './components/PortfolioPage';
 import QuotePage from './components/QuotePage';
 import ProcessPage from './components/ProcessPage';
 import ScrapRatesPage from './components/ScrapRatesPage';
+import BlogPage from './components/BlogPage';
 import AdminDashboard from './components/AdminDashboard';
 import AdminLogin from './components/AdminLogin';
 import { Phone, MapPin, X, Menu, Globe } from 'lucide-react';
@@ -90,6 +91,7 @@ function MainLayout() {
               <Link to="/process" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[10px] font-bold">Our Process</Link>
               <Link to="/portfolio" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[10px] font-bold">Portfolio</Link>
               <Link to="/scrap-rates" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[10px] font-bold">Scrap Rates</Link>
+              <Link to="/blog" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[10px] font-bold">Blog</Link>
               <Link to="/quote" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[10px] font-bold">Contact Us</Link>
             </nav>
 
@@ -115,6 +117,7 @@ function MainLayout() {
             <Link to="/process" onClick={() => setIsMenuOpen(false)} className="text-white font-bold uppercase tracking-widest text-sm">Our Process</Link>
             <Link to="/portfolio" onClick={() => setIsMenuOpen(false)} className="text-white font-bold uppercase tracking-widest text-sm">Portfolio</Link>
             <Link to="/scrap-rates" onClick={() => setIsMenuOpen(false)} className="text-white font-bold uppercase tracking-widest text-sm">Scrap Rates</Link>
+            <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="text-white font-bold uppercase tracking-widest text-sm">Blog</Link>
             <Link to="/quote" onClick={() => setIsMenuOpen(false)} className="text-white font-bold uppercase tracking-widest text-sm">Contact Us</Link>
           </div>
         )}
@@ -125,6 +128,7 @@ function MainLayout() {
         <Route path="/process" element={<ProcessPage />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/scrap-rates" element={<ScrapRatesPage />} />
+        <Route path="/blog" element={<BlogPage />} />
         <Route path="/quote" element={<QuotePage />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminDashboard />} />
