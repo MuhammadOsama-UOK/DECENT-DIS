@@ -7,6 +7,7 @@ import QuotePage from './components/QuotePage';
 import ProcessPage from './components/ProcessPage';
 import ScrapRatesPage from './components/ScrapRatesPage';
 import BlogPage from './components/BlogPage';
+import BlogPostPage from './components/BlogPostPage';
 import AdminDashboard from './components/AdminDashboard';
 import AdminLogin from './components/AdminLogin';
 import { Phone, MapPin, X, Menu, Globe } from 'lucide-react';
@@ -129,6 +130,7 @@ function MainLayout() {
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/scrap-rates" element={<ScrapRatesPage />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:id" element={<BlogPostPage />} />
         <Route path="/quote" element={<QuotePage />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminDashboard />} />

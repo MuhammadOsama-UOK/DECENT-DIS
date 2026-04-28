@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { cn } from '@/src/lib/utils';
 import { ArrowRight } from 'lucide-react';
 
@@ -110,16 +111,16 @@ export default function BlogPage() {
                   <span className="text-xs font-bold uppercase text-[#28a745] mb-3 block">
                     {post.category}
                   </span>
-                  <a href={post.link} target="_blank" rel="noopener noreferrer" className="text-2xl font-bold text-[#222] hover:text-[#0056b3] transition-colors mb-4 block leading-tight">
+                  <Link to={`/blog/${post.id}`} className="text-2xl font-bold text-[#222] hover:text-[#0056b3] transition-colors mb-4 block leading-tight">
                     {post.title}
-                  </a>
+                  </Link>
                   <p className="text-[#666] text-sm leading-relaxed mb-6">
                     {post.excerpt}
                   </p>
                 </div>
-                <a href={post.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0056b3] hover:bg-[#004494] text-white text-sm font-bold rounded-lg transition-colors w-fit">
+                <Link to={`/blog/${post.id}`} className="inline-flex items-center gap-2 px-6 py-3 bg-[#0056b3] hover:bg-[#004494] text-white text-sm font-bold rounded-lg transition-colors w-fit">
                   Read Full Article <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}
