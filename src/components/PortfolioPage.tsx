@@ -1,181 +1,253 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/src/lib/utils';
+
+const PARTNERS = [
+  { name: "NADRA", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/4/41/NADRA_logo.svg/1200px-NADRA_logo.svg.png" },
+  { name: "NBP", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/0/07/National_Bank_of_Pakistan_logo.svg/1200px-National_Bank_of_Pakistan_logo.svg.png" },
+  { name: "PSX", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Pakistan_Stock_Exchange_logo.svg/1200px-Pakistan_Stock_Exchange_logo.svg.png" },
+  { name: "K-Electric", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/K-Electric_Logo.svg/1200px-K-Electric_Logo.svg.png" },
+  { name: "SBP", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/State_Bank_of_Pakistan_Logo.svg/1200px-State_Bank_of_Pakistan_Logo.svg.png" },
+  { name: "PIA", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Pakistan_International_Airlines_Logo.svg/1280px-Pakistan_International_Airlines_Logo.svg.png" },
+  { name: "Meezan Bank", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Meezan_Bank_Logo.svg/1200px-Meezan_Bank_Logo.svg.png" }
+];
 
 const TRUSTED_PARTNERS_CONTENT = {
   en: {
     title: "Our Trusted Partners & Corporate Network",
-    description: "At Decent Disposal, we have built a legacy of trust with Pakistan's top-tier organizations, including the <strong>National Bank of Pakistan (NBP)</strong>, <strong>NADRA</strong>, <strong>State Bank of Pakistan (SBP)</strong>, <strong>Pakistan Stock Exchange (PSX)</strong>, <strong>K-Electric (KE)</strong>, <strong>Pakistan International Airlines (PIA)</strong>, and numerous multinational corporations. Our financial transparency is unmatched—we have processed high-value liquidation cheques of up to <strong>millions of Rupees (PKR 50M+)</strong> seamlessly, ensuring instant payments, verifiable corporate receipts, and absolute financial security. From projects worth <strong>PKR 50,000</strong> to massive liquidations exceeding <strong>PKR 10,000,000+</strong>, our track record of handling high-stake financial dealings makes us the most trusted partner for businesses nationwide."
+    description: "At Decent Disposal, we have built a legacy of trust with Pakistan's top-tier organizations. Our financial transparency is unmatched—we have processed high-value liquidation cheques of up to <strong>millions of Rupees (PKR 50M+)</strong> seamlessly, ensuring absolute financial security."
   },
   ur: {
     title: "ہمارے قابل اعتماد شراکت دار اور کارپوریٹ نیٹ ورک",
-    description: "ڈیسنٹ ڈسپوزل میں، ہم نے پاکستان کی اعلیٰ ترین تنظیموں کے ساتھ اعتماد کی ایک مضبوط میراث بنائی ہے، جن میں <strong>نیشنل بینک آف پاکستان (NBP)</strong>، <strong>نادرا (NADRA)</strong>، <strong>اسٹیٹ بینک آف پاکستان (SBP)</strong>، <strong>پاکستان اسٹاک ایکسچینج (PSX)</strong>، <strong>کے الیکٹرک (KE)</strong> اور <strong>پی آئی اے (PIA)</strong> شامل ہیں۔ ہماری مالی شفافیت بے مثال ہے—ہم نے بغیر کسی رکاوٹ کے <strong>کروڑوں روپے (PKR 50M+)</strong> تک کے ہائی ویلیو لیکویڈیشن چیکس پروسیس کیے ہیں۔ <strong>PKR 50,000</strong> کے چھوٹے منصوبوں سے لے کر <strong>PKR 10,000,000+</strong> (ایک کروڑ سے زائد) تک کے بڑے کارپوریٹ معاہدوں میں، ہم نے فوری ادائیگیوں اور مکمل مالیاتی تحفظ کو یقینی بنایا ہے۔"
+    description: "ڈیسنٹ ڈسپوزل میں، ہم نے پاکستان کی اعلیٰ ترین تنظیموں کے ساتھ اعتماد کی ایک مضبوط میراث بنائی ہے۔ ہم نے کروڑوں روپے (PKR 50M+) تک کے ہائی ویلیو لیکویڈیشن چیکس کامیابی سے پروسیس کیے ہیں۔"
   }
 };
 
 const RENOVATION_IMAGES = [
-  'https://images.unsplash.com/photo-1585412727339-54e4bae3bbf9?auto=format&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80'
+  'https://images.unsplash.com/photo-1585412727339-54e4bae3bbf9?auto=format&fit=crop&w=600&q=60',
+  'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=600&q=60',
+  'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=60',
+  'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=60'
 ];
 
 export default function PortfolioPage() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const isUrdu = i18n.language === 'ur';
 
   return (
-    <div className="bg-white min-h-screen pt-32 pb-24 overflow-hidden selection:bg-primary-blue selection:text-white">
-      <div className="portfolio-main-container max-w-7xl mx-auto">
-        {/* TRUSTED PARTNERS SEO SECTION */}
-        <div className="section-heading">
-          <h2 className={cn(isUrdu && "urdu-text", "mb-6")}>
+    <div className="bg-white min-h-screen pt-16 pb-20 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4">
+        
+        {/* HEADING */}
+        <div className="text-center mb-10">
+          <h2 className={cn(
+            "inline-block border-b-4 border-blue-600 pb-2 text-2xl md:text-3xl font-extrabold text-slate-800 uppercase tracking-wide",
+            isUrdu && "urdu-text"
+          )}>
             {isUrdu ? TRUSTED_PARTNERS_CONTENT.ur.title : TRUSTED_PARTNERS_CONTENT.en.title}
           </h2>
         </div>
+
+        {/* CONTENT CARD */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto px-4 md:px-0 text-center mb-16"
+          className="max-w-5xl mx-auto mb-16"
         >
-          <div className="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100 shadow-sm">
+          <div className="bg-slate-50 rounded-3xl p-6 md:p-12 border border-slate-100 shadow-sm text-center">
             <p 
-              className={cn("text-gray-600 leading-relaxed md:text-lg", isUrdu && "urdu-text")}
+              className={cn("text-slate-600 leading-relaxed text-base md:text-lg mb-10", isUrdu && "urdu-text")}
               dangerouslySetInnerHTML={{ __html: isUrdu ? TRUSTED_PARTNERS_CONTENT.ur.description : TRUSTED_PARTNERS_CONTENT.en.description }}
             />
             
-            <div className="mt-10 mb-8 border-y border-gray-200 py-6 flex flex-wrap items-center justify-center gap-6 md:gap-12 opacity-60 hover:opacity-100 transition-opacity duration-500 cursor-default">
-               <span className="text-xl sm:text-2xl font-black italic text-gray-800">NADRA</span>
-               <span className="text-xl sm:text-2xl font-black text-gray-800">NBP</span>
-               <span className="text-xl sm:text-2xl font-black italic text-gray-800">PSX</span>
-               <span className="text-xl sm:text-2xl font-black text-gray-800 uppercase tracking-tighter">K-Electric</span>
-               <span className="text-xl sm:text-2xl font-black italic text-gray-800">SBP</span>
-               <span className="text-xl sm:text-2xl font-black text-gray-800">PIA</span>
-               <span className="text-xl sm:text-2xl font-black italic text-gray-800">Meezan</span>
+            {/* LOGO GRID */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-8 items-center justify-center opacity-80">
+              {PARTNERS.map((item) => (
+                <div key={item.name} className="flex flex-col items-center group">
+                  <img 
+                    src={item.logo} 
+                    alt={item.name}
+                    className="h-12 md:h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <span className="text-[10px] font-bold text-slate-400 mt-2 uppercase tracking-tighter opacity-0 group-hover:opacity-100 transition-opacity">
+                    {item.name}
+                  </span>
+                </div>
+              ))}
             </div>
 
-            <div className="mt-8 flex items-center justify-center gap-4 flex-wrap">
-              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
-                <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                <span className="text-sm font-semibold text-gray-700">Verified Transactions</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
-                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                <span className="text-sm font-semibold text-gray-700">Corporate Liquidations</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
-                <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                <span className="text-sm font-semibold text-gray-700">Trusted Partnerships</span>
-              </div>
+            {/* TRUST BADGES */}
+            <div className="mt-12 flex items-center justify-center gap-4 flex-wrap">
+              {["Verified Transactions", "High-Value Liquidation", "Government Approved"].map((badge, idx) => (
+                <span key={idx} className="bg-white px-4 py-2 rounded-full text-xs font-bold text-slate-700 border border-slate-200 shadow-sm flex items-center gap-2">
+                  <span className={cn("w-2 h-2 rounded-full", idx === 0 ? "bg-green-500" : "bg-blue-500")}></span>
+                  {badge}
+                </span>
+              ))}
             </div>
           </div>
         </motion.div>
 
-        {/* 3. RENOVATION GALLERY SECTION */}
-        <div className="section-heading">
-          <h2 className={cn(isUrdu && "urdu-text")}>
-            {isUrdu ? "رینوویشن اور سائٹ ایگزیکیوشن" : "Renovation & Site Execution"}
+        {/* GALLERY SECTION */}
+        <div className="text-center mb-8">
+          <h2 className={cn("text-2xl font-bold text-slate-800", isUrdu && "urdu-text")}>
+            {isUrdu ? "سائٹ ایگزیکیوشن گیلری" : "Site Execution Gallery"}
           </h2>
         </div>
-        <div className="reno-grid-system px-4 md:px-0">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {RENOVATION_IMAGES.map((img, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="reno-card"
+              whileHover={{ y: -5 }}
+              className="h-64 rounded-2xl overflow-hidden shadow-lg"
             >
-              <img src={img} alt={`Work ${i+1}`} />
+              <img 
+                src={img} 
+                alt="Work" 
+                className="w-full h-full object-cover"
+                loading="lazy" 
+              />
             </motion.div>
           ))}
         </div>
       </div>
 
-      <style>{`
-        .portfolio-main-container {
-            padding: 40px 10px;
-            background-color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
+      <style jsx>{`
+        .urdu-text {
+          font-family: 'Noto Nastaliq Urdu', serif;
+          line-height: 2;
+          direction: rtl;
         }
+      `}</style>
+    </div>
+  );
+}import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import { cn } from '@/src/lib/utils';
 
-        .section-heading {
-            text-align: center;
-            margin: 40px 0 30px;
-        }
+const PARTNERS = [
+  { name: "NADRA", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/4/41/NADRA_logo.svg/1200px-NADRA_logo.svg.png" },
+  { name: "NBP", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/0/07/National_Bank_of_Pakistan_logo.svg/1200px-National_Bank_of_Pakistan_logo.svg.png" },
+  { name: "PSX", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Pakistan_Stock_Exchange_logo.svg/1200px-Pakistan_Stock_Exchange_logo.svg.png" },
+  { name: "K-Electric", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/K-Electric_Logo.svg/1200px-K-Electric_Logo.svg.png" },
+  { name: "SBP", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/State_Bank_of_Pakistan_Logo.svg/1200px-State_Bank_of_Pakistan_Logo.svg.png" },
+  { name: "PIA", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Pakistan_International_Airlines_Logo.svg/1280px-Pakistan_International_Airlines_Logo.svg.png" },
+  { name: "Meezan Bank", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Meezan_Bank_Logo.svg/1200px-Meezan_Bank_Logo.svg.png" }
+];
 
-        .section-heading h2 {
-            font-size: 28px;
-            color: #1a2e44;
-            text-transform: uppercase;
-            display: inline-block;
-            border-bottom: 3px solid #007bff;
-            padding-bottom: 10px;
-            font-weight: 800;
-        }
+const TRUSTED_PARTNERS_CONTENT = {
+  en: {
+    title: "Our Trusted Partners & Corporate Network",
+    description: "At Decent Disposal, we have built a legacy of trust with Pakistan's top-tier organizations. Our financial transparency is unmatched—we have processed high-value liquidation cheques of up to <strong>millions of Rupees (PKR 50M+)</strong> seamlessly, ensuring absolute financial security."
+  },
+  ur: {
+    title: "ہمارے قابل اعتماد شراکت دار اور کارپوریٹ نیٹ ورک",
+    description: "ڈیسنٹ ڈسپوزل میں، ہم نے پاکستان کی اعلیٰ ترین تنظیموں کے ساتھ اعتماد کی ایک مضبوط میراث بنائی ہے۔ ہم نے کروڑوں روپے (PKR 50M+) تک کے ہائی ویلیو لیکویڈیشن چیکس کامیابی سے پروسیس کیے ہیں۔"
+  }
+};
 
-        .logo-grid-system {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 20px;
-            align-items: center;
-            margin-bottom: 60px;
-        }
+const RENOVATION_IMAGES = [
+  'https://images.unsplash.com/photo-1585412727339-54e4bae3bbf9?auto=format&fit=crop&w=600&q=60',
+  'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=600&q=60',
+  'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=60',
+  'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=60'
+];
 
-        .logo-box {
-            text-align: center;
-            padding: 10px;
-        }
+export default function PortfolioPage() {
+  const { i18n } = useTranslation();
+  const isUrdu = i18n.language === 'ur';
 
-        .logo-box img {
-            max-width: 100%;
-            height: 60px;
-            object-fit: contain;
-            filter: grayscale(100%);
-            opacity: 0.6;
-            transition: 0.3s ease-in-out;
-        }
+  return (
+    <div className="bg-white min-h-screen pt-16 pb-20 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4">
+        
+        {/* HEADING */}
+        <div className="text-center mb-10">
+          <h2 className={cn(
+            "inline-block border-b-4 border-blue-600 pb-2 text-2xl md:text-3xl font-extrabold text-slate-800 uppercase tracking-wide",
+            isUrdu && "urdu-text"
+          )}>
+            {isUrdu ? TRUSTED_PARTNERS_CONTENT.ur.title : TRUSTED_PARTNERS_CONTENT.en.title}
+          </h2>
+        </div>
 
-        .logo-box:hover img {
-            filter: grayscale(0%);
-            opacity: 1;
-            transform: scale(1.1);
-        }
+        {/* CONTENT CARD */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-5xl mx-auto mb-16"
+        >
+          <div className="bg-slate-50 rounded-3xl p-6 md:p-12 border border-slate-100 shadow-sm text-center">
+            <p 
+              className={cn("text-slate-600 leading-relaxed text-base md:text-lg mb-10", isUrdu && "urdu-text")}
+              dangerouslySetInnerHTML={{ __html: isUrdu ? TRUSTED_PARTNERS_CONTENT.ur.description : TRUSTED_PARTNERS_CONTENT.en.description }}
+            />
+            
+            {/* LOGO GRID */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-8 items-center justify-center opacity-80">
+              {PARTNERS.map((item) => (
+                <div key={item.name} className="flex flex-col items-center group">
+                  <img 
+                    src={item.logo} 
+                    alt={item.name}
+                    className="h-12 md:h-14 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <span className="text-[10px] font-bold text-slate-400 mt-2 uppercase tracking-tighter opacity-0 group-hover:opacity-100 transition-opacity">
+                    {item.name}
+                  </span>
+                </div>
+              ))}
+            </div>
 
-        .reno-grid-system {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 15px;
-        }
+            {/* TRUST BADGES */}
+            <div className="mt-12 flex items-center justify-center gap-4 flex-wrap">
+              {["Verified Transactions", "High-Value Liquidation", "Government Approved"].map((badge, idx) => (
+                <span key={idx} className="bg-white px-4 py-2 rounded-full text-xs font-bold text-slate-700 border border-slate-200 shadow-sm flex items-center gap-2">
+                  <span className={cn("w-2 h-2 rounded-full", idx === 0 ? "bg-green-500" : "bg-blue-500")}></span>
+                  {badge}
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
 
-        .reno-card {
-            height: 250px;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid #eee;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+        {/* GALLERY SECTION */}
+        <div className="text-center mb-8">
+          <h2 className={cn("text-2xl font-bold text-slate-800", isUrdu && "urdu-text")}>
+            {isUrdu ? "سائٹ ایگزیکیوشن گیلری" : "Site Execution Gallery"}
+          </h2>
+        </div>
 
-        .reno-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-            display: block;
-        }
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {RENOVATION_IMAGES.map((img, i) => (
+            <motion.div 
+              key={i}
+              whileHover={{ y: -5 }}
+              className="h-64 rounded-2xl overflow-hidden shadow-lg"
+            >
+              <img 
+                src={img} 
+                alt="Work" 
+                className="w-full h-full object-cover"
+                loading="lazy" 
+              />
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
-        .reno-card:hover img {
-            transform: scale(1.1);
-        }
-
-        @media (max-width: 768px) {
-            .logo-grid-system { grid-template-columns: repeat(3, 1fr); }
-            .section-heading h2 { font-size: 22px; }
+      <style jsx>{`
+        .urdu-text {
+          font-family: 'Noto Nastaliq Urdu', serif;
+          line-height: 2;
+          direction: rtl;
         }
       `}</style>
     </div>
   );
 }
-
