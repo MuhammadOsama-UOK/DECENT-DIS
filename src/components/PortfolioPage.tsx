@@ -2,13 +2,16 @@ import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/src/lib/utils';
 
-const PROOFS = [
-  { title: 'Corporate Payment Proof - PKR 150,000', image: '/cheque-150k.jpg' },
-  { title: 'Project Clearance Receipt - PKR 5,600', image: '/cheque-5k.jpg' },
-  { title: 'Bulk Transaction Receipt - PKR 100,000', image: '/cheque-100k.jpg' },
-  { title: 'Service Advance Proof - PKR 20,000', image: '/cheque-20k.jpg' },
-  { title: 'Small Item Purchase Proof - PKR 3,000', image: '/cheque-3k.jpg' }
-];
+const TRUSTED_PARTNERS_CONTENT = {
+  en: {
+    title: "Our Trusted Partners & Corporate Network",
+    description: "At Decent Disposal, we have built a legacy of trust with Pakistan's top-tier organizations, including the <strong>National Bank of Pakistan (NBP)</strong>, <strong>NADRA</strong>, <strong>State Bank of Pakistan (SBP)</strong>, <strong>Pakistan Stock Exchange (PSX)</strong>, <strong>K-Electric (KE)</strong>, <strong>Pakistan International Airlines (PIA)</strong>, and numerous multinational corporations. Our financial transparency is unmatched—we have processed high-value liquidation cheques of up to <strong>millions of Rupees (PKR 50M+)</strong> seamlessly, ensuring instant payments, verifiable corporate receipts, and absolute financial security. From projects worth <strong>PKR 50,000</strong> to massive liquidations exceeding <strong>PKR 10,000,000+</strong>, our track record of handling high-stake financial dealings makes us the most trusted partner for businesses nationwide."
+  },
+  ur: {
+    title: "ہمارے قابل اعتماد شراکت دار اور کارپوریٹ نیٹ ورک",
+    description: "ڈیسنٹ ڈسپوزل میں، ہم نے پاکستان کی اعلیٰ ترین تنظیموں کے ساتھ اعتماد کی ایک مضبوط میراث بنائی ہے، جن میں <strong>نیشنل بینک آف پاکستان (NBP)</strong>، <strong>نادرا (NADRA)</strong>، <strong>اسٹیٹ بینک آف پاکستان (SBP)</strong>، <strong>پاکستان اسٹاک ایکسچینج (PSX)</strong>، <strong>کے الیکٹرک (KE)</strong> اور <strong>پی آئی اے (PIA)</strong> شامل ہیں۔ ہماری مالی شفافیت بے مثال ہے—ہم نے بغیر کسی رکاوٹ کے <strong>کروڑوں روپے (PKR 50M+)</strong> تک کے ہائی ویلیو لیکویڈیشن چیکس پروسیس کیے ہیں۔ <strong>PKR 50,000</strong> کے چھوٹے منصوبوں سے لے کر <strong>PKR 10,000,000+</strong> (ایک کروڑ سے زائد) تک کے بڑے کارپوریٹ معاہدوں میں، ہم نے فوری ادائیگیوں اور مکمل مالیاتی تحفظ کو یقینی بنایا ہے۔"
+  }
+};
 
 const RENOVATION_IMAGES = [
   'https://images.unsplash.com/photo-1585412727339-54e4bae3bbf9?auto=format&fit=crop&q=80',
@@ -24,29 +27,50 @@ export default function PortfolioPage() {
   return (
     <div className="bg-white min-h-screen pt-32 pb-24 overflow-hidden selection:bg-primary-blue selection:text-white">
       <div className="portfolio-main-container max-w-7xl mx-auto">
-        {/* PAYMENT PROOFS SECTION */}
+        {/* TRUSTED PARTNERS SEO SECTION */}
         <div className="section-heading">
-          <h2 className={cn(isUrdu && "urdu-text")}>
-            {isUrdu ? "ادائیگی کے ثبوت اور شواہد" : "Payment Evidence & Proofs"}
+          <h2 className={cn(isUrdu && "urdu-text", "mb-6")}>
+            {isUrdu ? TRUSTED_PARTNERS_CONTENT.ur.title : TRUSTED_PARTNERS_CONTENT.en.title}
           </h2>
         </div>
-        <div className="proof-grid-system px-4 md:px-0">
-          {PROOFS.map((proof, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="proof-card"
-            >
-              <span className="badge-verified">Verified Transaction</span>
-              <img src={proof.image} className="proof-img" alt={proof.title} />
-              <div className={cn("proof-info", isUrdu && "urdu-text")}>
-                {isUrdu ? "مالی کلیئرنس رسید" : proof.title}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto px-4 md:px-0 text-center mb-16"
+        >
+          <div className="bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100 shadow-sm">
+            <p 
+              className={cn("text-gray-600 leading-relaxed md:text-lg", isUrdu && "urdu-text")}
+              dangerouslySetInnerHTML={{ __html: isUrdu ? TRUSTED_PARTNERS_CONTENT.ur.description : TRUSTED_PARTNERS_CONTENT.en.description }}
+            />
+            
+            <div className="mt-10 mb-8 border-y border-gray-200 py-6 flex flex-wrap items-center justify-center gap-6 md:gap-12 opacity-60 hover:opacity-100 transition-opacity duration-500 cursor-default">
+               <span className="text-xl sm:text-2xl font-black italic text-gray-800">NADRA</span>
+               <span className="text-xl sm:text-2xl font-black text-gray-800">NBP</span>
+               <span className="text-xl sm:text-2xl font-black italic text-gray-800">PSX</span>
+               <span className="text-xl sm:text-2xl font-black text-gray-800 uppercase tracking-tighter">K-Electric</span>
+               <span className="text-xl sm:text-2xl font-black italic text-gray-800">SBP</span>
+               <span className="text-xl sm:text-2xl font-black text-gray-800">PIA</span>
+               <span className="text-xl sm:text-2xl font-black italic text-gray-800">Meezan</span>
+            </div>
+
+            <div className="mt-8 flex items-center justify-center gap-4 flex-wrap">
+              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                <span className="text-sm font-semibold text-gray-700">Verified Transactions</span>
               </div>
-            </motion.div>
-          ))}
-        </div>
+              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                <span className="text-sm font-semibold text-gray-700">Corporate Liquidations</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+                <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+                <span className="text-sm font-semibold text-gray-700">Trusted Partnerships</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* 3. RENOVATION GALLERY SECTION */}
         <div className="section-heading">
@@ -118,58 +142,6 @@ export default function PortfolioPage() {
             filter: grayscale(0%);
             opacity: 1;
             transform: scale(1.1);
-        }
-
-        .proof-grid-system {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 60px;
-        }
-
-        .proof-card {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-
-        .proof-img {
-            width: 100%;
-            height: 220px;
-            object-fit: contain;
-            object-position: center;
-            background: #ffffff;
-            filter: blur(4px);
-            transition: 0.5s;
-            display: block;
-        }
-
-        .proof-card:hover .proof-img {
-            filter: blur(2px);
-            transform: scale(1.05);
-        }
-
-        .badge-verified {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: #28a745;
-            color: white;
-            padding: 4px 12px;
-            font-size: 11px;
-            border-radius: 50px;
-            z-index: 2;
-        }
-
-        .proof-info {
-            padding: 15px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 14px;
-            background: #fff;
         }
 
         .reno-grid-system {
