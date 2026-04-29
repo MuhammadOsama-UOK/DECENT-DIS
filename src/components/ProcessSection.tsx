@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Smartphone, Truck, Scale, Banknote } from 'lucide-react';
+import { Smartphone, Truck, Scale, Banknote, PackageOpen, ArrowRight } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 
 const STEPS = [
@@ -45,8 +45,8 @@ export default function ProcessSection() {
   const isUrdu = i18n.language === 'ur';
 
   return (
-    <section className="bg-white py-24 px-6 md:px-12 font-poppins overflow-hidden">
-      <div className="container mx-auto max-w-7xl">
+    <section className="bg-white py-16 md:py-24 px-6 md:px-12 font-poppins relative">
+      <div className="container mx-auto max-w-7xl relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {STEPS.map((step, index) => (
             <motion.div

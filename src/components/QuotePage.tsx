@@ -35,9 +35,13 @@ export default function QuotePage() {
   const [isScrapSubmitting, setIsScrapSubmitting] = useState(false);
   const [successLead, setSuccessLead] = useState<{ type: 'renovation' | 'scrap'; data: any } | null>(null);
 
-  const contactPhone = siteSettings?.phone1 || "0331 3141853";
-  const contactEmail = siteSettings?.adminEmail || "ahmed786awan@gmail.com";
-  const waTarget = contactPhone.replace(/[^0-9]/g, '');
+  const contactPhone = siteSettings?.phone1 || "0331-3141853 (Tanveer)";
+  const contactPhone2 = siteSettings?.phone2 || "0315-2227331";
+  const contactAddress = "M.A Jinnah Road, Gulshan-e-Ahoor, Numaish, Karachi.";
+  const contactAddress2 = "H.12, St-8, Qasba Colony, Muslimabad No. 2, SITE, Karachi.";
+  const contactEmail = "muhammad.adnan2625@yahoo.com";
+  const contactEmail2 = siteSettings?.adminEmail || "ahmed786awan@gmail.com";
+  const waTarget = "923152227331";
 
   const { register: regRen, handleSubmit: subRen, formState: { errors: errRen, isValid: isRenValid } } = useForm<RenovationLead>({
     mode: 'onChange'
@@ -157,7 +161,7 @@ export default function QuotePage() {
              
              <form onSubmit={subScrap(onScrapSubmit)} className="space-y-6">
                 <FormInput register={regScrap('fullName', { required: "Name is required" })} label="Full Name *" placeholder="Your name" error={errScrap.fullName?.message} />
-                <FormInput register={regScrap('phone', { required: "Phone is required" })} label="Phone *" placeholder="e.g. 0310 2617722" error={errScrap.phone?.message} />
+                <FormInput register={regScrap('phone', { required: "Phone is required" })} label="Phone *" placeholder="e.g. 0331 3141853" error={errScrap.phone?.message} />
                 <FormInput register={regScrap('email')} label="Email Address" placeholder="Email (optional)" />
                 <FormInput register={regScrap('scrapType', { required: "Select scrap type" })} label="Scrap Type *" type="select" options={['Copper', 'Iron', 'Aluminum', 'E-Waste', 'Cables', 'Other']} error={errScrap.scrapType?.message} />
                 <FormInput register={regScrap('quantity')} label="Approxi. Quantity" placeholder="e.g. 100kg" />
@@ -176,15 +180,47 @@ export default function QuotePage() {
           </motion.div>
         </div>
 
-        <div className="mt-12 md:mt-20 bg-dark-bg p-8 md:p-12 rounded-[30px] md:rounded-[40px] flex flex-col md:flex-row items-center justify-center gap-8 md:gap-24 text-center border border-white/5 shadow-2xl overflow-hidden w-full max-w-full">
-           <div className="w-full">
-              <p className="text-[10px] uppercase font-black tracking-widest text-gray-500 mb-2">Direct Phone</p>
-              <p className="text-lg sm:text-xl md:text-2xl font-black text-white md:tracking-widest">{contactPhone}</p>
+        <div className="mt-12 md:mt-20 flex flex-col gap-8 md:gap-12 w-full max-w-5xl mx-auto">
+           {/* Primary Contact Card */}
+           <div className="bg-dark-bg p-8 md:p-10 rounded-[30px] border border-white/10 shadow-2xl overflow-hidden relative group">
+              <div className="absolute top-0 left-0 w-full h-1 bg-yellow-400"></div>
+              <p className="text-yellow-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-6 text-center md:text-left">Primary Office</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center md:text-left">
+                 <div>
+                    <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-2">Direct Phone</p>
+                    <p className="text-lg md:text-xl font-black text-white">{contactPhone}</p>
+                 </div>
+                 <div>
+                    <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-2">Location</p>
+                    <p className="text-sm font-medium text-white/90 leading-relaxed">{contactAddress}</p>
+                 </div>
+                 <div>
+                    <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-2">Email Address</p>
+                    <p className="text-sm font-black text-white break-all">{contactEmail}</p>
+                 </div>
+              </div>
            </div>
-           <div className="w-[1px] h-12 bg-white/10 hidden md:block"></div>
-           <div className="w-full">
-              <p className="text-[10px] uppercase font-black tracking-widest text-gray-500 mb-2">Email Official</p>
-              <p className="text-base sm:text-lg md:text-2xl font-black text-white md:tracking-widest break-words overflow-wrap-normal bg-clip-text w-full px-2" style={{wordBreak: "break-word"}}>{contactEmail}</p>
+
+           {/* Secondary Contact Card */}
+           <div className="bg-dark-bg p-8 md:p-10 rounded-[30px] border border-white/5 shadow-xl overflow-hidden relative group opacity-90">
+              <div className="absolute top-0 left-0 w-full h-1 bg-white/20"></div>
+              <p className="text-white/60 font-bold uppercase tracking-[0.2em] text-[10px] mb-6 text-center md:text-left">Secondary Office / Plant</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center md:text-left">
+                 <div>
+                    <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-2">Direct Phone</p>
+                    <p className="text-lg md:text-xl font-black text-white">{contactPhone2}</p>
+                 </div>
+                 <div>
+                    <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-2">Location</p>
+                    <p className="text-sm font-medium text-white/90 leading-relaxed">{contactAddress2}</p>
+                 </div>
+                 <div>
+                    <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-2">Email Address</p>
+                    <p className="text-sm font-black text-white break-all">{contactEmail2}</p>
+                 </div>
+              </div>
            </div>
         </div>
       </div>

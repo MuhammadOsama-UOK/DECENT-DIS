@@ -18,9 +18,8 @@ export default function ContactSection() {
     return subscribeToSettings(setSettings);
   }, []);
 
-  const phone = settings?.phone1 || "03313141853";
-  const cleanPhone = phone.replace(/[^0-9]/g, '');
-  const waNum = cleanPhone.startsWith('0') ? '92' + cleanPhone.substring(1) : cleanPhone;
+  const phone = settings?.phone1 || "0331-3141853 (Tanveer)";
+  const waNum = "923152227331";
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactLead>({
     resolver: zodResolver(contactSchema)

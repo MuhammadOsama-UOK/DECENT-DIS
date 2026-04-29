@@ -7,7 +7,8 @@ import ProcessSection from './ProcessSection';
 import { motion } from 'motion/react';
 import { cn } from '@/src/lib/utils';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { PackageOpen, ArrowRight } from 'lucide-react';
 
 export default function HomePage() {
   const { i18n } = useTranslation();
@@ -17,6 +18,94 @@ export default function HomePage() {
   return (
     <main>
       <HeroSlider />
+
+      {/* Repositioned Buy/Sell Scrap Section - Premium Trading Hub */}
+      <div className="relative z-50 -mt-16 md:-mt-32 container mx-auto px-6 mb-24">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className={cn(
+            "w-full max-w-6xl mx-auto bg-black/[0.9] backdrop-blur-3xl border border-white/10 rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-14 shadow-[0_40px_80px_rgba(0,0,0,0.8)] flex flex-col items-center gap-12 group overflow-hidden transition-all duration-700",
+            isUrdu && "md:text-right"
+          )}
+        >
+          {/* Enhanced decorative background glow */}
+          <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-yellow-500/5 blur-[120px] -z-10 group-hover:bg-yellow-500/10 transition-all duration-700"></div>
+          <div className="absolute bottom-0 left-0 w-[40rem] h-[40rem] bg-orange-600/5 blur-[120px] -z-10"></div>
+          
+          <div className={cn("grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center w-full", isUrdu && "lg:flex lg:flex-row-reverse")}>
+            
+            {/* BRANDING COLUMN */}
+            <div className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left relative z-10">
+              <div className="relative mb-8">
+                <div className="absolute inset-0 bg-yellow-400/20 blur-3xl rounded-full scale-175 group-hover:scale-200 transition-transform duration-700"></div>
+                <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-yellow-400 via-yellow-500 to-orange-600 rounded-[2.5rem] flex items-center justify-center shrink-0 shadow-[0_20px_50px_rgba(234,179,8,0.4)] group-hover:rotate-6 transition-transform">
+                   <PackageOpen className="w-12 h-12 md:w-16 md:h-16 text-black" strokeWidth={1} />
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className={cn("flex items-center justify-center lg:justify-start gap-3", isUrdu && "lg:justify-end")}>
+                  <div className="h-px w-10 bg-yellow-500/50"></div>
+                  <h3 className="text-yellow-500 font-bold uppercase tracking-[0.4em] text-[10px] md:text-sm">{isUrdu ? "ماہر خدمات" : "Scrap Solutions"}</h3>
+                  <div className="h-px w-10 bg-yellow-500/50"></div>
+                </div>
+                <h2 className={cn("text-3xl md:text-6xl font-black text-white leading-tight font-outfit uppercase tracking-tighter", isUrdu && "urdu-text leading-tight")}>
+                  {isUrdu ? "سکریپ کی دنیا" : "THE ASSETS HUB"}
+                </h2>
+              </div>
+            </div>
+
+            {/* TRADING ACTIONS COLUMN */}
+             <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 relative">
+                {/* Desktop Divider */}
+                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 hidden md:block -translate-x-1/2"></div>
+
+                {/* BUYING BOX */}
+                <div className={cn("flex flex-col gap-6 group/box", isUrdu && "text-right")}>
+                  <div className={cn("flex items-center gap-4", isUrdu && "flex-row-reverse")}>
+                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover/box:bg-yellow-400 transition-colors">
+                      <ArrowRight className={cn("w-5 h-5 text-yellow-500 group-hover/box:text-black transition-colors rotate-90", isUrdu && "rotate-[-90deg]")} />
+                    </div>
+                    <h3 className="text-white font-black text-xl md:text-2xl uppercase tracking-wider">
+                      {isUrdu ? "ہم خریدتے ہیں" : "We Buy"}
+                    </h3>
+                  </div>
+                  <p className={cn("text-gray-400 text-sm md:text-xl font-medium leading-relaxed max-w-sm", isUrdu && "urdu-text text-xl ml-auto")}>
+                    {isUrdu ? "ہم تانبا، لوہا اور ہر قسم کا صنعتی سکریپ بہترین قیمت پر خریدتے ہیں۔" : "Instant liquidity for all industrial assets, metals, and corporate surplus."}
+                  </p>
+                  <Link to="/scrap-rates" 
+                    className="mt-4 inline-flex items-center gap-3 text-white hover:text-yellow-400 transition-colors font-bold uppercase tracking-widest text-[10px] md:text-xs">
+                    {isUrdu ? "قیمت معلوم کریں" : "Check Rates"}
+                    <ArrowRight className={cn("w-4 h-4", isUrdu && "rotate-180")} />
+                  </Link>
+                </div>
+
+                {/* SELLING BOX */}
+
+                <div className={cn("flex flex-col gap-6 group/box", isUrdu && "text-right")}>
+                  <div className={cn("flex items-center gap-4", isUrdu && "flex-row-reverse")}>
+                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover/box:bg-yellow-400 transition-colors">
+                      <ArrowRight className={cn("w-5 h-5 text-yellow-500 group-hover/box:text-black transition-colors -rotate-90", isUrdu && "rotate-[90deg]")} />
+                    </div>
+                    <h3 className="text-white font-black text-xl md:text-2xl uppercase tracking-wider">
+                      {isUrdu ? "ہم بیچتے ہیں" : "We Sell"}
+                    </h3>
+                  </div>
+                  <p className={cn("text-gray-400 text-sm md:text-xl font-medium leading-relaxed max-w-sm", isUrdu && "urdu-text text-xl ml-auto")}>
+                    {isUrdu ? "بہترین معیار کا سکریپ اور ری سائیکل شدہ مٹیریل براہ راست ہم سے حاصل کریں۔" : "Direct access to high-grade industrial materials and premium liquidated stock."}
+                  </p>
+                  <a href="https://wa.me/923152227331" target="_blank" rel="noopener noreferrer" 
+                    className="mt-4 inline-flex items-center gap-3 text-white hover:text-yellow-400 transition-colors font-bold uppercase tracking-widest text-[10px] md:text-xs">
+                    {isUrdu ? "اسٹاک دیکھیں" : "Browse Inventory"}
+                    <ArrowRight className={cn("w-4 h-4", isUrdu && "rotate-180")} />
+                  </a>
+                </div>
+             </div>
+          </div>
+        </motion.div>
+      </div>
+
       <ProcessSection />
       <AboutUs />
       <ServiceGrid />

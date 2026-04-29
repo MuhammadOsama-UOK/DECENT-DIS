@@ -50,8 +50,8 @@ export default function AboutUs() {
           
           <p className={cn("text-[#a0aec0] leading-[1.8] text-lg mb-8 font-poppins", isUrdu && "urdu-text text-xl")}>
             {isUrdu
-               ? <><strong>ڈی سینٹ ڈسپوزل</strong> پر، ہم پائیداری اور عیش و آرام کے درمیان فرق کو ختم کرتے ہیں۔ پاکستان کے اعلیٰ ترین انٹیریئر رینوویشن کے ماہرین اور سکریپ خریداروں کے طور پر، ہم کارپوریٹ اور رہائشی جگہوں کو جدید شاہکاروں میں تبدیل کرتے ہیں۔</>
-               : <>At <strong>Decent Disposal</strong>, we bridge the gap between sustainability and luxury. As Pakistan’s top-rated interior renovation experts and scrap buyers, we specialize in transforming corporate and residential spaces into modern masterpieces while ensuring eco-friendly disposal of old assets.</>
+               ? <><strong>ڈی سینٹ ڈسپوزل</strong> پر، ہم پائیداری اور عیش و آرام کے درمیان فرق کو ختم کرتے ہیں۔ محمد عدنان (بانی) اور تنویر احمد (سی ای او) کی قیادت میں، ہم پاکستان کے اعلیٰ ترین انٹیریئر رینوویشن کے ماہرین اور سکریپ ڈیلرز کے طور پر پہچانے جاتے ہیں۔ ہم کارپوریٹ اور رہائشی جگہوں کو جدید شاہکاروں میں تبدیل کرتے ہیں۔</>
+               : <>At <strong>Decent Disposal</strong>, we bridge the gap between sustainability and luxury. Under the visionary leadership of <strong>Muhammad Adnan</strong> (Founder) and <strong>Tanveer Ahmed</strong> (CEO), we have grown to become Pakistan’s top-rated interior renovation experts and scrap dealers. Our commitment to excellence and sustainable practices drives our mission to transform corporate and residential spaces into modern masterpieces.</>
             }
           </p>
 

@@ -118,7 +118,7 @@ export default function MarketplacePage() {
 
 function ListingCard(props: any) {
   const { listing } = props;
-  const whatsappNumber = "923313141853";
+  const whatsappNumber = "923152227331";
   const whatsappMsg = encodeURIComponent(`Hi Decent Disposal, I am interested in buying the [${listing.title}] listing on your website.`);
 
   return (

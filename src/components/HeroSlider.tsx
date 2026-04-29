@@ -38,9 +38,9 @@ export default function HeroSlider() {
         modules={[Autoplay, EffectFade, Pagination]}
         effect="fade"
         loop={true}
-        speed={1200}
+        speed={800}
         autoplay={{
-          delay: 6000,
+          delay: 3500,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -65,10 +65,10 @@ export default function HeroSlider() {
                 </p>
                 
                 <div className={cn("glass-button-container", isUrdu && "flex-row-reverse self-end")}>
-                  <Link to="/portfolio" className="bg-yellow-500 hover:bg-yellow-600 text-black px-10 py-4 rounded-xl font-bold transition-all text-center">
+                  <Link to="/portfolio" className="bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-bold transition-all text-center text-sm md:text-base">
                     {t('renovation')}
                   </Link>
-                  <Link to="/quote" className="border border-white/40 hover:bg-white text-white hover:text-black px-10 py-4 rounded-xl font-bold transition-all text-center">
+                  <Link to="/quote" className="border border-white/40 hover:bg-white text-white hover:text-black px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-bold transition-all text-center text-sm md:text-base">
                     {isUrdu ? "ہم سے رابطہ کریں" : "Contact Us"}
                   </Link>
                 </div>
@@ -81,7 +81,7 @@ export default function HeroSlider() {
         <SwiperSlide>
           <div className="relative h-full w-full">
             <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover" alt="Office Renovation Marble and Wood" />
-            <div className="slide-overlay absolute inset-0 flex items-center px-6 md:px-20 z-10">
+            <div className="slide-overlay absolute inset-0 flex items-center px-8 md:px-32 z-10">
               <div className={cn("max-w-4xl animate-hero", isUrdu && "text-right ml-auto")}>
                 <h2 className={cn("text-5xl md:text-7xl font-black text-white leading-tight mb-4 uppercase font-outfit", isUrdu && "urdu-text leading-tight")}>
                   {isUrdu ? "آفس" : "OFFICE"} <span className="text-blue-400">{isUrdu ? "رینوویشن" : "RENOVATION"}</span>
@@ -93,10 +93,10 @@ export default function HeroSlider() {
                 </p>
                 
                 <div className={cn("glass-button-container", isUrdu && "flex-row-reverse self-end")}>
-                  <Link to="/portfolio" className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl font-bold transition-all text-center">
+                  <Link to="/portfolio" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-bold transition-all text-center text-sm md:text-base">
                     {t('view_projects')}
                   </Link>
-                  <Link to="/quote" className="bg-white/10 text-white border border-white/20 px-10 py-4 rounded-xl font-bold transition-all text-center backdrop-blur-md">
+                  <Link to="/quote" className="bg-white/10 text-white border border-white/20 px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-bold transition-all text-center backdrop-blur-md text-sm md:text-base">
                     {t('lead_generation')}
                   </Link>
                 </div>
@@ -121,10 +121,10 @@ export default function HeroSlider() {
                 </p>
                 
                 <div className={cn("glass-button-container flex-wrap", isUrdu && "flex-row-reverse self-end")}>
-                  <a href="https://wa.me/923313141853" target="_blank" rel="noopener noreferrer" className="border border-green-500 text-green-400 hover:bg-green-500 hover:text-white px-10 py-4 rounded-xl font-bold transition-all text-center">
+                  <a href="https://wa.me/923152227331" target="_blank" rel="noopener noreferrer" className="border border-green-500 text-green-400 hover:bg-green-500 hover:text-white px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-bold transition-all text-center text-sm md:text-base">
                     WhatsApp Now
                   </a>
-                  <Link to="/quote" className="bg-white text-green-600 border border-green-500 hover:bg-green-500 hover:text-white px-10 py-4 rounded-xl font-bold transition-all text-center">
+                  <Link to="/quote" className="bg-white text-green-600 border border-green-500 hover:bg-green-500 hover:text-white px-6 py-2.5 md:px-8 md:py-3 rounded-xl font-bold transition-all text-center text-sm md:text-base">
                     Send Item List
                   </Link>
                 </div>
@@ -132,6 +132,7 @@ export default function HeroSlider() {
             </div>
           </div>
         </SwiperSlide>
+
 
         
         <div className="swiper-pagination !bottom-10"></div>

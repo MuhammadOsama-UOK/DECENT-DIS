@@ -11,9 +11,8 @@ export default function FloatingSocial() {
   const [isOpen, setIsOpen] = useState(true);
   const siteSettings = useSiteSettings();
 
-  const phone = siteSettings?.phone1 || "03313141853";
-  const cleanPhone = phone.replace(/[^0-9]/g, '');
-  const whatsappNumber = cleanPhone.startsWith('0') ? '92' + cleanPhone.substring(1) : cleanPhone;
+  const phone = siteSettings?.phone1 || "0331-3141853";
+  const whatsappNumber = "923152227331";
   const message = encodeURIComponent("Hi Decent Disposal, I am interested in your premier services.");
 
   return (

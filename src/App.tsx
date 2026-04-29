@@ -8,6 +8,7 @@ import ProcessPage from './components/ProcessPage';
 import ScrapRatesPage from './components/ScrapRatesPage';
 import BlogPage from './components/BlogPage';
 import BlogPostPage from './components/BlogPostPage';
+import AboutCompany from './components/AboutCompany';
 import AdminDashboard from './components/AdminDashboard';
 import AdminLogin from './components/AdminLogin';
 import { Phone, MapPin, X, Menu, Globe } from 'lucide-react';
@@ -57,10 +58,12 @@ function MainLayout() {
 
   const siteSettings = useSiteSettings();
 
-  const contactPhone = siteSettings?.phone1 || "0331 3141853";
-  const contactPhone2 = siteSettings?.phone2 || "0310 2617722";
-  const contactAddress = "H.12, St-8, Qasba Colony, Muslimabad No. 2, SITE, Karachi.";
-  const contactEmail = siteSettings?.adminEmail || "ahmed786awan@gmail.com";
+  const contactPhone = siteSettings?.phone1 || "0331-3141853 (Tanveer)";
+  const contactPhone2 = siteSettings?.phone2 || "0315-2227331";
+  const contactAddress = "M.A Jinnah Road, Gulshan-e-Ahoor, Numaish, Karachi.";
+  const contactAddress2 = "H.12, St-8, Qasba Colony, Muslimabad No. 2, SITE, Karachi.";
+  const contactEmail = "muhammad.adnan2625@yahoo.com";
+  const contactEmail2 = siteSettings?.adminEmail || "ahmed786awan@gmail.com";
   const authorizations = ["Tanveer Ahmed & Co.", "KMC Verified Vendor", "PEC Registered Contractor"];
 
   return (
@@ -91,6 +94,7 @@ function MainLayout() {
               <Link to="/" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[10px] font-bold">Home</Link>
               <Link to="/process" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[10px] font-bold">Our Process</Link>
               <Link to="/portfolio" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[10px] font-bold">Portfolio</Link>
+              <Link to="/about-company" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[10px] font-bold">About Company</Link>
               <Link to="/scrap-rates" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[10px] font-bold">Scrap Rates</Link>
               <Link to="/blog" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[10px] font-bold">Blog</Link>
               <Link to="/quote" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[10px] font-bold">Contact Us</Link>
@@ -117,6 +121,7 @@ function MainLayout() {
             <Link to="/" onClick={() => setIsMenuOpen(false)} className="text-white font-bold uppercase tracking-widest text-sm">Home</Link>
             <Link to="/process" onClick={() => setIsMenuOpen(false)} className="text-white font-bold uppercase tracking-widest text-sm">Our Process</Link>
             <Link to="/portfolio" onClick={() => setIsMenuOpen(false)} className="text-white font-bold uppercase tracking-widest text-sm">Portfolio</Link>
+            <Link to="/about-company" onClick={() => setIsMenuOpen(false)} className="text-white font-bold uppercase tracking-widest text-sm">About Company</Link>
             <Link to="/scrap-rates" onClick={() => setIsMenuOpen(false)} className="text-white font-bold uppercase tracking-widest text-sm">Scrap Rates</Link>
             <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="text-white font-bold uppercase tracking-widest text-sm">Blog</Link>
             <Link to="/quote" onClick={() => setIsMenuOpen(false)} className="text-white font-bold uppercase tracking-widest text-sm">Contact Us</Link>
@@ -128,6 +133,7 @@ function MainLayout() {
         <Route path="/" element={<HomePage />} />
         <Route path="/process" element={<ProcessPage />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/about-company" element={<AboutCompany />} />
         <Route path="/scrap-rates" element={<ScrapRatesPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<BlogPostPage />} />
@@ -137,8 +143,8 @@ function MainLayout() {
       </Routes>
 
       <footer className="bg-black py-20 border-t border-white/10 px-8">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-sm text-gray-500 font-poppins text-center md:text-left">
-          <div className="space-y-6 col-span-1 md:col-span-2">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 text-sm text-gray-500 font-poppins text-center md:text-left">
+          <div className="space-y-6 col-span-1 md:col-span-5">
             <div className="flex items-center justify-center md:justify-start gap-3">
               <div className="w-8 h-8 bg-yellow-500 rounded flex items-center justify-center font-bold text-sm text-black uppercase">DD</div>
               <span className="text-white font-black text-xl tracking-tighter">DECENT DISPOSAL</span>
@@ -150,31 +156,53 @@ function MainLayout() {
               }
             </p>
           </div>
-          <div className="space-y-4">
-            <div className="text-white font-bold uppercase tracking-widest text-[10px]">Headquarters</div>
-            <div className="flex flex-col items-center md:items-start gap-3 text-xs">
-              <div className="flex flex-col gap-1 items-center md:items-start">
-                <div className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer group">
-                   <Phone className="w-4 h-4 text-yellow-500 group-hover:scale-110 transition-transform" />
-                   <span className="font-medium tracking-wider">{contactPhone}</span>
-                </div>
-                {contactPhone2 && (
-                  <div className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer group ml-7 md:ml-7">
+          <div className="space-y-4 col-span-1 md:col-span-4 lg:col-span-5">
+            <div className="text-white font-bold uppercase tracking-widest text-[10px] mb-4">Headquarters</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs">
+              
+              {/* Primary Contact */}
+              <div className="flex flex-col gap-4">
+                 <div className="text-yellow-400 font-bold uppercase text-[9px] tracking-[0.2em] border-b border-white/10 pb-2 mb-1">Primary Office</div>
+                 
+                 <div className="flex items-start gap-3 hover:text-white transition-colors group">
+                    <Phone className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform flex-shrink-0 mt-0.5" />
+                    <span className="font-medium tracking-wider">{contactPhone}</span>
+                 </div>
+
+                 <div className="flex items-start gap-3 hover:text-white transition-colors group">
+                    <MapPin className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform flex-shrink-0 mt-0.5" />
+                    <span className="font-medium text-left leading-relaxed">{contactAddress}</span>
+                 </div>
+                 
+                 <div className="flex items-start gap-3 hover:text-white transition-colors group">
+                    <Globe className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform flex-shrink-0 mt-0.5" />
+                    <span className="font-medium text-left break-all">{contactEmail}</span>
+                 </div>
+              </div>
+
+              {/* Secondary Contact */}
+              <div className="flex flex-col gap-4">
+                 <div className="text-yellow-400 font-bold uppercase text-[9px] tracking-[0.2em] border-b border-white/10 pb-2 mb-1">Secondary Office</div>
+
+                 <div className="flex items-start gap-3 hover:text-white transition-colors group">
+                    <Phone className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform flex-shrink-0 mt-0.5" />
                     <span className="font-medium tracking-wider">{contactPhone2}</span>
-                  </div>
-                )}
+                 </div>
+
+                 <div className="flex items-start gap-3 hover:text-white transition-colors group">
+                    <MapPin className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform flex-shrink-0 mt-0.5" />
+                    <span className="font-medium text-left leading-relaxed">{contactAddress2}</span>
+                 </div>
+                 
+                 <div className="flex items-start gap-3 hover:text-white transition-colors group">
+                    <Globe className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform flex-shrink-0 mt-0.5" />
+                    <span className="font-medium text-left break-all">{contactEmail2}</span>
+                 </div>
               </div>
-              <div className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer group">
-                 <MapPin className="w-4 h-4 text-yellow-500 group-hover:scale-110 transition-transform" />
-                 <span className="font-medium">{contactAddress}</span>
-              </div>
-              <div className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer group w-full">
-                 <Globe className="w-4 h-4 text-yellow-500 group-hover:scale-110 transition-transform shrink-0" />
-                 <span className="font-medium break-all text-left">{contactEmail}</span>
-              </div>
+
             </div>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-4 col-span-1 md:col-span-3 lg:col-span-2">
             <div className="text-white font-bold uppercase tracking-widest text-[10px]">Authorization</div>
             {authorizations.map((auth: string, idx: number) => (
               <p key={idx} className="text-[10px] italic opacity-60">{auth}</p>

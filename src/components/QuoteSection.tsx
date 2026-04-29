@@ -59,7 +59,7 @@ export default function QuoteSection() {
           </div>
 
           <div className="w-56 h-96 mx-auto lg:mx-0 rounded-[35px] bg-white/10 backdrop-blur-md border border-white/20 flex flex-col items-center justify-center gap-4 animate-[float_4s_ease-in-out_infinite]">
-            <a href="https://wa.me/923313141853" target="_blank" rel="noopener" className="flex flex-col items-center text-white hover:text-emerald-400 transition-colors">
+            <a href="https://wa.me/923152227331" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center text-white hover:text-emerald-400 transition-colors">
               <MessageCircle className="w-20 h-20 text-green-500" />
               <span className="font-black text-xl mt-2 uppercase tracking-tight">WhatsApp Us</span>
               <p className="text-xs opacity-70 mt-1 uppercase tracking-widest">Available 24/7</p>
