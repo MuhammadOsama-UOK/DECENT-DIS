@@ -19,92 +19,86 @@ export default function HomePage() {
     <main>
       <HeroSlider />
 
-      {/* Repositioned Buy/Sell Scrap Section - Premium Trading Hub */}
-      <div className="relative z-50 -mt-16 md:-mt-32 container mx-auto px-6 mb-24">
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className={cn(
-            "w-full max-w-6xl mx-auto bg-black/[0.9] backdrop-blur-3xl border border-white/10 rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-14 shadow-[0_40px_80px_rgba(0,0,0,0.8)] flex flex-col items-center gap-12 group overflow-hidden transition-all duration-700",
-            isUrdu && "md:text-right"
-          )}
-        >
-          {/* Enhanced decorative background glow */}
-          <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-yellow-500/5 blur-[120px] -z-10 group-hover:bg-yellow-500/10 transition-all duration-700"></div>
-          <div className="absolute bottom-0 left-0 w-[40rem] h-[40rem] bg-orange-600/5 blur-[120px] -z-10"></div>
-          
-          <div className={cn("grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center w-full", isUrdu && "lg:flex lg:flex-row-reverse")}>
-            
-            {/* BRANDING COLUMN */}
-            <div className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left relative z-10">
-              <div className="relative mb-8">
-                <div className="absolute inset-0 bg-yellow-400/20 blur-3xl rounded-full scale-175 group-hover:scale-200 transition-transform duration-700"></div>
-                <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-yellow-400 via-yellow-500 to-orange-600 rounded-[2.5rem] flex items-center justify-center shrink-0 shadow-[0_20px_50px_rgba(234,179,8,0.4)] group-hover:rotate-6 transition-transform">
-                   <PackageOpen className="w-12 h-12 md:w-16 md:h-16 text-black" strokeWidth={1} />
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className={cn("flex items-center justify-center lg:justify-start gap-3", isUrdu && "lg:justify-end")}>
-                  <div className="h-px w-10 bg-yellow-500/50"></div>
-                  <h3 className="text-yellow-500 font-bold uppercase tracking-[0.4em] text-[10px] md:text-sm">{isUrdu ? "ماہر خدمات" : "Scrap Solutions"}</h3>
-                  <div className="h-px w-10 bg-yellow-500/50"></div>
-                </div>
-                <h2 className={cn("text-3xl md:text-6xl font-black text-white leading-tight font-outfit uppercase tracking-tighter", isUrdu && "urdu-text leading-tight")}>
-                  {isUrdu ? "سکریپ کی دنیا" : "THE ASSETS HUB"}
-                </h2>
-              </div>
-            </div>
+      {/* Decent Disposal Core Services Widget */}
+      <section className="relative w-full py-24 lg:py-32 overflow-hidden border-y border-white/5 mt-12">
+        {/* Video Background */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className="absolute top-0 left-0 w-full h-full object-cover opacity-40 mix-blend-luminosity"
+          >
+            <source src="https://cdn.pixabay.com/video/2018/06/15/16843-277561822_large.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-[#050505]/60 backdrop-blur-sm"></div>
+          <div className="absolute top-0 left-0 w-full h-[100px] bg-gradient-to-b from-[#050505] to-transparent"></div>
+          <div className="absolute bottom-0 left-0 w-full h-[100px] bg-gradient-to-t from-[#050505] to-transparent"></div>
+        </div>
 
-            {/* TRADING ACTIONS COLUMN */}
-             <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 relative">
-                {/* Desktop Divider */}
-                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 hidden md:block -translate-x-1/2"></div>
-
-                {/* BUYING BOX */}
-                <div className={cn("flex flex-col gap-6 group/box", isUrdu && "text-right")}>
-                  <div className={cn("flex items-center gap-4", isUrdu && "flex-row-reverse")}>
-                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover/box:bg-yellow-400 transition-colors">
-                      <ArrowRight className={cn("w-5 h-5 text-yellow-500 group-hover/box:text-black transition-colors rotate-90", isUrdu && "rotate-[-90deg]")} />
-                    </div>
-                    <h3 className="text-white font-black text-xl md:text-2xl uppercase tracking-wider">
-                      {isUrdu ? "ہم خریدتے ہیں" : "We Buy"}
-                    </h3>
-                  </div>
-                  <p className={cn("text-gray-400 text-sm md:text-xl font-medium leading-relaxed max-w-sm", isUrdu && "urdu-text text-xl ml-auto")}>
-                    {isUrdu ? "ہم تانبا، لوہا اور ہر قسم کا صنعتی سکریپ بہترین قیمت پر خریدتے ہیں۔" : "Instant liquidity for all industrial assets, metals, and corporate surplus."}
-                  </p>
-                  <Link to="/scrap-rates" 
-                    className="mt-4 inline-flex items-center gap-3 text-white hover:text-yellow-400 transition-colors font-bold uppercase tracking-widest text-[10px] md:text-xs">
-                    {isUrdu ? "قیمت معلوم کریں" : "Check Rates"}
-                    <ArrowRight className={cn("w-4 h-4", isUrdu && "rotate-180")} />
-                  </Link>
+        <div className="relative z-10 container mx-auto px-4 lg:px-6 max-w-7xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
+          >
+             {/* Section Title */}
+             <div className={cn("bg-black/40 backdrop-blur-md border border-white/10 rounded-[2.5rem] p-8 lg:p-12 flex flex-col justify-center relative overflow-hidden shadow-[0_0_40px_rgba(234,179,8,0.05)]", isUrdu && "text-right lg:order-last")}>
+                <div className="absolute -top-10 -right-10 w-48 h-48 bg-yellow-500/20 blur-[80px] rounded-full pointer-events-none"></div>
+                
+                <div className="flex flex-col mb-6 relative z-10">
+                  <span className="text-yellow-500 font-bold uppercase tracking-[0.3em] text-[10px] md:text-sm mb-3 block">
+                    {isUrdu ? "ڈیسنٹ ڈسپوزل" : "Decent Disposal"}
+                  </span>
+                  <h2 className={cn("text-4xl lg:text-5xl font-black text-white leading-tight uppercase font-outfit", isUrdu && "urdu-text leading-tight")}>
+                    {isUrdu ? "ہماری خدمات" : "CORE SERVICES"}
+                  </h2>
                 </div>
-
-                {/* SELLING BOX */}
-
-                <div className={cn("flex flex-col gap-6 group/box", isUrdu && "text-right")}>
-                  <div className={cn("flex items-center gap-4", isUrdu && "flex-row-reverse")}>
-                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover/box:bg-yellow-400 transition-colors">
-                      <ArrowRight className={cn("w-5 h-5 text-yellow-500 group-hover/box:text-black transition-colors -rotate-90", isUrdu && "rotate-[90deg]")} />
-                    </div>
-                    <h3 className="text-white font-black text-xl md:text-2xl uppercase tracking-wider">
-                      {isUrdu ? "ہم بیچتے ہیں" : "We Sell"}
-                    </h3>
-                  </div>
-                  <p className={cn("text-gray-400 text-sm md:text-xl font-medium leading-relaxed max-w-sm", isUrdu && "urdu-text text-xl ml-auto")}>
-                    {isUrdu ? "بہترین معیار کا سکریپ اور ری سائیکل شدہ مٹیریل براہ راست ہم سے حاصل کریں۔" : "Direct access to high-grade industrial materials and premium liquidated stock."}
-                  </p>
-                  <a href="https://wa.me/923152227331" target="_blank" rel="noopener noreferrer" 
-                    className="mt-4 inline-flex items-center gap-3 text-white hover:text-yellow-400 transition-colors font-bold uppercase tracking-widest text-[10px] md:text-xs">
-                    {isUrdu ? "اسٹاک دیکھیں" : "Browse Inventory"}
-                    <ArrowRight className={cn("w-4 h-4", isUrdu && "rotate-180")} />
-                  </a>
-                </div>
+                
+                <p className={cn("text-gray-300 text-sm lg:text-base font-medium leading-relaxed relative z-10", isUrdu && "urdu-text")}>
+                  {isUrdu ? "ہم بہترین صنعتی سکریپ کی خرید و فروخت کے ماہر ہیں۔ کارپوریٹ سطح پر مکمل حل۔" : "We are certified specialists in premium industrial scrap and corporate liquidation services across Pakistan."}
+                </p>
              </div>
-          </div>
-        </motion.div>
-      </div>
+
+             {/* We Buy */}
+             <div className={cn("bg-white/5 backdrop-blur-lg rounded-[2.5rem] p-8 lg:p-10 border border-white/10 relative overflow-hidden group hover:bg-white/10 hover:border-yellow-500/30 hover:shadow-[0_0_50px_rgba(234,179,8,0.15)] hover:-translate-y-2 transition-all duration-500 flex flex-col shadow-2xl", isUrdu && "text-right")}>
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/0 to-transparent group-hover:from-yellow-500/5 transition-colors duration-500 pointer-events-none"></div>
+                <div className={cn("w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center mb-8 group-hover:bg-yellow-500 group-hover:border-yellow-400 group-hover:text-black group-hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all duration-500 text-white", isUrdu && "ml-auto")}>
+                    <ArrowRight className={cn("w-6 h-6 rotate-90", isUrdu && "rotate-[-90deg]")} />
+                </div>
+                <h3 className="text-white font-black text-2xl lg:text-3xl uppercase tracking-wider mb-4 relative z-10">
+                   {isUrdu ? "ہم خریدتے ہیں" : "WE BUY"}
+                </h3>
+                <p className={cn("text-gray-300 text-sm lg:text-base font-medium leading-relaxed mb-8 flex-grow relative z-10", isUrdu && "urdu-text")}>
+                  {isUrdu ? "ہم تانبا، لوہا اور ہر قسم کا صنعتی سکریپ بہترین قیمت پر خریدتے ہیں۔" : "Instant liquidity for all industrial assets, metals, and corporate surplus."}
+                </p>
+                <Link to="/scrap-rates" className={cn("inline-flex items-center gap-3 text-white group-hover:text-yellow-400 transition-colors font-bold uppercase tracking-widest text-xs mt-auto relative z-10", isUrdu && "flex-row-reverse")}>
+                   {isUrdu ? "قیمت معلوم کریں" : "CHECK RATES"} <ArrowRight className={cn("w-4 h-4", isUrdu && "rotate-180")} />
+                </Link>
+             </div>
+
+             {/* We Sell */}
+             <div className={cn("bg-white/5 backdrop-blur-lg rounded-[2.5rem] p-8 lg:p-10 border border-white/10 relative overflow-hidden group hover:bg-white/10 hover:border-yellow-500/30 hover:shadow-[0_0_50px_rgba(234,179,8,0.15)] hover:-translate-y-2 transition-all duration-500 flex flex-col shadow-2xl", isUrdu && "text-right")}>
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/0 to-transparent group-hover:from-yellow-500/5 transition-colors duration-500 pointer-events-none"></div>
+                <div className={cn("w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center mb-8 group-hover:bg-yellow-500 group-hover:border-yellow-400 group-hover:text-black group-hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-all duration-500 text-white", isUrdu && "ml-auto")}>
+                    <ArrowRight className={cn("w-6 h-6 -rotate-90", isUrdu && "rotate-[90deg]")} />
+                </div>
+                <h3 className="text-white font-black text-2xl lg:text-3xl uppercase tracking-wider mb-4 relative z-10">
+                   {isUrdu ? "ہم بیچتے ہیں" : "WE SELL"}
+                </h3>
+                <p className={cn("text-gray-300 text-sm lg:text-base font-medium leading-relaxed mb-8 flex-grow relative z-10", isUrdu && "urdu-text")}>
+                  {isUrdu ? "بہترین معیار کا سکریپ اور ری سائیکل شدہ مٹیریل براہ راست ہم سے حاصل کریں۔" : "Direct access to high-grade industrial materials and premium liquidated stock."}
+                </p>
+                <a href="https://wa.me/923152227331" target="_blank" rel="noopener noreferrer" className={cn("inline-flex items-center gap-3 text-white group-hover:text-yellow-400 transition-colors font-bold uppercase tracking-widest text-xs mt-auto relative z-10", isUrdu && "flex-row-reverse")}>
+                   {isUrdu ? "اسٹاک دیکھیں" : "BROWSE INVENTORY"} <ArrowRight className={cn("w-4 h-4", isUrdu && "rotate-180")} />
+                </a>
+             </div>
+
+          </motion.div>
+        </div>
+      </section>
 
       <ProcessSection />
       <AboutUs />
@@ -113,33 +107,57 @@ export default function HomePage() {
       <QuoteSection />
       
       {/* Global Clients Marquee */}
-      <div className="bg-black py-16 border-y border-white/5 overflow-hidden">
-         <div className="container mx-auto px-6 text-center mb-8">
-            <h3 className="text-[10px] uppercase tracking-[0.4em] font-black text-gray-600">Trusted By National Entities</h3>
+      <div className="bg-[#050505] py-16 border-y border-white/5 overflow-hidden relative">
+         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
+         
+         <div className="container mx-auto px-6 text-center mb-10 relative z-10">
+            <h3 className="text-[10px] uppercase tracking-[0.4em] font-black text-yellow-500/80">Trusted By National Entities</h3>
          </div>
-         <div className="flex items-center justify-center gap-8 md:gap-16 opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all px-6">
-            <span className="text-xl md:text-2xl font-black italic text-white">NADRA</span>
-            <span className="text-xl md:text-2xl font-black italic text-white">SBP</span>
-            <span className="text-xl md:text-2xl font-black italic text-white">PSX</span>
-            <span className="text-xl md:text-2xl font-black italic text-white">NBP</span>
-            <span className="text-xl md:text-2xl font-black italic text-white">KE</span>
-            <span className="text-xl md:text-2xl font-black italic text-white md:block hidden">PIA</span>
-          </div>
+         
+         {/* Marquee Container */}
+         <div className="w-full relative flex overflow-x-hidden group z-10">
+           {/* Gradient Masks for smooth fading edges */}
+           <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-20"></div>
+           <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-20"></div>
+           
+           <div className="py-4 animate-marquee whitespace-nowrap flex items-center">
+             {[...Array(2)].map((_, i) => (
+               <div key={i} className="flex items-center gap-16 md:gap-24 px-8 md:px-12">
+                  {['NADRA', 'STATE BANK', 'PAKISTAN STOCK EXCHANGE', 'NATIONAL BANK', 'K-ELECTRIC', 'PIA', 'PTCL', 'ENGRO'].map((client, idx) => (
+                    <div key={idx} className="flex items-center gap-4 group/item">
+                       <span className="w-2 h-2 rounded-full bg-white/10 group-hover/item:bg-yellow-500 transition-colors"></span>
+                       <span className="text-2xl md:text-3xl font-black text-white italic tracking-tighter uppercase group-hover/item:text-yellow-400 group-hover/item:scale-105 inline-block transition-all duration-300">
+                         {client}
+                       </span>
+                    </div>
+                  ))}
+               </div>
+             ))}
+           </div>
+         </div>
       </div>
 
       {/* LOCAL SEO CONTENT SECTION */}
-      <section className="bg-white py-24 border-t border-gray-100">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="bg-[#080808] py-24 border-t border-white/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
+        <div className="absolute -left-40 top-20 w-96 h-96 bg-yellow-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+        
+        <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="lg:col-span-7"
             >
-              <h2 className={cn("text-3xl md:text-5xl font-black text-gray-900 mb-8 leading-tight", isUrdu && "urdu-text")}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px w-10 bg-yellow-400"></div>
+                <span className="text-yellow-400 font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs">Premium Services</span>
+              </div>
+              <h2 className={cn("text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-[1.1] tracking-tight", isUrdu && "urdu-text leading-tight")}>
                 {isUrdu ? "کراچی کے کارپوریٹ اور صنعتی شعبے کی خدمت" : "Serving Karachi’s Corporate & Industrial Sector"}
               </h2>
-              <div className={cn("space-y-6 text-gray-600 md:text-lg", isUrdu && "urdu-text")}>
+              <div className={cn("space-y-6 text-gray-400 md:text-lg font-medium leading-relaxed max-w-2xl", isUrdu && "urdu-text")}>
                 <p>
                   {isUrdu 
                     ? "ڈیسنٹ ڈسپوزل کراچی بھر میں صنعتی سکریپ خریدنے والا سب سے بڑا ادارہ ہے۔ ہم فیکٹریوں، دفاتر اور کمرشل سائٹس کے لیے بہترین خدمات فراہم کرتے ہیں۔" 
@@ -157,30 +175,33 @@ export default function HomePage() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-[#0a0a0a] p-8 md:p-12 rounded-[40px] shadow-2xl relative overflow-hidden group"
+              className="lg:col-span-5 bg-[#111] p-10 md:p-12 rounded-[2.5rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5 relative overflow-hidden group hover:border-yellow-500/30 transition-all duration-700"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary-green/20 blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
-              <h3 className={cn("text-2xl font-black text-white mb-8 tracking-wider", isUrdu && "urdu-text")}>
-                {isUrdu ? "ہماری ماہرانہ خدمات" : "Our Core Specializations"}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 blur-[80px] -mr-32 -mt-32 group-hover:bg-yellow-500/20 transition-colors duration-700"></div>
+              
+              <h3 className={cn("text-2xl lg:text-3xl font-black text-white mb-10 tracking-wider relative z-10", isUrdu && "urdu-text")}>
+                {isUrdu ? "ہماری ماہرانہ خدمات" : "Core Specializations"}
               </h3>
-              <ul className={cn("space-y-4", isUrdu && "urdu-text")}>
+              
+              <ul className={cn("space-y-6 relative z-10", isUrdu && "urdu-text text-right")}>
                 {[
-                  { en: "Industrial Scrap Buyers Karachi", ur: "صنعت سکریپ خریدار کراچی" },
+                  { en: "Industrial Scrap Acquisition", ur: "صنعت سکریپ کی خرید" },
                   { en: "Office Dismantling & Liquidation", ur: "آفس ڈسمینٹلنگ اور لیکویڈیشن" },
-                  { en: "Used Office Furniture Buyers", ur: "استعمال شدہ دفتری فرنیچر کے خریدار" },
-                  { en: "Budget Site Renovation Pakistan", ur: "بجٹ سائٹ رینوویشن پاکستان" },
-                  { en: "Corporate Waste Management", ur: "کارپوریٹ ویسٹ مینجمنٹ" }
+                  { en: "Premium Furniture Liquidators", ur: "استعمال شدہ دفتری فرنیچر" },
+                  { en: "Corporate Site Renovation", ur: "کارپوریٹ سائٹ رینوویشن" },
+                  { en: "Enterprise Waste Management", ur: "کارپوریٹ ویسٹ مینجمنٹ" }
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-4 text-gray-400 group/item text-sm md:text-base">
-                    <span className="w-2 h-2 rounded-full bg-primary-green shrink-0"></span>
-                    <span className="font-bold group-hover/item:text-white transition-colors">{isUrdu ? item.ur : item.en}</span>
+                  <li key={i} className={cn("flex items-center gap-5 text-gray-500 group/item text-sm md:text-base font-semibold", isUrdu && "flex-row-reverse")}>
+                    <span className="w-2.5 h-2.5 rounded-sm bg-white/10 shrink-0 group-hover/item:bg-yellow-400 group-hover/item:scale-125 transition-all group-hover/item:shadow-[0_0_10px_rgba(234,179,8,0.5)]"></span>
+                    <span className="group-hover/item:text-white transition-colors tracking-wide">{isUrdu ? item.ur : item.en}</span>
                   </li>
                 ))}
               </ul>
-              <div className="mt-12 flex justify-center lg:justify-start">
+              
+              <div className={cn("mt-12 flex relative z-10", isUrdu && "justify-end")}>
                  <button 
                   onClick={() => navigate('/portfolio')}
-                  className="bg-white text-black px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-primary-green hover:text-white transition-all transform hover:-translate-y-1"
+                  className="bg-yellow-500 text-black px-8 py-4 rounded-xl font-black text-xs uppercase tracking-[0.2em] hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)]"
                 >
                   {isUrdu ? "ہماری نیٹ ورک دیکھیں" : "View Our Network"}
                 </button>
