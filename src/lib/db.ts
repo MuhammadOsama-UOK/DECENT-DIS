@@ -1,4 +1,4 @@
-import { db } from './firebase';
+import { db, handleFirestoreError } from './firebase';
 import { 
   collection, 
   doc, 
@@ -12,6 +12,7 @@ import {
   setDoc,
   Timestamp
 } from 'firebase/firestore';
+import { Auth } from 'firebase/auth';
 
 export interface ScrapRate {
   id: string;
@@ -26,79 +27,102 @@ export interface ScrapRate {
 
 // --- 1. SCRAP RATES LOGIC ---
 export const subscribeToRates = (callback: (data: ScrapRate[]) => void) => {
-  const q = query(collection(db, "scrap_rates"), orderBy("category", "asc"));
+  const path = "scrap_rates";
+  const q = query(collection(db, path), orderBy("category", "asc"));
   return onSnapshot(q, (snapshot) => {
     const rates = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as ScrapRate));
     callback(rates);
   }, (error) => {
-    console.error("Rates subscription error detail:", {
-      code: error.code,
-      message: error.message,
-      name: error.name,
-      stack: error.stack
-    });
+    console.error("Rates subscription error detail:", error);
+    handleFirestoreError(error, 'list', path).catch(() => {});
     callback([]);
   });
 };
 
 export const editMaterial = async (id: string, updatedData: any) => {
+  const path = `scrap_rates/${id}`;
   const docRef = doc(db, "scrap_rates", id);
-  const snap = await getDoc(docRef);
-  if (!snap.exists()) throw new Error("Material not found");
-  
-  const currentData = snap.data();
-  await updateDoc(docRef, { 
-    ...updatedData,
-    previous_price: updatedData.price !== currentData.price ? currentData.price || 0 : currentData.previous_price,
-    lastUpdated: new Date().toISOString() 
-  });
+  try {
+    const snap = await getDoc(docRef);
+    if (!snap.exists()) throw new Error("Material not found");
+    
+    const currentData = snap.data();
+    await updateDoc(docRef, { 
+      ...updatedData,
+      previous_price: updatedData.price !== currentData.price ? currentData.price || 0 : currentData.previous_price,
+      lastUpdated: new Date().toISOString() 
+    });
+  } catch (error) {
+    await handleFirestoreError(error, 'update', path);
+  }
 };
 
 export const addNewMaterial = async (material: any) => {
-  return await addDoc(collection(db, "scrap_rates"), {
-    ...material,
-    previous_price: material.price || 0,
-    lastUpdated: new Date().toISOString()
-  });
+  const path = "scrap_rates";
+  try {
+    return await addDoc(collection(db, path), {
+      ...material,
+      previous_price: material.price || 0,
+      lastUpdated: new Date().toISOString()
+    });
+  } catch (error) {
+    await handleFirestoreError(error, 'create', path);
+  }
 };
 
 export const deleteMaterial = async (id: string) => {
-  return await deleteDoc(doc(db, "scrap_rates", id));
+  const path = `scrap_rates/${id}`;
+  try {
+    return await deleteDoc(doc(db, "scrap_rates", id));
+  } catch (error) {
+    await handleFirestoreError(error, 'delete', path);
+  }
 };
 
 // --- 2. LEADS CRM LOGIC ---
 export const subscribeToLeads = (callback: (data: any[]) => void) => {
-  const q = query(collection(db, "leads"), orderBy("timestamp", "desc"));
+  const path = "leads";
+  const q = query(collection(db, path), orderBy("timestamp", "desc"));
   return onSnapshot(q, (snapshot) => {
     const leads = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     callback(leads);
+  }, (error) => {
+    handleFirestoreError(error, 'list', path).catch(() => {});
   });
 };
 
 export const createLead = async (leadData: any) => {
-  return await addDoc(collection(db, "leads"), {
-    ...leadData,
-    timestamp: Timestamp.now(),
-    status: 'new'
-  });
+  const path = "leads";
+  try {
+    return await addDoc(collection(db, path), {
+      ...leadData,
+      timestamp: Timestamp.now(),
+      status: 'new'
+    });
+  } catch (error) {
+    await handleFirestoreError(error, 'create', path);
+  }
 };
 
 // --- 3. SITE SETTINGS LOGIC ---
 export const subscribeToSettings = (callback: (data: any) => void) => {
+  const path = "site_settings/contact_info";
   return onSnapshot(doc(db, "site_settings", "contact_info"), (doc) => {
     if (doc.exists()) {
       callback(doc.data());
     }
   }, (error) => {
-    console.error("SiteSettings subscription error detail:", {
-      code: error.code,
-      message: error.message,
-      name: error.name
-    });
+    console.error("SiteSettings subscription error detail:", error);
+    handleFirestoreError(error, 'get', path).catch(() => {});
   });
 };
 
 export const updateSettings = async (settings: any) => {
-  const docRef = doc(db, "site_settings", "contact_info");
-  await setDoc(docRef, settings, { merge: true });
+  const path = "site_settings/contact_info";
+  try {
+    const docRef = doc(db, "site_settings", "contact_info");
+    await setDoc(docRef, settings, { merge: true });
+  } catch (error) {
+    await handleFirestoreError(error, 'update', path);
+  }
 };

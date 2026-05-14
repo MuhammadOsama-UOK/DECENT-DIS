@@ -22,7 +22,7 @@ export default function AboutUs() {
       <div className="container mx-auto flex flex-col lg:flex-row items-center gap-16 max-w-7xl">
         
         {/* Left Visual Content */}
-        <div className="relative flex-1 min-w-[350px]">
+        <div className="relative w-full lg:flex-1 md:min-w-[350px]">
           <img 
             src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80" 
             alt="Professional Interior Renovation Pakistan" 
@@ -30,14 +30,14 @@ export default function AboutUs() {
           />
           
           {/* Experience Floating Badge */}
-          <div className="absolute -bottom-8 -right-4 bg-[#64ffda10] backdrop-blur-[15px] p-8 rounded-[20px] border border-[#64ffda] text-center shadow-[0_20px_40px_rgba(0,0,0,0.4)] animate-float">
-            <h4 className="text-4xl md:text-5xl font-black text-[#64ffda] m-0 font-montserrat">{yearsLabel}</h4>
-            <p className="text-[0.9rem] m-0 uppercase tracking-[1px] font-semibold text-[#64ffda]">Years of <br />Excellence</p>
+          <div className="absolute -bottom-8 -right-4 md:-right-8 bg-white/5 backdrop-blur-md p-6 md:p-8 rounded-[20px] border border-[#64ffda] text-center shadow-[0_20px_40px_rgba(0,0,0,0.4)] animate-float">
+            <h4 className="text-3xl md:text-5xl font-black text-[#64ffda] m-0 font-montserrat">{yearsLabel}</h4>
+            <p className="text-xs md:text-[0.9rem] m-0 uppercase tracking-[1px] font-semibold text-[#64ffda]">Years of <br />Excellence</p>
           </div>
         </div>
 
         {/* Right Text Content */}
-        <div className={cn("flex-[1.2] min-w-[350px]", isUrdu && "text-right")}>
+        <div className={cn("w-full lg:flex-[1.2] md:min-w-[350px] mt-12 lg:mt-0", isUrdu && "text-right")}>
           <span className="text-[#64ffda] font-bold uppercase tracking-[3px] block mb-4">
             {isUrdu ? "2014 سے" : "Since 2014"}
           </span>

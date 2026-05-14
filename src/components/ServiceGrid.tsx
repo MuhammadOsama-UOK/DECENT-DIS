@@ -11,6 +11,8 @@ import {
 } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 
+import regeneratedImg from '../assets/images/regenerated_image_1778789751238.png';
+
 const SERVICES = [
   {
     id: 'glass',
@@ -18,15 +20,15 @@ const SERVICES = [
     titleUr: 'گلاس ورک',
     desc: 'Smart Partitions, Glass Cabins & Toughened Glass Solutions.',
     icon: <Layout className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=60'
+    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'ceiling',
-    title: 'False Ceiling',
-    titleUr: 'فالس سیلنگ',
+    title: 'Designer Ceilings',
+    titleUr: 'سیلنگ ڈیزائن',
     desc: 'Designer Gypsum ceilings, POP works & Grid Ceilings.',
     icon: <Grid className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=60'
+    image: 'https://images.unsplash.com/photo-1660492039236-4e660d5a1a14?w=500&auto=format&fit=crop&q=60'
   },
   {
     id: 'paint',
@@ -34,7 +36,7 @@ const SERVICES = [
     titleUr: 'پریمیم پینٹ',
     desc: 'Luxury textures, Royal shine & Corporate finish paints.',
     icon: <Paintbrush className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1562619371-b67725b6fde2?auto=format&fit=crop&w=600&q=60'
+    image: 'https://images.unsplash.com/photo-1562619371-b67725b6fde2?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'flooring',
@@ -42,7 +44,7 @@ const SERVICES = [
     titleUr: 'فلورنگ',
     desc: 'Vinyl flooring, Italian Marble & High-end Tile works.',
     icon: <Layers className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=70'
+    image: regeneratedImg
   },
   {
     id: 'electric',
@@ -50,7 +52,7 @@ const SERVICES = [
     titleUr: 'الیکٹریکل ورک',
     desc: 'Smart Lighting, Concealed Wiring & Server setup.',
     icon: <Lightbulb className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=600&q=60'
+    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'wood',
@@ -58,7 +60,7 @@ const SERVICES = [
     titleUr: 'وڈ ورک',
     desc: 'Custom Designer Tables, Cabinets & Modular Furniture.',
     icon: <Armchair className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=600&q=60'
+    image: 'https://images.unsplash.com/photo-1659930087003-2d64e33181f7?w=500&auto=format&fit=crop&q=60'
   }
 ];
 
@@ -86,13 +88,13 @@ export default function ServiceGrid() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative h-[350px] rounded-[15px] overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:border-[#64ffda] hover:shadow-[0_10px_30px_rgba(100,255,218,0.1)]"
+                className="group relative h-[300px] md:h-[350px] rounded-[15px] overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:border-[#64ffda] hover:shadow-[0_10px_30px_rgba(100,255,218,0.1)]"
               >
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 will-change-transform"
                 style={{ backgroundImage: `url(${service.image})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-bottom from-transparent via-[#070b14]/40 to-[#070b14]/90 z-10" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#070b14]/50 to-[#070b14]/90 z-10" />
 
               <div className={cn(
                 "absolute inset-0 p-8 flex flex-col justify-end z-20",

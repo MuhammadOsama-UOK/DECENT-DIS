@@ -2,39 +2,54 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     
-    // 1. ALLOW PUBLIC TO READ SITE SETTINGS
-    // Your app needs to read this to load the page layout/config
-    match /site_settings/contact_info {
-      allow read: if true;
-      allow write: if request.auth != null; // Keep writes locked (admin only)
+    // HELPER FUNCTIONS
+    function isSignedIn() {
+      return request.auth != null;
     }
 
-    // 2. ALLOW PUBLIC TO CREATE LEADS
-    // Allows users to fill out your form
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // 1. SITE SETTINGS
+    match /site_settings/{settingsId} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+    match /site_settings/{settingsId}/{allPaths=**} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    // 2. LEADS / INQUIRIES
+    // Public can create inquiries, only admin can read/manage them
     match /leads/{leadId} {
       allow create: if true;
-      allow read, update, delete: if request.auth != null; 
+      allow read, update, delete: if isSignedIn();
     }
 
-    // 3. ALLOW PUBLIC TO READ SCRAP RATES
-    match /scrap_rates/{document=**} {
+    // 3. SCRAP RATES
+    // Publicly readable, admin managed
+    match /scrap_rates/{rateId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isSignedIn();
     }
 
-    match /selling_scrap/{document=**} {
+    // 4. SELLING SCRAP / INVENTORY
+    match /selling_scrap/{itemId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isSignedIn();
     }
 
-    match /test/{document=**} {
+    // 5. TEST CONNECTION
+    match /test/{docId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if isSignedIn();
     }
-    
-    // 4. Fallback for any other collection (Requires user to be logged in)
+
+    // GLOBAL SAFETY NET - Deny everything else by default
     match /{document=**} {
-      allow read, write: if request.auth != null;
+      allow read, write: if false;
     }
   }
 }

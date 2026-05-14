@@ -146,8 +146,8 @@ export default function ProcessPage() {
           <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-100 -translate-y-1/2 hidden lg:block z-0"></div>
           {STEPS.map((step, index) => (
             <motion.div key={step.id} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: index * 0.15 }} className="relative z-10">
-              <Link to="/quote" className="bg-white p-10 rounded-[40px] shadow-[0_30px_60px_rgba(0,0,0,0.08)] border border-gray-50 flex flex-col items-center text-center group hover:-translate-y-4 transition-all duration-500 w-full h-full block">
-                <div className={cn("w-24 h-24 rounded-full flex items-center justify-center text-white mb-8 shadow-xl group-hover:rotate-12 transition-transform duration-500", step.color)}>
+              <Link to="/quote" className="bg-white p-6 sm:p-8 lg:p-10 rounded-[40px] shadow-[0_30px_60px_rgba(0,0,0,0.08)] border border-gray-50 flex flex-col items-center text-center group hover:-translate-y-4 transition-all duration-500 w-full h-full block">
+                <div className={cn("w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center text-white mb-6 md:mb-8 shadow-xl group-hover:rotate-12 transition-transform duration-500", step.color)}>
                   {step.icon}
                 </div>
                 <div className="absolute top-6 right-6 w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center font-black text-xl text-gray-300 group-hover:bg-primary-green group-hover:text-white transition-colors">
@@ -215,7 +215,7 @@ export default function ProcessPage() {
             </header>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                {/* Scrap Form */}
-               <motion.div id="scrap-form" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white rounded-[32px] p-8 md:p-12 shadow-2xl border border-gray-100 relative overflow-hidden">
+               <motion.div id="scrap-form" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white rounded-[32px] p-6 sm:p-8 md:p-12 shadow-2xl border border-gray-100 relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-2 h-full bg-primary-green"></div>
                   <div className="flex items-center gap-3 mb-8"><Scale className="w-8 h-8 text-primary-green" /><h2 className="text-2xl font-black text-gray-900 font-montserrat uppercase">Scrap Disposal Request</h2></div>
                   <form onSubmit={scrapForm.handleSubmit(onScrapSubmit)} className="space-y-6">
@@ -245,7 +245,7 @@ export default function ProcessPage() {
                   </form>
                </motion.div>
                {/* Renovation Form */}
-               <motion.div id="renovation-form" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white rounded-[32px] p-8 md:p-12 shadow-2xl border border-gray-100 relative overflow-hidden">
+               <motion.div id="renovation-form" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white rounded-[32px] p-6 sm:p-8 md:p-12 shadow-2xl border border-gray-100 relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-2 h-full bg-primary-blue"></div>
                   <div className="flex items-center gap-3 mb-8"><HardHat className="w-8 h-8 text-primary-blue" /><h2 className="text-2xl font-black text-gray-900 font-montserrat uppercase">Interior & Renovation</h2></div>
                   <form onSubmit={renovationForm.handleSubmit(onRenovationSubmit)} className="space-y-6">
@@ -259,7 +259,7 @@ export default function ProcessPage() {
                            <option value="">-- Choose project type --</option>
                            <option value="office">Office Refurbishment</option>
                            <option value="glass">Glass & Partitioning</option>
-                           <option value="ceiling">False Ceiling & Civil</option>
+                           <option value="ceiling">Designer Ceilings & Civil</option>
                            <option value="dismantling">Full Site Dismantling</option>
                         </select>
                         {renovationForm.formState.errors.serviceType?.message && <p className="text-red-500 text-[10px] font-bold uppercase tracking-widest">{renovationForm.formState.errors.serviceType.message}</p>}

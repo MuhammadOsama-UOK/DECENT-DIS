@@ -26,8 +26,8 @@ export default function QuoteSection() {
           viewport={{ once: true }}
           className="w-full lg:flex-[1.2] flex flex-col"
         >
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 lg:p-12 rounded-[2.5rem] shadow-2xl h-full flex flex-col relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/20 blur-[50px] rounded-full pointer-events-none group-hover:bg-yellow-500/30 transition-all duration-700"></div>
+          <div className="bg-white/5 rounded-[2.5rem] border border-white/10 p-6 sm:p-10 lg:p-12 shadow-2xl h-full flex flex-col relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/20 blur-[30px] rounded-full pointer-events-none group-hover:bg-yellow-500/30 transition-all duration-700"></div>
             
             <div className={cn("flex items-center gap-3 mb-6", isUrdu && "justify-end")}>
               <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse"></div>
@@ -41,7 +41,7 @@ export default function QuoteSection() {
             <div className={cn("space-y-6 text-gray-400 font-medium", isUrdu && "text-right urdu-text")}>
               <p className="text-base md:text-lg leading-relaxed">
                 {isUrdu ? "اپنی کمرشل یا رہائشی پراپرٹی کو جدید انٹیرئیر سلوشنز کے ساتھ بہتر بنائیں۔" : "Elevate your residential or commercial property with industry-leading interior solutions. We specialize in "} 
-                <strong className={cn("text-white block mt-2", isUrdu && "inline mt-0")}>{isUrdu ? "ہم کسٹم گلاس پارٹیشنز، بہترین ووڈ ورک، لگژری فلورنگ، اور جدید فالز سیلنگ میں مہارت رکھتے ہیں۔" : "custom glass partitions, bespoke woodwork, luxury flooring, and modern false ceilings."}</strong>
+                <strong className={cn("text-white block mt-2", isUrdu && "inline mt-0")}>{isUrdu ? "ہم کسٹم گلاس پارٹیشنز، بہترین ووڈ ورک، لگژری فلورنگ، اور جدید سیلنگ ڈیزائن میں مہارت رکھتے ہیں۔" : "custom glass partitions, bespoke woodwork, luxury flooring, and modern designer ceilings."}</strong>
               </p>
               
               <div className={cn("grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 pt-6 border-t border-white/10", isUrdu && "rtl")}>
@@ -73,8 +73,8 @@ export default function QuoteSection() {
           className="w-full lg:flex-[0.8] flex flex-col h-full gap-6"
         >
           {/* Quote Mini Card */}
-          <div className={cn("relative p-8 bg-yellow-500/90 backdrop-blur-md rounded-[2rem] overflow-hidden group shadow-[0_0_40px_rgba(234,179,8,0.2)]", isUrdu && "text-right")}>
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 blur-[40px] rounded-full pointer-events-none"></div>
+          <div className={cn("relative p-8 bg-yellow-500/90 rounded-[2rem] overflow-hidden group shadow-[0_0_40px_rgba(234,179,8,0.2)]", isUrdu && "text-right")}>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 blur-[20px] rounded-full pointer-events-none"></div>
             <p className={cn("text-black text-xl lg:text-2xl font-black leading-snug tracking-tight font-outfit uppercase z-10 relative", isUrdu && "urdu-text leading-tight")}>
               {isUrdu 
                 ? "ہم جدید شیشے اور لکڑی کے کام سے آپ کے دفاتر کو بدلتے ہیں۔" 
@@ -83,7 +83,7 @@ export default function QuoteSection() {
           </div>
 
           {/* WhatsApp Connect Card */}
-          <div className="flex-grow rounded-[2rem] bg-white/5 backdrop-blur-xl border border-white/10 p-8 flex flex-col items-center justify-center text-center relative overflow-hidden group hover:bg-white/10 transition-all shadow-xl">
+          <div className="flex-grow rounded-[2rem] bg-white/5 border border-white/10 p-8 flex flex-col items-center justify-center text-center relative overflow-hidden group hover:bg-white/10 transition-all shadow-xl">
              <div className="w-full h-full absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></div>
              
              <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-green-500/20 transition-all duration-500 relative">

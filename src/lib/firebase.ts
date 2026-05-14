@@ -10,8 +10,8 @@ console.log("Initializing Firebase...");
 console.log("Config:", JSON.stringify(firebaseConfig));
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 
-export const db = getFirestore(app, (firebaseConfig as any).firestoreDatabaseId);
-console.log("Firestore initialized with DB ID: main-db");
+export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+console.log(`Firestore initialized with DB ID: ${firebaseConfig.firestoreDatabaseId}`);
 
 export const auth = getAuth(app);
 export const storage = getStorage(app);

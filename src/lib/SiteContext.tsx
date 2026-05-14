@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { db } from './firebase';
+import { db, handleFirestoreError } from './firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 
 interface SiteSettings {
@@ -15,12 +15,14 @@ export const SiteSettingsProvider: React.FC<{ children: React.ReactNode }> = ({ 
 
   useEffect(() => {
     if (!db) return;
+    const path = 'site_settings/contact_info';
     const unsub = onSnapshot(doc(db, 'site_settings', 'contact_info'), (snap) => {
       if (snap.exists()) {
         setSettings(snap.data() as SiteSettings);
       }
     }, (error) => {
       console.error("SiteSettings listener failed:", error);
+      handleFirestoreError(error, 'get', path).catch(() => {});
     });
     return () => unsub();
   }, []);

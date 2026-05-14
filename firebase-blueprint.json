@@ -49,9 +49,9 @@
       "schema": "ScrapRate",
       "description": "Collection of categorized scrap rates."
     },
-    "/config/site_settings": {
+    "/site_settings/contact_info": {
       "schema": "SiteSettings",
-      "description": "Singleton configuration document."
+      "description": "Singleton configuration document for contact info and site settings."
     }
   }
 }

@@ -119,7 +119,7 @@ export default function QuotePage() {
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-white rounded-[32px] p-8 md:p-12 shadow-2xl border border-gray-100 relative overflow-hidden"
+            className="bg-white rounded-[32px] p-6 sm:p-8 md:p-12 shadow-2xl border border-gray-100 relative overflow-hidden"
           >
              <div className="absolute top-0 left-0 w-2 h-full bg-primary-blue"></div>
              <div className="flex items-center gap-3 mb-8">
@@ -140,7 +140,7 @@ export default function QuotePage() {
                 </div>
                 <button 
                   disabled={!isRenValid || isRenovationSubmitting}
-                  className="w-full bg-primary-blue text-white font-black py-4 rounded-xl uppercase tracking-widest shadow-xl disabled:opacity-30 disabled:grayscale transition-all active:scale-95"
+                  className="w-full bg-primary-yellow text-black font-black py-4 rounded-xl uppercase tracking-widest shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95 hover:bg-[#d9a307]"
                 >
                    {isRenovationSubmitting ? "Submitting..." : "Get Free Quote"}
                 </button>
@@ -151,7 +151,7 @@ export default function QuotePage() {
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-white rounded-[32px] p-8 md:p-12 shadow-2xl border border-gray-100 relative overflow-hidden"
+            className="bg-white rounded-[32px] p-6 sm:p-8 md:p-12 shadow-2xl border border-gray-100 relative overflow-hidden"
           >
              <div className="absolute top-0 left-0 w-2 h-full bg-primary-green"></div>
              <div className="flex items-center gap-3 mb-8">
@@ -172,7 +172,7 @@ export default function QuotePage() {
                 </div>
                 <button 
                   disabled={!isScrapValid || isScrapSubmitting}
-                  className="w-full bg-primary-green text-white font-black py-4 rounded-xl uppercase tracking-widest shadow-xl disabled:opacity-30 disabled:grayscale transition-all active:scale-95"
+                  className="w-full bg-primary-yellow text-black font-black py-4 rounded-xl uppercase tracking-widest shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95 hover:bg-[#d9a307]"
                 >
                    {isScrapSubmitting ? "Submitting..." : "Book Pickup Inquiry"}
                 </button>

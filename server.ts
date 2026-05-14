@@ -37,27 +37,31 @@ async function initAdmin() {
     const configPath = path.join(process.cwd(), 'firebase-applet-config.json');
     const firebaseConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
+    let appInstance;
     if (getApps().length === 0) {
-      initializeApp({
+      appInstance = initializeApp({
         credential: cert(serviceAccount as any),
         projectId: firebaseConfig.projectId
       });
+    } else {
+      appInstance = getApps()[0];
     }
     
-    db = getFirestore();
-    const authInstance = getAuth();
+    db = firebaseConfig.firestoreDatabaseId === '(default)' 
+      ? getFirestore(appInstance) 
+      : getFirestore(appInstance, firebaseConfig.firestoreDatabaseId);
+    const authInstance = getAuth(appInstance);
     
     // Seed Admin User
     const adminEmail = "decentdisposal12@gmail.com";
     const adminPass = "DarulMadinah";
     
     try {
-      const authInstance = getAuth();
       await authInstance.getUserByEmail(adminEmail);
       console.log("Admin user already exists.");
     } catch (error: any) {
       if (error.code === 'auth/user-not-found') {
-        await getAuth().createUser({
+        await authInstance.createUser({
           email: adminEmail,
           password: adminPass,
           emailVerified: true,

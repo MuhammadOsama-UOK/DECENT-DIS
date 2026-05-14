@@ -53,10 +53,17 @@ const PARTNERS = [
 ];
 
 const RENOVATION_IMAGES = [
-  'https://images.unsplash.com/photo-1585412727339-54e4bae3bbf9?auto=format&fit=crop&w=600&q=70',
-  'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=600&q=70',
-  'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=70',
-  'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=70'
+  'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80', // Modern Office
+  'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80', // Office renovation
+  'https://images.unsplash.com/photo-1579487785973-74d2ca7abdd5?uto=format&fit=crop&w=800&q=80', // Clean office transformation
+  'https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?w=500&auto=format&fit=crop&w=800&q=80'  // Premium Wood/Floor
+];
+
+const SCRAP_PROJECT_IMAGES = [
+  'https://images.unsplash.com/photo-1708791888109-8b0651e94170?w=500&auto=format&fitcrop&w=800&q=80', // Industrial Warehouse
+  'https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=800&q=80', // Metal scrap
+  'https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=800&q=80', // Factory Equipment
+  'https://images.unsplash.com/photo-1762232621865-6353bef72f54?w=500&auto=format&fit=crop&w=800&q=80'  // Industrial yard
 ];
 
 export default function PortfolioPage() {
@@ -130,7 +137,7 @@ export default function PortfolioPage() {
           className="relative mb-24 group"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-primary-blue/20 to-primary-green/20 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-          <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[40px] p-8 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
+          <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[40px] p-6 sm:p-8 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary-blue/5 rounded-full blur-[80px] -mr-48 -mt-48"></div>
             
             <div className="flex-1 text-center lg:text-left relative z-10">
@@ -184,7 +191,7 @@ export default function PortfolioPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 flex flex-col items-center justify-center gap-4 group hover:bg-white/10 hover:border-white/20 transition-all cursor-default"
+                className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center gap-4 group hover:bg-white/10 hover:border-white/20 transition-all cursor-default"
               >
                 <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-primary-blue group-hover:bg-primary-blue/5 transition-all">
                   <partner.icon className="w-8 h-8 text-gray-400 group-hover:text-primary-blue group-hover:scale-110 transition-all" />
@@ -202,32 +209,141 @@ export default function PortfolioPage() {
         <div className="mb-24">
           <div className="text-center mb-16">
             <h2 className={cn("text-3xl md:text-5xl font-black text-white mb-4", isUrdu && "urdu-text")}>
-              {isUrdu ? "رینوویشن اور سائٹ ایگزیکیوشن" : "Field Excellence"}
+              {isUrdu ? "رینوویشن اور فیلڈ ایکسیلنس" : "Renovation Excellence"}
             </h2>
-            <p className="text-gray-500">Documenting our on-site performance and material liquidations.</p>
+            <p className={cn("text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed", isUrdu && "urdu-text")}>
+              {isUrdu 
+                ? "ہم صرف کام نہیں کرتے، ہم مٹیریل کی بہترین ری سائیکلنگ اور اعلیٰ کاریگری کے ذریعے آپ کے پرانے دفاتر کو ایک نئی زندگی دیتے ہیں۔" 
+                : "Real-world examples of our industrial site liquidations and premium corporate transformations across Karachi."}
+            </p>
+          </div>
+
+          <div className="mb-16">
+            <h3 className={cn("text-xl font-black text-primary-yellow uppercase tracking-[0.3em] mb-8 border-l-4 border-primary-yellow pl-4", isUrdu && "text-right border-l-0 border-r-4 pr-4")}>
+              {isUrdu ? "صنعتی سکریپ پروجیکٹس" : "Industrial Scrap Projects"}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                { img: SCRAP_PROJECT_IMAGES[0], labelEn: "SITE Area Factory Liquidation", labelUr: "سائٹ ایریا فیکٹری لیکویڈیشن" },
+                { img: SCRAP_PROJECT_IMAGES[1], labelEn: "Korangi Industrial Scrap Recovery", labelUr: "کورنگی انڈسٹریل سکریپ ریکوری" },
+                { img: SCRAP_PROJECT_IMAGES[2], labelEn: "Port Qasim Warehouse Clearance", labelUr: "پورٹ قاسم ویئر ہاؤس کلیئرنس" },
+                { img: SCRAP_PROJECT_IMAGES[3], labelEn: "Landhi Heavy Machinery Dismantling", labelUr: "لانڈھی ہیوی مشینری ڈس مینٹلنگ" }
+              ].map((item, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="group relative h-64 rounded-2xl overflow-hidden border border-white/5 bg-white/5"
+                >
+                  <img 
+                    src={item.img} 
+                    alt={item.labelEn} 
+                    loading="lazy"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 p-4 bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p className={cn("text-white text-xs font-bold", isUrdu && "urdu-text text-right")}>{isUrdu ? item.labelUr : item.labelEn}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-16">
+             <h3 className={cn("text-xl font-black text-primary-blue uppercase tracking-[0.3em] mb-8 border-l-4 border-primary-blue pl-4", isUrdu && "text-right border-l-0 border-r-4 pr-4")}>
+               {isUrdu ? "آفس رینوویشن سائٹس" : "Office Renovation Sites"}
+             </h3>
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 md:px-0">
+               {[
+                 { img: RENOVATION_IMAGES[0], labelEn: "I.I Chundrigar Road Office Overhaul", labelUr: "آئی آئی چندریگر روڈ آفس اوورہال" },
+                 { img: RENOVATION_IMAGES[1], labelEn: "Gulshan-e-Iqbal Corporate Interior", labelUr: "گلشن اقبال کارپوریٹ انٹیریئر" },
+                 { img: RENOVATION_IMAGES[2], labelEn: "Clifton Executive Suite Renovation", labelUr: "کلفٹن ایگزیکٹو سویٹ رینوویشن" },
+                 { img: RENOVATION_IMAGES[3], labelEn: "Defence Phase 6 Boutique Office", labelUr: "ڈیفنس فیز 6 بوٹیک آفس" }
+               ].map((item, i) => (
+                 <motion.div 
+                   key={i}
+                   initial={{ opacity: 0, y: 20 }}
+                   whileInView={{ opacity: 1, y: 0 }}
+                   viewport={{ once: true }}
+                   className="group relative h-72 rounded-3xl overflow-hidden border border-white/10 bg-white/5"
+                 >
+                   <img 
+                     src={item.img} 
+                     alt={item.labelEn} 
+                     loading="lazy"
+                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                     <span className="text-white font-bold text-xs uppercase tracking-widest mb-1">{isUrdu ? item.labelUr : item.labelEn}</span>
+                     <span className="text-primary-blue font-black text-[10px] uppercase tracking-tighter">Premium Case Study #0{i+1}</span>
+                   </div>
+                 </motion.div>
+               ))}
+             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4 md:px-0">
-            {RENOVATION_IMAGES.map((img, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="group relative h-72 rounded-3xl overflow-hidden border border-white/10 bg-white/5"
-              >
-                <img 
-                  src={img} 
-                  alt={`Work ${i+1}`} 
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                  <span className="text-white font-bold text-xs uppercase tracking-widest">Site Case Study #0{i+1}</span>
-                </div>
-              </motion.div>
+          {/* PERSUASIVE CONTENT CARDS */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            {[
+              {
+                title: isUrdu ? "معیاری مواد" : "Superior Materials",
+                desc: isUrdu ? "ہم بہترین معیار کی لکڑی، شیشہ اور ری سائیکل شدہ صنعتی مواد استعمال کرتے ہیں۔" : "Utilizing high-grade wood, glass, and recycled industrial materials for a sustainable and premium finish.",
+                icon: CheckCircle2
+              },
+              {
+                title: isUrdu ? "کم بجٹ میں بہترین کام" : "Cost-Effective Logic",
+                desc: isUrdu ? "ہم پرانے مٹیریل کو کارآمد بنا کر آپ کا 50% تک خرچ بچاتے ہیں۔" : "Save up to 50% on renovation costs through smart material repurposing and direct factory sourcing.",
+                icon: Zap
+              },
+              {
+                title: isUrdu ? "وقت کی پابندی" : "Rapid Execution",
+                desc: isUrdu ? "ہمارا تجربہ کار ٹیکنیکل اسٹاف ریکارڈ وقت میں کام مکمل کرنے کی صلاحیت رکھتا ہے۔" : "Our specialized teams deliver turn-key office and site transformations in record turnaround times.",
+                icon: Zap
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 transition-all border-b-4 border-b-primary-blue">
+                <item.icon className="w-10 h-10 text-primary-blue mb-6" />
+                <h3 className={cn("text-xl font-black text-white mb-4", isUrdu && "urdu-text")}>{item.title}</h3>
+                <p className={cn("text-gray-400 text-sm leading-relaxed", isUrdu && "urdu-text")}>{item.desc}</p>
+              </div>
             ))}
           </div>
+
+          {/* WHATSAPP CTA BOX */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-20 bg-gradient-to-br from-green-500/20 to-primary-blue/20 border border-green-500/30 rounded-[2.5rem] p-6 sm:p-10 text-center relative overflow-hidden group"
+          >
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(34,197,94,0.4)] group-hover:scale-110 transition-transform">
+                <Zap className="w-8 h-8 text-white fill-current" />
+              </div>
+              <h2 className={cn("text-3xl md:text-5xl font-black text-white mb-4 tracking-tighter uppercase", isUrdu && "urdu-text")}>
+                {isUrdu ? "مزید معلومات اور قیمتوں کے لیے ہم سے رابطہ کریں" : "Get Detailed Info & Instant Pricing"}
+              </h2>
+              <p className={cn("text-gray-300 text-lg mb-8 max-w-2xl", isUrdu && "urdu-text")}>
+                {isUrdu 
+                  ? "ہماری سروسز، اسٹاک کی تفصیلات اور موجودہ ریٹس جاننے کے لیے ابھی واٹس ایپ پر رابطہ کریں۔" 
+                  : "Connect with our expert team on WhatsApp for project quotations, inventory lists, and real-time scrap rates."}
+              </p>
+              <a 
+                href="https://wa.me/923152227331" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-4 bg-green-600 hover:bg-green-500 text-white font-black py-5 px-10 rounded-2xl shadow-xl hover:shadow-green-500/20 transition-all text-xl"
+              >
+                <Zap className="w-6 h-6 fill-white" />
+                {isUrdu ? "واٹس ایپ رابطہ: 0315-2227331" : "WhatsApp: +92 315 2227331"}
+              </a>
+              <p className="mt-6 text-gray-500 text-sm font-bold uppercase tracking-widest">
+                Direct Line: +92 331 3141853
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>

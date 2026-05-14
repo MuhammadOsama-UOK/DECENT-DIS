@@ -11,6 +11,7 @@ import BlogPostPage from './components/BlogPostPage';
 import AboutCompany from './components/AboutCompany';
 import AdminDashboard from './components/AdminDashboard';
 import AdminLogin from './components/AdminLogin';
+import SitemapPage from './components/SitemapPage';
 import { Phone, MapPin, X, Menu, Globe } from 'lucide-react';
 import { cn } from './lib/utils';
 import { useState, useEffect, useRef } from 'react';
@@ -70,7 +71,7 @@ function MainLayout() {
     <div className="min-h-screen selection:bg-yellow-500 selection:text-black bg-[#050505]">
       
       {/* Global Header */}
-      <header className="sticky top-0 w-full z-[100] bg-[#0a0a0a]/90 backdrop-blur-3xl border-b border-white/5 shadow-[0_4px_40px_rgba(0,0,0,0.8)]">
+      <header className="sticky top-0 w-full z-[100] bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/5 shadow-[0_4px_40px_rgba(0,0,0,0.8)]">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent"></div>
         <div className="container mx-auto px-4 lg:px-6 max-w-[1600px] h-20 flex items-center justify-between relative">
           
@@ -143,13 +144,14 @@ function MainLayout() {
         <Route path="/quote" element={<QuotePage />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/sitemap" element={<SitemapPage />} />
       </Routes>
 
       <footer className="bg-[#0a0a0a] border-t border-white/5 relative overflow-hidden">
         {/* Decorative Grid and Glows */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 h-[1px] bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-500/5 blur-[60px] rounded-full pointer-events-none"></div>
 
         <div className="container mx-auto px-6 py-20 lg:py-24 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 text-sm text-gray-500 font-poppins">
@@ -274,6 +276,7 @@ function MainLayout() {
               © {new Date().getFullYear()} Decent Disposal. Built with precision and trust.
             </div>
             <div className="flex items-center gap-6 text-[9px] md:text-[10px] text-gray-500 uppercase tracking-widest font-bold">
+              <Link to="/sitemap" className="hover:text-yellow-400 transition-colors underline decoration-white/10 underline-offset-4">Sitemap (HTML)</Link>
               <Link to="/about-company" className="hover:text-yellow-400 transition-colors">Privacy Policy</Link>
               <Link to="/about-company" className="hover:text-yellow-400 transition-colors">Terms of Service</Link>
             </div>

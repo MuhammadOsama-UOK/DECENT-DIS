@@ -3,10 +3,6 @@
     {
       "database": "(default)",
       "rules": "firestore.rules"
-    },
-    {
-      "database": "main-db",
-      "rules": "firestore.rules"
     }
   ]
 }
