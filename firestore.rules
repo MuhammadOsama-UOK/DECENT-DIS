@@ -41,7 +41,14 @@ service cloud.firestore {
       allow write: if isSignedIn();
     }
 
-    // 5. TEST CONNECTION
+    // 5. REVIEWS
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isSignedIn();
+    }
+
+    // 6. TEST CONNECTION
     match /test/{docId} {
       allow read: if true;
       allow write: if isSignedIn();

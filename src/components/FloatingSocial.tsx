@@ -4,16 +4,19 @@ import { MessageCircle, X, Facebook, Instagram, Linkedin, Globe } from 'lucide-r
 import { cn } from '@/src/lib/utils';
 import { db } from '@/src/lib/firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
+import { useTranslation } from 'react-i18next';
 
 import { useSiteSettings } from '@/src/lib/SiteContext';
 
 export default function FloatingSocial() {
   const [isOpen, setIsOpen] = useState(true);
   const siteSettings = useSiteSettings();
+  const { i18n } = useTranslation();
+  const isUrdu = i18n.language === 'ur';
 
   const phone = siteSettings?.phone1 || "0331-3141853";
   const whatsappNumber = "923152227331";
-  const message = encodeURIComponent("Hi Decent Disposal, I am interested in your premier services.");
+  const message = encodeURIComponent(isUrdu ? "ہیلو ڈیسنٹ ڈسپوزل، میں آپ کی خدمات میں دلچسپی رکھتا ہوں۔" : "Hi Decent Disposal, I am interested in your premier services.");
 
   return (
     <>
@@ -29,9 +32,9 @@ export default function FloatingSocial() {
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white text-black px-4 py-2 rounded-2xl text-[10px] font-black uppercase tracking-tighter shadow-2xl relative hidden sm:block border border-gray-100"
+          className={cn("bg-white text-black px-4 py-2 rounded-2xl text-[10px] font-black uppercase tracking-tighter shadow-2xl relative hidden sm:block border border-gray-100", isUrdu && "urdu-text text-sm tracking-normal")}
         >
-          Instant Scrap Quote?
+          {isUrdu ? "فوری سکریپ کوٹیشن؟" : "Instant Scrap Quote?"}
           <div className="absolute right-[-4px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-white"></div>
         </motion.div>
         

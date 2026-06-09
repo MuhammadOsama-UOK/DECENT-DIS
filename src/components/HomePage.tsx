@@ -1,8 +1,9 @@
 import HeroSlider from './HeroSlider';
 import AboutUs from './AboutUs';
 import ServiceGrid from './ServiceGrid';
-import ScrapSection from './ScrapSection';
+import ScrapGrid from './ScrapGrid';
 import QuoteSection from './QuoteSection';
+import CustomerReviews from './CustomerReviews';
 import ProcessSection from './ProcessSection';
 import { motion } from 'motion/react';
 import { cn } from '@/src/lib/utils';
@@ -21,18 +22,11 @@ export default function HomePage() {
 
       {/* Decent Disposal Core Services Widget */}
       <section className="relative w-full py-24 lg:py-32 overflow-hidden border-y border-white/5 mt-12">
-        {/* Video Background */}
-        <div className="absolute inset-0 w-full h-full z-0">
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            className="absolute top-0 left-0 w-full h-full object-cover opacity-40 mix-blend-luminosity"
-          >
-            <source src="https://cdn.pixabay.com/video/2018/06/15/16843-277561822_large.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-[#050505]/60 block"></div>
+        {/* Lighter Background instead of Video */}
+        <div className="absolute inset-0 w-full h-full z-0 bg-[#050505]">
+          <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-[#082f1f] rounded-full blur-[150px] opacity-40"></div>
+          <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-[#0f2027] rounded-full blur-[150px] opacity-40"></div>
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none"></div>
           <div className="absolute top-0 left-0 w-full h-[100px] bg-gradient-to-b from-[#050505] to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full h-[100px] bg-gradient-to-t from-[#050505] to-transparent"></div>
         </div>
@@ -115,8 +109,9 @@ export default function HomePage() {
       <ProcessSection />
       <AboutUs />
       <ServiceGrid />
-      <ScrapSection />
+      <ScrapGrid />
       <QuoteSection />
+      <CustomerReviews />
       
       {/* Global Clients Marquee */}
       <div className="bg-[#050505] py-16 border-y border-white/5 overflow-hidden relative">

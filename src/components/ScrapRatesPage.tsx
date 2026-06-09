@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Loader2, TrendingUp, RefreshCw } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface ScrapRate {
   material: string;
@@ -15,6 +16,8 @@ export default function ScrapRatesPage() {
   const [rates, setRates] = useState<ScrapRate[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { i18n } = useTranslation();
+  const isUrdu = i18n.language === 'ur';
 
   const fetchRates = async () => {
     try {
@@ -32,7 +35,7 @@ export default function ScrapRatesPage() {
       setRates(parsedRates);
       setError(null);
     } catch (err) {
-      setError('Failed to load rates. Please try again later.');
+      setError(isUrdu ? 'ریٹس لوڈ کرنے میں ناکام۔ براہ کرم بعد میں کوشش کریں۔' : 'Failed to load rates. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -42,13 +45,15 @@ export default function ScrapRatesPage() {
     fetchRates();
     const interval = setInterval(fetchRates, 300000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isUrdu]);
 
   return (
     <div className="min-h-screen bg-black text-white py-24 px-6 md:px-12">
       <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-12">
-          <h2 className="text-4xl font-black uppercase tracking-tight text-white">Live Scrap Rates</h2>
+        <div className={cn("flex justify-between items-center mb-12", isUrdu && "flex-row-reverse")}>
+          <h2 className={cn("text-4xl font-black uppercase tracking-tight text-white", isUrdu && "urdu-text")}>
+            {isUrdu ? "لائیو سکریپ ریٹس" : "Live Scrap Rates"}
+          </h2>
           <button onClick={fetchRates} className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-all text-white">
             <RefreshCw className={cn("w-5 h-5", loading && "animate-spin")} />
           </button>
@@ -59,15 +64,15 @@ export default function ScrapRatesPage() {
             <Loader2 className="animate-spin w-12 h-12 text-yellow-500" />
           </div>
         ) : error ? (
-            <div className="text-red-500 text-center py-24 font-bold">{error}</div>
+            <div className={cn("text-red-500 text-center py-24 font-bold", isUrdu && "urdu-text")}>{error}</div>
         ) : (
           <div className="bg-[#080808] rounded-[24px] border border-white/5 overflow-hidden shadow-2xl">
-            <table className="w-full text-left">
+            <table className={cn("w-full text-left", isUrdu && "text-right")} dir={isUrdu ? 'rtl' : 'ltr'}>
               <thead className="bg-white/5 uppercase text-[10px] font-black tracking-widest text-slate-400">
                 <tr>
-                  <th className="p-6">Material</th>
-                  <th className="p-6">Rate</th>
-                  <th className="p-6">Change</th>
+                  <th className={cn("p-6", isUrdu && "urdu-text text-sm")}>{isUrdu ? "مواد" : "Material"}</th>
+                  <th className={cn("p-6", isUrdu && "urdu-text text-sm")}>{isUrdu ? "ریٹ" : "Rate"}</th>
+                  <th className={cn("p-6", isUrdu && "urdu-text text-sm")}>{isUrdu ? "تبدیلی" : "Change"}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
@@ -81,7 +86,7 @@ export default function ScrapRatesPage() {
                   >
                     <td className="p-6 font-bold text-white tracking-wide">{rate.material}</td>
                     <td className="p-6 font-mono text-yellow-500 font-bold">Rs. {rate.rate}</td>
-                    <td className={cn("p-6 font-bold", rate.change.startsWith('+') ? 'text-emerald-500' : 'text-red-500')}>
+                    <td className={cn("p-6 font-bold", rate.change.startsWith('+') ? 'text-emerald-500' : 'text-red-500')} dir="ltr">
                       {rate.change}
                     </td>
                   </motion.tr>

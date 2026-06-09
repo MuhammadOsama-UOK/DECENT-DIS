@@ -12,6 +12,7 @@ import AboutCompany from './components/AboutCompany';
 import AdminDashboard from './components/AdminDashboard';
 import AdminLogin from './components/AdminLogin';
 import SitemapPage from './components/SitemapPage';
+import ServiceDetailPage from './components/ServiceDetailPage';
 import { Phone, MapPin, X, Menu, Globe } from 'lucide-react';
 import { cn } from './lib/utils';
 import { useState, useEffect, useRef } from 'react';
@@ -145,6 +146,7 @@ function MainLayout() {
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/sitemap" element={<SitemapPage />} />
+        <Route path="/service/:id" element={<ServiceDetailPage />} />
       </Routes>
 
       <footer className="bg-[#0a0a0a] border-t border-white/5 relative overflow-hidden">
