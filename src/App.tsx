@@ -13,9 +13,9 @@ import AdminDashboard from './components/AdminDashboard';
 import AdminLogin from './components/AdminLogin';
 import SitemapPage from './components/SitemapPage';
 import ServiceDetailPage from './components/ServiceDetailPage';
-import { Phone, MapPin, X, Menu, Globe } from 'lucide-react';
+import { Phone, MapPin, X, Menu, Globe, Recycle, ShoppingCart, Building2 } from 'lucide-react';
 import { cn } from './lib/utils';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { db } from './lib/firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
@@ -30,6 +30,8 @@ function ScrollToTop() {
   return null;
 }
 
+import BrandLogo from './components/BrandLogo';
+
 function MainLayout() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -42,7 +44,8 @@ function MainLayout() {
     i18n.changeLanguage(i18n.language === 'en' ? 'ur' : 'en');
   };
 
-  const handleLogoClick = () => {
+  const handleLogoClick = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
     if (clickTimerRef.current) clearTimeout(clickTimerRef.current);
     
     const newCount = logoClicks + 1;
@@ -77,20 +80,41 @@ function MainLayout() {
         <div className="container mx-auto px-4 lg:px-6 max-w-[1600px] h-20 flex items-center justify-between relative">
           
           <div className="flex items-center gap-4 shrink-0 mr-4 lg:mr-10">
-            <div 
-              onClick={handleLogoClick}
-              className="w-10 h-10 lg:w-11 lg:h-11 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center font-black text-lg text-black shadow-[0_0_15px_rgba(234,179,8,0.3)] cursor-pointer group-hover:scale-105 transition-all duration-300 select-none" 
-            >
-              DD
-            </div>
-            <Link to="/" className="flex flex-col justify-center">
-              <h1 className={cn("text-base lg:text-lg font-black tracking-tighter text-white font-outfit uppercase", isUrdu && "urdu-text leading-tight")}>
-                {isUrdu ? "ڈی سینٹ ڈسپوزل" : "DECENT DISPOSAL"}
-              </h1>
-              <p className="text-[8px] lg:text-[9px] text-yellow-500/80 tracking-[0.25em] uppercase font-bold mt-0.5">
-                {isUrdu ? "کراچی کی پریمیم سروسز" : "Karachi's Premier Services"}
-              </p>
+            <Link to="/" className="flex flex-col justify-center no-underline hover:opacity-90">
+              <BrandLogo onClick={handleLogoClick} className="scale-90 lg:scale-100 origin-left" />
             </Link>
+            
+            <div className="hidden md:flex items-center gap-3 lg:gap-5 text-yellow-500 ml-2">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full border-[1.5px] lg:border-2 border-yellow-500 flex items-center justify-center bg-white/5">
+                  <Recycle className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={2} />
+                </div>
+                <div className="flex flex-col leading-none">
+                  <span className="font-bold text-[8px] lg:text-[10px] tracking-wider uppercase">Scrap</span>
+                  <span className="font-bold text-[8px] lg:text-[10px] tracking-wider uppercase">Buying</span>
+                </div>
+              </div>
+              <div className="w-[1px] h-8 lg:h-10 bg-yellow-500/30"></div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full border-[1.5px] lg:border-2 border-yellow-500 flex items-center justify-center bg-white/5">
+                  <ShoppingCart className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={2} />
+                </div>
+                <div className="flex flex-col leading-none">
+                  <span className="font-bold text-[8px] lg:text-[10px] tracking-wider uppercase">Scrap</span>
+                  <span className="font-bold text-[8px] lg:text-[10px] tracking-wider uppercase">Selling</span>
+                </div>
+              </div>
+              <div className="w-[1px] h-8 lg:h-10 bg-yellow-500/30"></div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full border-[1.5px] lg:border-2 border-yellow-500 flex items-center justify-center bg-white/5">
+                  <Building2 className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={2} />
+                </div>
+                <div className="flex flex-col leading-none">
+                  <span className="font-bold text-[8px] lg:text-[10px] tracking-wider uppercase">Office</span>
+                  <span className="font-bold text-[8px] lg:text-[10px] tracking-wider uppercase">Renovation</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <nav className="hidden xl:flex items-center flex-1 gap-5 2xl:gap-8 px-4 justify-start text-gray-300">
@@ -159,13 +183,10 @@ function MainLayout() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 text-sm text-gray-500 font-poppins">
             
             {/* Branding Column */}
-            <div className={cn("space-y-6 md:col-span-5 lg:col-span-4", isUrdu ? "md:text-right" : "text-left")}>
-              <div className={cn("flex items-center gap-4", isUrdu && "flex-row-reverse")}>
-                <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center font-black text-lg text-black uppercase shadow-lg">DD</div>
-                <div className="flex flex-col">
-                  <span className="text-white font-black text-2xl tracking-tighter uppercase font-outfit leading-none">DECENT DISPOSAL</span>
-                  <span className="text-yellow-500 font-bold uppercase tracking-[0.2em] text-[8px] mt-1">Premium Operations</span>
-                </div>
+            <div className={cn("space-y-6 md:col-span-5 lg:col-span-4", isUrdu ? "md:text-right md:flex md:flex-col md:items-end md:justify-start" : "text-left")}>
+              <div className={cn("flex flex-col items-start gap-2", isUrdu && "items-end")}>
+                <BrandLogo className="scale-[0.8] origin-left" />
+                <span className="text-yellow-500 font-bold uppercase tracking-[0.2em] text-[8px] mt-1 ml-1">Premium Operations</span>
               </div>
               <p className={cn("max-w-sm text-gray-400 leading-relaxed", isUrdu && "urdu-text text-base leading-loose ml-auto")}>
                 {isUrdu 

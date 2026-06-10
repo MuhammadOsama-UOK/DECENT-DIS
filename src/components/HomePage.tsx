@@ -24,8 +24,7 @@ export default function HomePage() {
       <section className="relative w-full py-24 lg:py-32 overflow-hidden border-y border-white/5 mt-12">
         {/* Lighter Background instead of Video */}
         <div className="absolute inset-0 w-full h-full z-0 bg-[#050505]">
-          <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-[#082f1f] rounded-full blur-[150px] opacity-40"></div>
-          <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-[#0f2027] rounded-full blur-[150px] opacity-40"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#082f1f]/20 to-[#0f2027]/20"></div>
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none"></div>
           <div className="absolute top-0 left-0 w-full h-[100px] bg-gradient-to-b from-[#050505] to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full h-[100px] bg-gradient-to-t from-[#050505] to-transparent"></div>
@@ -40,7 +39,7 @@ export default function HomePage() {
           >
              {/* Section Title */}
              <div className={cn("bg-gradient-to-br from-yellow-500/10 via-black/40 to-black/60 border border-yellow-500/20 rounded-[2.5rem] p-6 sm:p-8 lg:p-12 flex flex-col justify-center relative overflow-hidden shadow-[0_0_80px_rgba(234,179,8,0.1)] group", isUrdu && "text-right lg:order-last")}>
-                <div className="absolute -top-10 -right-10 w-64 h-64 bg-yellow-500/20 blur-[100px] rounded-full pointer-events-none group-hover:scale-110 transition-transform duration-700"></div>
+                <div className="absolute -top-10 -right-10 w-64 h-64 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-500/20 to-transparent rounded-full pointer-events-none group-hover:scale-110 transition-transform duration-700"></div>
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none"></div>
                 
                 <div className="flex flex-col mb-6 relative z-10">
@@ -147,7 +146,7 @@ export default function HomePage() {
       {/* LOCAL SEO CONTENT SECTION */}
       <section className="bg-[#080808] py-24 border-t border-white/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
-        <div className="absolute -left-40 top-20 w-96 h-96 bg-yellow-500/10 blur-[60px] rounded-full pointer-events-none"></div>
+        <div className="absolute -left-40 top-20 w-96 h-96 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-500/10 to-transparent rounded-full pointer-events-none"></div>
         
         <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -206,7 +205,7 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="lg:col-span-5 bg-[#111] p-6 sm:p-8 md:p-12 rounded-[2.5rem] shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5 relative overflow-hidden group hover:border-yellow-500/30 transition-all duration-700"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 blur-[40px] -mr-32 -mt-32 group-hover:bg-yellow-500/20 transition-colors duration-700"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-500/10 to-transparent -mr-32 -mt-32 group-hover:from-yellow-500/20 transition-colors duration-700"></div>
               
               <h3 className={cn("text-2xl lg:text-3xl font-black text-white mb-10 tracking-wider relative z-10", isUrdu && "urdu-text")}>
                 {isUrdu ? "ہماری ماہرانہ خدمات" : "Core Specializations"}

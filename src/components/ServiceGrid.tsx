@@ -83,16 +83,14 @@ export default function ServiceGrid() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map((service, index) => (
             <Link to={`/service/${service.id}`} key={service.id}>
-              <motion.article
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+              <article
                 className="group relative h-[300px] md:h-[350px] rounded-[15px] overflow-hidden border border-white/10 cursor-pointer transition-all duration-300 hover:border-[#64ffda] hover:shadow-[0_10px_30px_rgba(100,255,218,0.1)]"
               >
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 will-change-transform"
-                style={{ backgroundImage: `url(${service.image})` }}
+              <img 
+                src={service.image}
+                alt={service.title}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform transform-gpu duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#070b14]/50 to-[#070b14]/90 z-10" />
 
@@ -110,7 +108,7 @@ export default function ServiceGrid() {
                   {service.desc}
                 </p>
               </div>
-            </motion.article>
+            </article>
           </Link>
           ))}
         </div>
