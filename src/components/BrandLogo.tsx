@@ -35,14 +35,6 @@ export default function BrandLogo({ className, onClick, isUrdu }: BrandLogoProps
         </div>
       </div>
       
-      <div className="flex flex-col items-start">
-        <h1 className="text-yellow-500 font-black text-[10px] lg:text-[12px] tracking-[0.2em] uppercase leading-none font-outfit">
-          DECENT
-        </h1>
-        <h2 className="text-yellow-500 font-bold text-[6px] lg:text-[7px] tracking-[0.15em] uppercase leading-none mt-1">
-          DISPOSAL
-        </h2>
-      </div>
     </div>
   );
 }

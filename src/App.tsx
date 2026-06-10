@@ -118,12 +118,12 @@ function MainLayout() {
           </div>
 
           <nav className="hidden xl:flex items-center flex-1 gap-6 2xl:gap-10 px-4 justify-center text-gray-300">
-            <Link to="/" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[11px] 2xl:text-[12px] font-bold whitespace-nowrap">Home</Link>
-            <Link to="/process" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[11px] 2xl:text-[12px] font-bold whitespace-nowrap">Our Process</Link>
-            <Link to="/portfolio" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[11px] 2xl:text-[12px] font-bold whitespace-nowrap">Portfolio</Link>
-            <Link to="/about-company" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[11px] 2xl:text-[12px] font-bold whitespace-nowrap">About</Link>
-            <Link to="/scrap-rates" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[11px] 2xl:text-[12px] font-bold whitespace-nowrap">Scrap Rates</Link>
-            <Link to="/blog" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[11px] 2xl:text-[12px] font-bold whitespace-nowrap">Blog</Link>
+            <Link to="/" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[13px] 2xl:text-[14px] font-bold whitespace-nowrap">Home</Link>
+            <Link to="/process" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[13px] 2xl:text-[14px] font-bold whitespace-nowrap">Our Process</Link>
+            <Link to="/portfolio" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[13px] 2xl:text-[14px] font-bold whitespace-nowrap">Portfolio</Link>
+            <Link to="/about-company" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[13px] 2xl:text-[14px] font-bold whitespace-nowrap">About</Link>
+            <Link to="/scrap-rates" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[13px] 2xl:text-[14px] font-bold whitespace-nowrap">Scrap Rates</Link>
+            <Link to="/blog" className="hover:text-yellow-400 transition-colors uppercase tracking-widest text-[13px] 2xl:text-[14px] font-bold whitespace-nowrap">Blog</Link>
           </nav>
 
           <div className="flex items-center justify-end gap-3 shrink-0">
