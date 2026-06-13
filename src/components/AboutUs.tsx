@@ -1,9 +1,8 @@
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { Check } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Check, ArrowLeft } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
-
 import { useState, useEffect } from 'react';
 import { db } from '@/src/lib/firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
@@ -12,13 +11,21 @@ import { useSiteSettings } from '@/src/lib/SiteContext';
 
 export default function AboutUs() {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const isUrdu = i18n.language === 'ur';
   const siteSettings = useSiteSettings();
 
   const yearsLabel = "10+";
 
   return (
-    <section className="bg-[#070b14] py-24 px-6 md:px-12 font-poppins text-white overflow-hidden" id="about">
+    <section className="bg-[#070b14] py-24 px-6 md:px-12 font-poppins text-white overflow-hidden relative" id="about">
+      <button 
+        onClick={() => navigate(-1)}
+        className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all", isUrdu && "left-auto right-8")}
+      >
+        <ArrowLeft className="w-6 h-6" />
+      </button>
+
       <div className="container mx-auto flex flex-col lg:flex-row items-center gap-16 max-w-7xl">
         
         {/* Left Visual Content */}

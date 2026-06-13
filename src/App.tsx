@@ -13,7 +13,7 @@ import AdminDashboard from './components/AdminDashboard';
 import AdminLogin from './components/AdminLogin';
 import SitemapPage from './components/SitemapPage';
 import ServiceDetailPage from './components/ServiceDetailPage';
-import { Phone, MapPin, X, Menu, Globe, Recycle, ShoppingCart, Building2 } from 'lucide-react';
+import { Phone, MapPin, X, Menu, Globe } from 'lucide-react';
 import { cn } from './lib/utils';
 import React, { useState, useEffect, useRef } from 'react';
 import { Toaster } from 'react-hot-toast';
@@ -84,36 +84,8 @@ function MainLayout() {
               <BrandLogo onClick={handleLogoClick} className="scale-90 lg:scale-100 origin-left" />
             </Link>
             
-            <div className="hidden md:flex items-center gap-3 lg:gap-5 text-yellow-500 ml-2">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full border-[1.5px] lg:border-2 border-yellow-500 flex items-center justify-center bg-white/5">
-                  <Recycle className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={2} />
-                </div>
-                <div className="flex flex-col leading-none">
-                  <span className="font-bold text-[8px] lg:text-[10px] tracking-wider uppercase">Scrap</span>
-                  <span className="font-bold text-[8px] lg:text-[10px] tracking-wider uppercase">Buying</span>
-                </div>
-              </div>
-              <div className="w-[1px] h-8 lg:h-10 bg-yellow-500/30"></div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full border-[1.5px] lg:border-2 border-yellow-500 flex items-center justify-center bg-white/5">
-                  <ShoppingCart className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={2} />
-                </div>
-                <div className="flex flex-col leading-none">
-                  <span className="font-bold text-[8px] lg:text-[10px] tracking-wider uppercase">Scrap</span>
-                  <span className="font-bold text-[8px] lg:text-[10px] tracking-wider uppercase">Selling</span>
-                </div>
-              </div>
-              <div className="w-[1px] h-8 lg:h-10 bg-yellow-500/30"></div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full border-[1.5px] lg:border-2 border-yellow-500 flex items-center justify-center bg-white/5">
-                  <Building2 className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={2} />
-                </div>
-                <div className="flex flex-col leading-none">
-                  <span className="font-bold text-[8px] lg:text-[10px] tracking-wider uppercase">Office</span>
-                  <span className="font-bold text-[8px] lg:text-[10px] tracking-wider uppercase">Renovation</span>
-                </div>
-              </div>
+            <div className="hidden md:flex items-center text-yellow-500 ml-4">
+              <span className="font-black text-xl tracking-[0.2em] uppercase font-outfit">DECENT DISPOSAL</span>
             </div>
           </div>
 

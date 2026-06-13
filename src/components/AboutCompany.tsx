@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
-import { Shield, Target, Trophy, Building2, HardHat, Briefcase } from 'lucide-react';
+import { Shield, Target, Trophy, Building2, HardHat, Briefcase, ArrowLeft } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const STATS = [
   { value: "11+", label: "Years Experience" },
@@ -21,11 +21,18 @@ const PLATINUM_CLIENTS = [
 
 export default function AboutCompany() {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
   const isUrdu = i18n.language === 'ur';
 
   return (
-    <div className="bg-[#f8f9fa] min-h-screen pt-20 pb-12 font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] selection:bg-emerald-500 selection:text-white">
-      
+    <div className="bg-[#f8f9fa] min-h-screen pt-20 pb-12 font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] selection:bg-emerald-500 selection:text-white relative">
+      <button 
+        onClick={() => navigate(-1)}
+        className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-800 transition-all shadow-md", isUrdu && "left-auto right-8")}
+      >
+        <ArrowLeft className="w-6 h-6" />
+      </button>
+
       {/* Hero Header */}
       <section className="max-w-[1200px] mx-auto px-6 mb-10 text-center">
         <motion.div 

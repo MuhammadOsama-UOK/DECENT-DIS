@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { cn } from '@/src/lib/utils';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 const BLOG_POSTS = [
   {
@@ -44,6 +44,7 @@ const CATEGORIES = ['All', 'Office Renovation', 'Scrap Buying', 'Sustainability'
 
 export default function BlogPage() {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
   const isUrdu = i18n.language === 'ur';
   const [activeCategory, setActiveCategory] = useState('All');
 
@@ -52,7 +53,13 @@ export default function BlogPage() {
     : BLOG_POSTS.filter(post => post.category === activeCategory);
 
   return (
-    <div className="bg-[#f8f9fa] min-h-screen pt-32 pb-24 font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] text-[#333]">
+    <div className="bg-[#f8f9fa] min-h-screen pt-32 pb-24 font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] text-[#333] relative">
+      <button 
+        onClick={() => navigate(-1)}
+        className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-white hover:bg-gray-100 text-[#333] transition-all shadow-md", isUrdu && "left-auto right-8")}
+      >
+        <ArrowLeft className="w-6 h-6" />
+      </button>
       
       {/* Header Section */}
       <header className="bg-white py-16 px-6 text-center border-b-[2px] border-[#eee] mb-12">

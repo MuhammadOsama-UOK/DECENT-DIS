@@ -101,6 +101,7 @@ const BLOG_CONTENT: Record<string, any> = {
 
 export default function BlogPostPage() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const post = id ? BLOG_CONTENT[id] : null;
 
   if (!post) {
@@ -121,9 +122,12 @@ export default function BlogPostPage() {
     <div className="bg-[#f8f9fa] min-h-screen pt-32 pb-24 font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] text-[#333]">
       <div className="max-w-[800px] mx-auto px-6">
         
-        <Link to="/blog" className="inline-flex items-center gap-2 text-[#0056b3] font-bold hover:underline mb-8">
-          <ArrowLeft className="w-4 h-4" /> Back to Articles
-        </Link>
+        <button 
+          onClick={() => navigate(-1)}
+          className="inline-flex items-center gap-2 text-[#0056b3] font-bold hover:underline mb-8 bg-transparent"
+        >
+          <ArrowLeft className="w-4 h-4" /> Back
+        </button>
         
         <span className="text-sm font-bold uppercase text-[#28a745] tracking-wider mb-4 block">
           {post.category}

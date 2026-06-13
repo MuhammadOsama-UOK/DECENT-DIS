@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { CheckCircle, Phone, ArrowLeft, ArrowRight } from 'lucide-react';
@@ -230,6 +230,7 @@ const SERVICE_DATA: Record<string, any> = {
 
 export default function ServiceDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const { i18n } = useTranslation();
   const isUrdu = i18n.language === 'ur';
 
@@ -260,6 +261,12 @@ export default function ServiceDetailPage() {
     <div className="pt-20 bg-[#f8f9fa] min-h-screen font-poppins">
       {/* Hero Section */}
       <section className="relative h-[50vh] min-h-[400px] flex items-center overflow-hidden">
+        <button 
+          onClick={() => navigate(-1)}
+          className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-md transition-all", isUrdu && "left-auto right-8")}
+        >
+          <ArrowLeft className="w-6 h-6" />
+        </button>
         <div className="absolute inset-0 bg-black z-10 opacity-60"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
