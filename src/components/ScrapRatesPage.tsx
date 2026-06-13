@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Loader2, TrendingUp, RefreshCw } from 'lucide-react';
+import { Loader2, TrendingUp, RefreshCw, ArrowLeft } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 interface ScrapRate {
   material: string;
@@ -17,6 +18,7 @@ export default function ScrapRatesPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
   const isUrdu = i18n.language === 'ur';
 
   const fetchRates = async () => {
@@ -48,7 +50,13 @@ export default function ScrapRatesPage() {
   }, [isUrdu]);
 
   return (
-    <div className="min-h-screen bg-black text-white py-24 px-6 md:px-12">
+    <div className="min-h-screen bg-black text-white py-24 px-6 md:px-12 relative">
+      <button 
+        onClick={() => navigate(-1)}
+        className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all", isUrdu && "left-auto right-8")}
+      >
+        <ArrowLeft className="w-6 h-6" />
+      </button>
       <div className="max-w-4xl mx-auto">
         <div className={cn("flex justify-between items-center mb-12", isUrdu && "flex-row-reverse")}>
           <h2 className={cn("text-4xl font-black uppercase tracking-tight text-white", isUrdu && "urdu-text")}>

@@ -1,11 +1,12 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Smartphone, Truck, Scale, Banknote, ShieldCheck, Zap, Clock, ThumbsUp, ArrowRight, HardHat, CheckCircle2, MessageCircle, X } from 'lucide-react';
+import { Smartphone, Truck, Scale, Banknote, ShieldCheck, Zap, Clock, ThumbsUp, ArrowRight, HardHat, CheckCircle2, MessageCircle, X, ArrowLeft } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { renovationSchema, scrapSchema, type RenovationLead, type ScrapLead } from '@/src/lib/schemas';
 
@@ -58,6 +59,7 @@ const WHY_US = [
 
 export default function ProcessPage() {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const isUrdu = i18n.language === 'ur';
 
   const [isScrapSubmitting, setIsScrapSubmitting] = useState(false);
@@ -122,7 +124,13 @@ export default function ProcessPage() {
   };
 
   return (
-    <div className="bg-white min-h-screen pt-32 pb-24 overflow-hidden selection:bg-primary-green selection:text-white">
+    <div className="bg-white min-h-screen pt-32 pb-24 overflow-hidden selection:bg-primary-green selection:text-white relative">
+      <button 
+        onClick={() => navigate(-1)}
+        className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 transition-all shadow-md", isUrdu && "left-auto right-8")}
+      >
+        <ArrowLeft className="w-6 h-6" />
+      </button>
       {/* Hero Section */}
       <section className="container mx-auto px-6 max-w-7xl mb-24 text-center">
         <motion.div

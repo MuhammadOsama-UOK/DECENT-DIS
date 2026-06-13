@@ -68,11 +68,19 @@ const SCRAP_PROJECT_IMAGES = [
 
 export default function PortfolioPage() {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
   const isUrdu = i18n.language === 'ur';
   const content = isUrdu ? TRUSTED_PARTNERS_CONTENT.ur : TRUSTED_PARTNERS_CONTENT.en;
 
   return (
-    <div className="bg-[#050505] min-h-screen pt-32 pb-24 overflow-hidden selection:bg-primary-blue selection:text-white">
+    <div className="bg-[#050505] min-h-screen pt-32 pb-24 overflow-hidden selection:bg-primary-blue selection:text-white relative">
+      <button 
+        onClick={() => navigate(-1)}
+        className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all", isUrdu && "left-auto right-8")}
+      >
+        <ArrowLeft className="w-6 h-6" />
+      </button>
+
       {/* BACKGROUND ELEMENTS */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-blue/10 blur-[120px] rounded-full"></div>
