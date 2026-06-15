@@ -18,7 +18,8 @@ export default function ContactSection() {
     return subscribeToSettings(setSettings);
   }, []);
 
-  const phone = settings?.phone1 || "0331-3141853 (Tanveer)";
+  const phone = settings?.phone1 || "03152227331 (Tanveer)";
+  const phone2 = settings?.phone2 || "03313141853";
   const waNum = "923152227331";
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactLead>({
@@ -88,7 +89,7 @@ export default function ContactSection() {
                           <input 
                             {...register('phone')}
                             type="tel" 
-                            placeholder={isUrdu ? "مثال: 0331 3141853" : "e.g. 0331 3141853"} 
+                            placeholder={isUrdu ? "مثال: 03313141853" : "e.g. 03313141853"} 
                             className={cn("w-full bg-white border rounded-[10px] px-4 py-3 text-black placeholder:text-black outline-none focus:border-primary-blue transition-all", errors.phone ? "border-red-500" : "border-gray-200")}
                           />
                           {errors.phone && <p className="text-red-500 text-[10px] font-bold uppercase tracking-widest">{errors.phone.message}</p>}

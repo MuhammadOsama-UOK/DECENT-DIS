@@ -50,15 +50,15 @@ export default function AboutUs() {
           </span>
           <h2 className={cn("text-[clamp(2rem,5vw,3rem)] font-black leading-[1.2] mb-6 font-montserrat uppercase", isUrdu && "urdu-text leading-tight")}>
             {isUrdu 
-              ? <>پاکستان کے لیڈرز برائے <br /><span className="text-[#64ffda]">رینوویشن اور ڈسپوزل</span></>
-              : <>Pakistan's Leaders in <br /><span className="text-[#64ffda]">Interior & Disposal</span></>
+              ? <>پاکستان کے ماہرانہ خدمات فراہم کرنے والے برائے <br /><span className="text-[#64ffda]">انٹیریئر رینوویشن اور اسکریپ ڈسپوزل</span></>
+              : <>Pakistan's Experts in <br /><span className="text-[#64ffda]">Interior Renovation & Scrap Disposal</span></>
             }
           </h2>
           
           <p className={cn("text-[#a0aec0] leading-[1.8] text-lg mb-8 font-poppins", isUrdu && "urdu-text text-xl")}>
             {isUrdu
-               ? <><strong>ڈی سینٹ ڈسپوزل</strong> پر، ہم پائیداری اور عیش و آرام کے درمیان فرق کو ختم کرتے ہیں۔ محمد عدنان (بانی) اور تنویر احمد (سی ای او) کی قیادت میں، ہم پاکستان کے اعلیٰ ترین انٹیریئر رینوویشن کے ماہرین اور سکریپ ڈیلرز کے طور پر پہچانے جاتے ہیں۔ ہم کارپوریٹ اور رہائشی جگہوں کو جدید شاہکاروں میں تبدیل کرتے ہیں۔</>
-               : <>At <strong>Decent Disposal</strong>, we bridge the gap between sustainability and luxury. Under the visionary leadership of <strong>Muhammad Adnan</strong> (Founder) and <strong>Tanveer Ahmed</strong> (CEO), we have grown to become Pakistan’s top-rated interior renovation experts and scrap dealers. Our commitment to excellence and sustainable practices drives our mission to transform corporate and residential spaces into modern masterpieces.</>
+               ? <>ہم ہر قسم کا اسکریپ بہترین قیمتوں پر خریدتے ہیں۔ <strong>ڈی سینٹ ڈسپوزل</strong> پر، ہم پائیداری اور عیش و آرام کو بہترین قیمتوں کے ساتھ جوڑتے ہیں۔ محمد عدنان (بانی) اور تنویر احمد (سی ای او) کی رہنمائی میں، ہم پاکستان کے اعلیٰ ترین انٹیریئر رینوویشن اور اسکریپ ڈسپوزل کی ماہرانہ خدمات فراہم کرنے والے کے طور پر پہچانے جاتے ہیں۔ ہم کارپوریٹ اور رہائشی جگہوں کو جدید شاہکاروں میں تبدیل کرتے ہیں۔</>
+               : <>We buy all kinds of scrap at best prices. At <strong>Decent Disposal</strong>, we bridge the gap between sustainability and luxury with best prices. Under the visionary guidance of <strong>Muhammad Adnan</strong> (Founder) and <strong>Tanveer Ahmed</strong> (CEO), we have grown to become Pakistan’s top-rated interior renovation experts and scrap dealers. Our commitment to excellence and sustainable practices drives our mission to transform corporate and residential spaces into modern masterpieces.</>
             }
           </p>
 

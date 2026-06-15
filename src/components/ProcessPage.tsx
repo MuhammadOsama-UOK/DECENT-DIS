@@ -228,7 +228,7 @@ export default function ProcessPage() {
                   <div className="flex items-center gap-3 mb-8"><Scale className="w-8 h-8 text-primary-green" /><h2 className="text-2xl font-black text-gray-900 font-montserrat uppercase">Scrap Disposal Request</h2></div>
                   <form onSubmit={scrapForm.handleSubmit(onScrapSubmit)} className="space-y-6">
                      <FormGroup register={scrapForm.register('fullName')} label="Full Name" placeholder="Enter your full name" error={scrapForm.formState.errors.fullName?.message} />
-                     <FormGroup register={scrapForm.register('phone')} label="Phone Number" placeholder="e.g. 0331 3141853" type="tel" error={scrapForm.formState.errors.phone?.message} />
+                     <FormGroup register={scrapForm.register('phone')} label="Phone Number" placeholder="e.g. 03313141853" type="tel" error={scrapForm.formState.errors.phone?.message} />
                      <FormGroup register={scrapForm.register('email')} label="Email Address" placeholder="yourname@gmail.com" type="email" error={scrapForm.formState.errors.email?.message} />
                      <FormGroup register={scrapForm.register('quantity')} label="Estimated Quantity" placeholder="e.g. 100kg" error={scrapForm.formState.errors.quantity?.message} />
                      <div className="space-y-2">
@@ -258,7 +258,7 @@ export default function ProcessPage() {
                   <div className="flex items-center gap-3 mb-8"><HardHat className="w-8 h-8 text-primary-blue" /><h2 className="text-2xl font-black text-gray-900 font-montserrat uppercase">Interior & Renovation</h2></div>
                   <form onSubmit={renovationForm.handleSubmit(onRenovationSubmit)} className="space-y-6">
                      <FormGroup register={renovationForm.register('fullName')} label="Full Name" placeholder="Enter your full name" error={renovationForm.formState.errors.fullName?.message} />
-                     <FormGroup register={renovationForm.register('phone')} label="Phone Number" placeholder="e.g. 0331 3141853" type="tel" error={renovationForm.formState.errors.phone?.message} />
+                     <FormGroup register={renovationForm.register('phone')} label="Phone Number" placeholder="e.g. 03313141853" type="tel" error={renovationForm.formState.errors.phone?.message} />
                      <FormGroup register={renovationForm.register('email')} label="Email Address" placeholder="example@mail.com" type="email" error={renovationForm.formState.errors.email?.message} />
                      <FormGroup register={renovationForm.register('corporateName')} label="Corporate Name" placeholder="Your company name" error={renovationForm.formState.errors.corporateName?.message} />
                      <div className="space-y-2">

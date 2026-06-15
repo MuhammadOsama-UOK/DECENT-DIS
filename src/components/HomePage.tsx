@@ -50,13 +50,15 @@ export default function HomePage() {
                     </span>
                   </div>
                   <h2 className={cn("text-4xl lg:text-6xl font-black text-white leading-[1.1] uppercase font-outfit tracking-tighter", isUrdu && "urdu-text leading-tight")}>
-                    {isUrdu ? "ہماری ماہر خدمات" : "CORE SERVICES"}
+                    {isUrdu ? "ہماری ماہرانہ خدمات" : "CORE SERVICES"}
                   </h2>
                 </div>
                 
                 <p className={cn("text-gray-300 text-sm lg:text-lg font-medium leading-relaxed relative z-10 border-l-2 border-yellow-500/30 pl-4", isUrdu && "urdu-text border-l-0 border-r-2 pl-0 pr-4")}>
-                  {isUrdu ? "ہم بہترین صنعتی سکریپ کی خرید و فروخت کے ماہر ہیں۔ کارپوریٹ سطح پر مکمل حل۔" : "Redefining the standard for industrial asset recovery and high-end site renovations across Karachi."}
-                </p>
+  {isUrdu 
+    ? "کراچی میں صنعتی سکریپ کی پروفیشنل خرید و فروخت اور کارپوریٹ سطح پر سائٹ کی مکمل تزئین و آرائش کے ماہر۔" 
+    : "Karachi’s leading authority in professional industrial asset recovery and high-end site renovation services."}
+</p>
              </div>
 
              {/* We Buy */}
@@ -72,8 +74,11 @@ export default function HomePage() {
                      {isUrdu ? "ہم خریدتے ہیں" : "WE BUY"}
                   </h3>
                   <p className={cn("text-gray-400 group-hover:text-black/80 text-sm lg:text-base font-bold leading-relaxed mb-8 flex-grow", isUrdu && "urdu-text")}>
-                    {isUrdu ? "ہم تانبا، لوہا اور ہر قسم کا صنعتی سکریپ بہترین قیمت پر خریدتے ہیں۔" : "Instant liquidity for factory scrap, precious metals, and corporate surplus."}
-                  </p>
+  {isUrdu 
+    ? "ہم  ہر قسم کا صنعتی سکریپ  اور تانبا، لوہا بہترین مارکیٹ ریٹ پر خریدتے ہیں " 
+    : "Premium buyers of industrial scrap, copper, iron, and corporate surplus at best market rates."}
+</p>
+                  
                   <Link to="/scrap-rates" className={cn("inline-flex items-center gap-3 font-black uppercase tracking-widest text-xs mt-auto border-b-2 border-yellow-500/20 pb-1 group-hover:border-black/30", isUrdu && "flex-row-reverse")}>
                      {isUrdu ? "قیمت معلوم کریں" : "VIEW PRICE LIST"} <ArrowRight className={cn("w-4 h-4", isUrdu && "rotate-180")} />
                   </Link>
@@ -194,7 +199,7 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                   className="text-2xl md:text-3xl font-black text-white hover:text-green-400 transition-colors"
                 >
-                  0315-2227331
+                  03313141853
                 </a>
               </div>
             </motion.div>

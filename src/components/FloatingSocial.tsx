@@ -14,7 +14,7 @@ export default function FloatingSocial() {
   const { i18n } = useTranslation();
   const isUrdu = i18n.language === 'ur';
 
-  const phone = siteSettings?.phone1 || "0331-3141853";
+  const phone = siteSettings?.phone1 || "03152227331";
   const whatsappNumber = "923152227331";
   const message = encodeURIComponent(isUrdu ? "ہیلو ڈیسنٹ ڈسپوزل، میں آپ کی خدمات میں دلچسپی رکھتا ہوں۔" : "Hi Decent Disposal, I am interested in your premier services.");
 

@@ -63,13 +63,13 @@ function MainLayout() {
 
   const siteSettings = useSiteSettings();
 
-  const contactPhone = siteSettings?.phone1 || "0331-3141853 (Tanveer)";
-  const contactPhone2 = siteSettings?.phone2 || "0315-2227331";
-  const contactAddress = "M.A Jinnah Road, Gulshan-e-Ahoor, Numaish, Karachi.";
+  const contactPhone = siteSettings?.phone1 || "03152227331 (Tanveer)";
+  const contactPhone2 = siteSettings?.phone2 || "03313141853";
+  const contactAddress = "M.A Jinnah Road, Gulshan-e-Zahoor, Numaish, Karachi.";
   const contactAddress2 = "H.12, St-8, Qasba Colony, Muslimabad No. 2, SITE, Karachi.";
   const contactEmail = "muhammad.adnan2625@yahoo.com";
   const contactEmail2 = siteSettings?.adminEmail || "ahmed786awan@gmail.com";
-  const authorizations = ["Tanveer Ahmed & Co.", "KMC Verified Vendor", "PEC Registered Contractor"];
+  const authorizations = ["Tanveer Ahmed & Co.", "Authorized Services"];
 
   return (
     <div className="min-h-screen selection:bg-yellow-500 selection:text-black bg-[#050505]">
@@ -174,78 +174,22 @@ function MainLayout() {
               </div>
             </div>
 
-            {/* Offices Column */}
+
+            {/* Contact Info Column */}
             <div className={cn("space-y-8 md:col-span-7 lg:col-span-6", isUrdu && "md:text-right")}>
-              <div className={cn("flex items-center gap-3 mb-6", isUrdu && "justify-end")}>
-                <div className="h-px w-8 bg-yellow-500/50"></div>
-                <div className="text-white font-bold uppercase tracking-[0.3em] text-[10px]">Corporate Offices</div>
-                <div className="h-px w-8 bg-yellow-500/50"></div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                
-                {/* Primary Contact */}
-                <div className={cn("bg-[#111] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-colors shadow-xl", isUrdu && "text-right")}>
-                   <div className={cn("text-yellow-500 font-black uppercase text-[10px] tracking-[0.2em] mb-4 flex items-center gap-2", isUrdu && "justify-end")}>
-                      <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse"></div>
-                      Primary Headquarters
-                   </div>
-                   
-                   <div className="space-y-4 text-xs font-medium text-gray-300">
-                     <div className={cn("flex items-start gap-4 hover:text-white transition-colors group", isUrdu && "flex-row-reverse")}>
-                        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-500/10">
-                          <Phone className="w-3.5 h-3.5 text-yellow-500" />
-                        </div>
-                        <span className="mt-1.5 tracking-wider">{contactPhone}</span>
-                     </div>
-
-                     <div className={cn("flex items-start gap-4 hover:text-white transition-colors group", isUrdu && "flex-row-reverse")}>
-                        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-500/10">
-                          <MapPin className="w-3.5 h-3.5 text-yellow-500" />
-                        </div>
-                        <span className="mt-1 leading-relaxed max-w-[200px]">{contactAddress}</span>
-                     </div>
-                     
-                     <div className={cn("flex items-start gap-4 hover:text-white transition-colors group", isUrdu && "flex-row-reverse")}>
-                        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-500/10">
-                          <Globe className="w-3.5 h-3.5 text-yellow-500" />
-                        </div>
-                        <span className="mt-1.5 break-all max-w-[200px]">{contactEmail}</span>
-                     </div>
-                   </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-400">
+                <div className="space-y-1">
+                  <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-2">Primary Headquarters</h4>
+                  <p className="text-xs">03152227331</p>
+                  <p className="text-xs">M.A Jinnah Road, Gulshan-e-Zahoor, Numaish, Karachi.</p>
+                  <p className="text-xs">muhammad.adnan2625@yahoo.com</p>
                 </div>
-
-                {/* Secondary Contact */}
-                <div className={cn("bg-[#111] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-colors shadow-xl", isUrdu && "text-right")}>
-                   <div className={cn("text-gray-400 font-bold uppercase text-[10px] tracking-[0.2em] mb-4 flex items-center gap-2", isUrdu && "justify-end")}>
-                      <div className="w-1.5 h-1.5 rounded-full bg-gray-500"></div>
-                      Secondary Office
-                   </div>
-                   
-                   <div className="space-y-4 text-xs font-medium text-gray-400">
-                     <div className={cn("flex items-start gap-4 hover:text-gray-300 transition-colors group", isUrdu && "flex-row-reverse")}>
-                        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
-                          <Phone className="w-3.5 h-3.5 opacity-60" />
-                        </div>
-                        <span className="mt-1.5 tracking-wider">{contactPhone2}</span>
-                     </div>
-
-                     <div className={cn("flex items-start gap-4 hover:text-gray-300 transition-colors group", isUrdu && "flex-row-reverse")}>
-                        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
-                          <MapPin className="w-3.5 h-3.5 opacity-60" />
-                        </div>
-                        <span className="mt-1 leading-relaxed max-w-[200px]">{contactAddress2}</span>
-                     </div>
-                     
-                     <div className={cn("flex items-start gap-4 hover:text-gray-300 transition-colors group", isUrdu && "flex-row-reverse")}>
-                        <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
-                          <Globe className="w-3.5 h-3.5 opacity-60" />
-                        </div>
-                        <span className="mt-1.5 break-all max-w-[200px]">{contactEmail2}</span>
-                     </div>
-                   </div>
+                <div className="space-y-1">
+                  <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-2">Secondary Office</h4>
+                  <p className="text-xs">0331 3141853</p>
+                  <p className="text-xs">H.12, St-8, Qasba Colony, Muslimabad No. 2, SITE, Karachi.</p>
+                  <p className="text-xs">ahmed786awan@gmail.com</p>
                 </div>
-
               </div>
             </div>
 

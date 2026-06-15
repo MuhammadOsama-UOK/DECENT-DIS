@@ -35,9 +35,9 @@ export default function QuotePage() {
   const [isScrapSubmitting, setIsScrapSubmitting] = useState(false);
   const [successLead, setSuccessLead] = useState<{ type: 'renovation' | 'scrap'; data: any } | null>(null);
 
-  const contactPhone = siteSettings?.phone1 || "0331-3141853 (Tanveer)";
-  const contactPhone2 = siteSettings?.phone2 || "0315-2227331";
-  const contactAddress = "M.A Jinnah Road, Gulshan-e-Ahoor, Numaish, Karachi.";
+  const contactPhone = siteSettings?.phone1 || "03152227331 (Tanveer)";
+  const contactPhone2 = siteSettings?.phone2 || "03313141853";
+  const contactAddress = "M.A Jinnah Road, Gulshan-e-Zahoor, Numaish, Karachi.";
   const contactAddress2 = "H.12, St-8, Qasba Colony, Muslimabad No. 2, SITE, Karachi.";
   const contactEmail = "muhammad.adnan2625@yahoo.com";
   const contactEmail2 = siteSettings?.adminEmail || "ahmed786awan@gmail.com";
@@ -129,7 +129,7 @@ export default function QuotePage() {
              
              <form onSubmit={subRen(onRenovationSubmit)} className="space-y-6">
                 <FormInput register={regRen('fullName', { required: "Name is required" })} label="Full Name *" placeholder="Your name" error={errRen.fullName?.message} />
-                <FormInput register={regRen('phone', { required: "Phone is required" })} label="Phone *" placeholder="e.g. 0331 3141853" error={errRen.phone?.message} />
+                <FormInput register={regRen('phone', { required: "Phone is required" })} label="Phone *" placeholder="e.g. 03313141853" error={errRen.phone?.message} />
                 <FormInput register={regRen('email')} label="Email Address" placeholder="Email (optional)" />
                 <FormInput register={regRen('corporateName')} label="Corporate Name" placeholder="Company Name" />
                 <FormInput register={regRen('serviceType', { required: "Please select service" })} label="Service Required *" type="select" options={['Glass Work', 'Ceiling', 'Electrical', 'Painting', 'Woodwork', 'Other']} error={errRen.serviceType?.message} />
@@ -161,7 +161,7 @@ export default function QuotePage() {
              
              <form onSubmit={subScrap(onScrapSubmit)} className="space-y-6">
                 <FormInput register={regScrap('fullName', { required: "Name is required" })} label="Full Name *" placeholder="Your name" error={errScrap.fullName?.message} />
-                <FormInput register={regScrap('phone', { required: "Phone is required" })} label="Phone *" placeholder="e.g. 0331 3141853" error={errScrap.phone?.message} />
+                <FormInput register={regScrap('phone', { required: "Phone is required" })} label="Phone *" placeholder="e.g. 03313141853" error={errScrap.phone?.message} />
                 <FormInput register={regScrap('email')} label="Email Address" placeholder="Email (optional)" />
                 <FormInput register={regScrap('scrapType', { required: "Select scrap type" })} label="Scrap Type *" type="select" options={['Copper', 'Iron', 'Aluminum', 'E-Waste', 'Cables', 'Other']} error={errScrap.scrapType?.message} />
                 <FormInput register={regScrap('quantity')} label="Approxi. Quantity" placeholder="e.g. 100kg" />

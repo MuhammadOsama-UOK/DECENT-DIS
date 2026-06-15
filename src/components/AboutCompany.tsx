@@ -127,7 +127,7 @@ export default function AboutCompany() {
               <p className={cn("text-gray-400 text-base leading-loose mb-6", isUrdu && "urdu-text")}>
                 {isUrdu
                   ? "تنویر احمد کی دور اندیش قیادت میں ہماری کمپنی نے نمایاں ترقی کی ہے۔ وہ پائیداری اور کوالٹی کے اعلیٰ معیار پر یقین رکھتے ہیں جس کی بدولت ہم کارپوریٹ سیکٹر میں ایک قابل اعتماد نام بن چکے ہیں۔"
-                  : "Under the visionary leadership of Tanveer Ahmed, our company has scaled to become Pakistan's top-rated interior renovation and scrap management firm. His commitment to excellence, strategic growth, and sustainable practices drives our mission to transform corporate sectors into modern powerhouses while ensuring strict eco-friendly disposal protocols."}
+                  : "Under the visionary guidance of Tanveer Ahmed, our company has scaled to become Pakistan's top-rated interior renovation and scrap management firm. His commitment to excellence, strategic growth, and sustainable practices drives our mission to transform corporate sectors into modern powerhouses while ensuring strict eco-friendly disposal protocols."}
               </p>
 
               <div className="grid grid-cols-2 gap-4 mt-auto">

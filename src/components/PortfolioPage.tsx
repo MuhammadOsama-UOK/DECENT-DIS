@@ -1,7 +1,8 @@
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { cn } from '@/src/lib/utils';
-import { ShieldCheck, Zap, CreditCard, Building2, Landmark, CheckCircle2, Award, Briefcase, Globe, TrendingUp } from 'lucide-react';
+import { ShieldCheck, Zap, CreditCard, Building2, Landmark, CheckCircle2, Award, Briefcase, Globe, TrendingUp, ArrowLeft } from 'lucide-react';
 
 const TRUSTED_PARTNERS_CONTENT = {
   en: {
@@ -345,7 +346,7 @@ export default function PortfolioPage() {
                 className="inline-flex items-center gap-4 bg-green-600 hover:bg-green-500 text-white font-black py-5 px-10 rounded-2xl shadow-xl hover:shadow-green-500/20 transition-all text-xl"
               >
                 <Zap className="w-6 h-6 fill-white" />
-                {isUrdu ? "واٹس ایپ رابطہ: 0315-2227331" : "WhatsApp: +92 315 2227331"}
+                {isUrdu ? "واٹس ایپ رابطہ: 03313141853" : "WhatsApp: +92 331 3141853"}
               </a>
               <p className="mt-6 text-gray-500 text-sm font-bold uppercase tracking-widest">
                 Direct Line: +92 331 3141853
