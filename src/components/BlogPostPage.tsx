@@ -2,6 +2,8 @@ import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { cn } from '@/src/lib/utils';
 
 const BLOG_CONTENT: Record<string, any> = {
   '1': {
@@ -102,6 +104,8 @@ const BLOG_CONTENT: Record<string, any> = {
 export default function BlogPostPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
+  const isUrdu = i18n.language === 'ur';
   const post = id ? BLOG_CONTENT[id] : null;
 
   if (!post) {
@@ -119,15 +123,23 @@ export default function BlogPostPage() {
   }
 
   return (
-    <div className="bg-[#f8f9fa] min-h-screen pt-32 pb-24 font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] text-[#333]">
+    <div className="bg-[#f8f9fa] min-h-screen pt-32 pb-24 font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] text-[#333] relative">
+      <motion.button 
+        whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          navigate(-1);
+          window.scrollTo(0, 0);
+        }}
+        className={cn(
+          "fixed top-24 z-50 p-2.5 rounded-full bg-white/90 hover:bg-white text-gray-800 border border-gray-150 transition-all shadow-md backdrop-blur-md flex items-center justify-center",
+          isUrdu ? "right-4 md:right-8" : "left-4 md:left-8"
+        )}
+      >
+        <ArrowLeft className={cn("w-5 h-5", isUrdu && "rotate-180")} />
+      </motion.button>
+
       <div className="max-w-[800px] mx-auto px-6">
-        
-        <button 
-          onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-2 text-[#0056b3] font-bold hover:underline mb-8 bg-transparent"
-        >
-          <ArrowLeft className="w-4 h-4" /> Back
-        </button>
         
         <span className="text-sm font-bold uppercase text-[#28a745] tracking-wider mb-4 block">
           {post.category}

@@ -51,12 +51,20 @@ export default function ScrapRatesPage() {
 
   return (
     <div className="min-h-screen bg-black text-white py-24 px-6 md:px-12 relative">
-      <button 
-        onClick={() => navigate(-1)}
-        className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all", isUrdu && "left-auto right-8")}
+      <motion.button 
+        whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          navigate(-1);
+          window.scrollTo(0, 0);
+        }}
+        className={cn(
+          "fixed top-24 z-50 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/10 hover:border-white/20 backdrop-blur-md transition-all shadow-md flex items-center justify-center",
+          isUrdu ? "right-4 md:right-8" : "left-4 md:left-8"
+        )}
       >
-        <ArrowLeft className="w-6 h-6" />
-      </button>
+        <ArrowLeft className={cn("w-5 h-5", isUrdu && "rotate-180")} />
+      </motion.button>
       <div className="max-w-4xl mx-auto">
         <div className={cn("flex justify-between items-center mb-12", isUrdu && "flex-row-reverse")}>
           <h2 className={cn("text-4xl font-black uppercase tracking-tight text-white", isUrdu && "urdu-text")}>

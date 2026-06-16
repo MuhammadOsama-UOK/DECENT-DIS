@@ -55,10 +55,16 @@ export default function HomePage() {
                 </div>
                 
                 <p className={cn("text-gray-300 text-sm lg:text-lg font-medium leading-relaxed relative z-10 border-l-2 border-yellow-500/30 pl-4", isUrdu && "urdu-text border-l-0 border-r-2 pl-0 pr-4")}>
-  {isUrdu 
-    ? "کراچی میں صنعتی سکریپ کی پروفیشنل خرید و فروخت اور کارپوریٹ سطح پر سائٹ کی مکمل تزئین و آرائش کے ماہر۔" 
-    : "Karachi’s leading authority in professional industrial asset recovery and high-end site renovation services."}
-</p>
+                  {isUrdu 
+                    ? "کراچی میں صنعتی سکریپ کی پروفیشنل خرید و فروخت اور کارپوریٹ سطح پر سائٹ کی مکمل تزئین و آرائش کے ماہر۔" 
+                    : "Karachi’s leading authority in professional industrial asset recovery and high-end site renovation services."}
+                </p>
+                
+                <p className={cn("text-yellow-400 font-black text-sm lg:text-lg mt-4 relative z-10 border-l-2 border-yellow-400 pl-4 uppercase tracking-wider animate-pulse", isUrdu && "urdu-text border-l-0 border-r-2 pl-0 pr-4")}>
+                  {isUrdu 
+                    ? "ہم انتہائی پروفیشنل لفٹنگ اور فیکٹری شفٹنگ کی خدمات بھی فراہم کرتے ہیں!" 
+                    : "We also offer Professional Heavy Lifting & Shifting Services!"}
+                </p>
              </div>
 
              {/* We Buy */}
@@ -199,7 +205,7 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                   className="text-2xl md:text-3xl font-black text-white hover:text-green-400 transition-colors"
                 >
-                  03313141853
+                  0331314853
                 </a>
               </div>
             </motion.div>
@@ -218,15 +224,16 @@ export default function HomePage() {
               
               <ul className={cn("space-y-6 relative z-10", isUrdu && "urdu-text text-right")}>
                 {[
+                  { en: "Professional Lifting & Shifting Services", ur: "پروفیشنل لفٹنگ اور شفٹنگ سروسز", bold: true },
                   { en: "Industrial Scrap Acquisition", ur: "صنعت سکریپ کی خرید" },
                   { en: "Office Dismantling & Liquidation", ur: "آفس ڈسمینٹلنگ اور لیکویڈیشن" },
                   { en: "Premium Furniture Liquidators", ur: "استعمال شدہ دفتری فرنیچر" },
                   { en: "Corporate Site Renovation", ur: "کارپوریٹ سائٹ رینوویشن" },
                   { en: "Enterprise Waste Management", ur: "کارپوریٹ ویسٹ مینجمنٹ" }
                 ].map((item, i) => (
-                  <li key={i} className={cn("flex items-center gap-5 text-gray-500 group/item text-sm md:text-base font-semibold", isUrdu && "flex-row-reverse")}>
-                    <span className="w-2.5 h-2.5 rounded-sm bg-white/10 shrink-0 group-hover/item:bg-yellow-400 group-hover/item:scale-125 transition-all group-hover/item:shadow-[0_0_10px_rgba(234,179,8,0.5)]"></span>
-                    <span className="group-hover/item:text-white transition-colors tracking-wide">{isUrdu ? item.ur : item.en}</span>
+                  <li key={i} className={cn("flex items-center gap-5 group/item text-sm md:text-base font-semibold", isUrdu && "flex-row-reverse", item.bold ? "text-yellow-400" : "text-gray-500")}>
+                    <span className={cn("w-2.5 h-2.5 rounded-sm shrink-0 transition-all", item.bold ? "bg-yellow-400 scale-125 shadow-[0_0_10px_rgba(234,179,8,0.5)]" : "bg-white/10 group-hover/item:bg-yellow-400 group-hover/item:scale-125 group-hover/item:shadow-[0_0_10px_rgba(234,179,8,0.5)]")}></span>
+                    <span className={cn("transition-colors tracking-wide", item.bold ? "text-yellow-400 font-extrabold" : "group-hover:text-white")}>{isUrdu ? item.ur : item.en}</span>
                   </li>
                 ))}
               </ul>

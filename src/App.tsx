@@ -64,7 +64,7 @@ function MainLayout() {
   const siteSettings = useSiteSettings();
 
   const contactPhone = siteSettings?.phone1 || "03152227331 (Tanveer)";
-  const contactPhone2 = siteSettings?.phone2 || "03313141853";
+  const contactPhone2 = siteSettings?.phone2 || "0331314853";
   const contactAddress = "M.A Jinnah Road, Gulshan-e-Zahoor, Numaish, Karachi.";
   const contactAddress2 = "H.12, St-8, Qasba Colony, Muslimabad No. 2, SITE, Karachi.";
   const contactEmail = "muhammad.adnan2625@yahoo.com";
@@ -174,37 +174,27 @@ function MainLayout() {
               </div>
             </div>
 
-
             {/* Contact Info Column */}
-            <div className={cn("space-y-8 md:col-span-7 lg:col-span-6", isUrdu && "md:text-right")}>
+            <div className={cn("space-y-8 md:col-span-7 lg:col-span-8", isUrdu && "md:text-right")}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-400">
                 <div className="space-y-1">
                   <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-2">Primary Headquarters</h4>
-                  <p className="text-xs">03152227331</p>
-                  <p className="text-xs">M.A Jinnah Road, Gulshan-e-Zahoor, Numaish, Karachi.</p>
-                  <p className="text-xs">muhammad.adnan2625@yahoo.com</p>
+                  <p className="text-xs">Direct Phone: 03152227331</p>
+                  <p className="text-xs">Location: M.A Jinnah Road, Gulshan-e-Zahoor, Numaish, Karachi.</p>
+                  <p className="text-xs">Email Address: muhammad.adnan2625@yahoo.com</p>
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-2">Secondary Office</h4>
-                  <p className="text-xs">0331 3141853</p>
-                  <p className="text-xs">H.12, St-8, Qasba Colony, Muslimabad No. 2, SITE, Karachi.</p>
-                  <p className="text-xs">ahmed786awan@gmail.com</p>
+                  <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-2">Secondary Office / Plant</h4>
+                  <p className="text-xs">Direct Phone: 0331 3141853</p>
+                  <p className="text-xs">Location: H.12, St-8, Qasba Colony, Muslimabad No. 2, SITE, Karachi.</p>
+                  <p className="text-xs">Email Address: ahmed786awan@gmail.com</p>
                 </div>
               </div>
             </div>
 
-            {/* Authorization Column */}
-            <div className={cn("space-y-6 md:col-span-12 lg:col-span-2 pt-8 lg:pt-0 border-t border-white/5 lg:border-t-0 lg:border-l lg:pl-12", isUrdu && "lg:text-right")}>
-              <div className="text-white font-bold uppercase tracking-[0.2em] text-[10px] mb-6">Authorizations</div>
-              <ul className="space-y-4">
-                {authorizations.map((auth: string, idx: number) => (
-                  <li key={idx} className={cn("text-[10px] uppercase tracking-wider text-gray-400 font-semibold flex items-center gap-3", isUrdu && "flex-row-reverse")}>
-                    <div className="w-2 h-0.5 bg-yellow-500/50"></div>
-                    {auth}
-                  </li>
-                ))}
-              </ul>
-            </div>
+
+
+
           </div>
         </div>
 

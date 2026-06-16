@@ -54,12 +54,20 @@ export default function BlogPage() {
 
   return (
     <div className="bg-[#f8f9fa] min-h-screen pt-32 pb-24 font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] text-[#333] relative">
-      <button 
-        onClick={() => navigate(-1)}
-        className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-white hover:bg-gray-100 text-[#333] transition-all shadow-md", isUrdu && "left-auto right-8")}
+      <motion.button 
+        whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          navigate(-1);
+          window.scrollTo(0, 0);
+        }}
+        className={cn(
+          "fixed top-24 z-50 p-2.5 rounded-full bg-white/90 hover:bg-white text-gray-800 border border-gray-150 transition-all shadow-md backdrop-blur-md flex items-center justify-center",
+          isUrdu ? "right-4 md:right-8" : "left-4 md:left-8"
+        )}
       >
-        <ArrowLeft className="w-6 h-6" />
-      </button>
+        <ArrowLeft className={cn("w-5 h-5", isUrdu && "rotate-180")} />
+      </motion.button>
       
       {/* Header Section */}
       <header className="bg-white py-16 px-6 text-center border-b-[2px] border-[#eee] mb-12">

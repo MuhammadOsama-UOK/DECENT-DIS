@@ -19,12 +19,6 @@ export default function AboutUs() {
 
   return (
     <section className="bg-[#070b14] py-24 px-6 md:px-12 font-poppins text-white overflow-hidden relative" id="about">
-      <button 
-        onClick={() => navigate(-1)}
-        className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all", isUrdu && "left-auto right-8")}
-      >
-        <ArrowLeft className="w-6 h-6" />
-      </button>
 
       <div className="container mx-auto flex flex-col lg:flex-row items-center gap-16 max-w-7xl">
         
@@ -55,12 +49,30 @@ export default function AboutUs() {
             }
           </h2>
           
-          <p className={cn("text-[#a0aec0] leading-[1.8] text-lg mb-8 font-poppins", isUrdu && "urdu-text text-xl")}>
-            {isUrdu
-               ? <>ہم ہر قسم کا اسکریپ بہترین قیمتوں پر خریدتے ہیں۔ <strong>ڈی سینٹ ڈسپوزل</strong> پر، ہم پائیداری اور عیش و آرام کو بہترین قیمتوں کے ساتھ جوڑتے ہیں۔ محمد عدنان (بانی) اور تنویر احمد (سی ای او) کی رہنمائی میں، ہم پاکستان کے اعلیٰ ترین انٹیریئر رینوویشن اور اسکریپ ڈسپوزل کی ماہرانہ خدمات فراہم کرنے والے کے طور پر پہچانے جاتے ہیں۔ ہم کارپوریٹ اور رہائشی جگہوں کو جدید شاہکاروں میں تبدیل کرتے ہیں۔</>
-               : <>We buy all kinds of scrap at best prices. At <strong>Decent Disposal</strong>, we bridge the gap between sustainability and luxury with best prices. Under the visionary guidance of <strong>Muhammad Adnan</strong> (Founder) and <strong>Tanveer Ahmed</strong> (CEO), we have grown to become Pakistan’s top-rated interior renovation experts and scrap dealers. Our commitment to excellence and sustainable practices drives our mission to transform corporate and residential spaces into modern masterpieces.</>
-            }
-          </p>
+          <div className={cn("text-[#a0aec0] space-y-6 text-base md:text-lg font-poppins mb-8", isUrdu && "urdu-text text-right")}>
+            {isUrdu ? (
+              <p className="leading-[1.8] text-xl">
+                <strong>ڈی سینٹ ڈسپوزل (Decent Disposal)</strong> پاکستان کی سب سے معتبر اور لائسنس یافتہ کمپنی ہے جو کارپوریٹ دفاتر کی جدید ترین ڈیزائننگ، رینوویشن، لفٹنگ شفٹنگ اور انڈسٹریل اسکریپ کی خریداری میں مہارت رکھتی ہے۔ بانی <strong>محمد عدنان</strong> اور سی ای او <strong>تنویر احمد</strong> کی قیادت میں، ہم نے ملک کے بڑے بڑے اداروں کے ساتھ مل کر کامیابی سے پراجیکٹس سر انجام دیے ہیں۔ ہماری اولین ترجیح بہترین معیار، مکمل شفافیت اور ماحول دوست طریقے سے کارپوریٹ سروسز فراہم کرنا ہے۔
+              </p>
+            ) : (
+              <>
+                <p className="leading-[1.8]">
+                  At <strong>Decent Disposal</strong>, we bridge the gap between premium excellence and eco-friendly practices. Under the visionary leadership of <strong>Muhammad Adnan</strong> (Founder) and <strong>Tanveer Ahmed</strong> (CEO), we have grown into one of Pakistan's most trusted corporate service providers, specializing in high-end office design, safety structural shifting, and premium industrial asset liquidation.
+                </p>
+                
+                {/* Roman Urdu Persuasive Box */}
+                <div className="p-5 rounded-2xl bg-gradient-to-r from-[#64ffda]/5 via-[#64ffda]/10 to-transparent border border-[#64ffda]/20 relative overflow-hidden mt-6">
+                  <div className="absolute top-0 right-0 bg-[#070b14] text-[#64ffda] font-mono font-bold text-[9px] uppercase px-3 py-1 rounded-bl-xl tracking-widest border-l border-b border-[#64ffda]/20">
+                    Aasan Lafzon Me
+                  </div>
+                  <h4 className="text-[#64ffda] font-bold text-sm uppercase tracking-wider mb-2 font-montserrat">Hamari Kahani:</h4>
+                  <p className="text-gray-300 font-medium text-[0.95rem] leading-[1.7] italic pr-8">
+                    "Decent Disposal, Pakistan ki sub se trusted aur certified company hai. Hum office renovation, state-of-the-art glass work, decorative ceilings, painting aur bare paimane par heavy machinery ya industrial scrap buy karne me deal karte hain. Humare sath deal karne ka matlab hai clear and safe transactions, 100% genuine pricing aur expert execution jo saalo saal chalti rahay."
+                  </p>
+                </div>
+              </>
+            )}
+          </div>
 
           {/* Feature Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">

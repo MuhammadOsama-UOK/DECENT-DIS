@@ -133,6 +133,34 @@ export default function HeroSlider() {
           </div>
         </SwiperSlide>
 
+        {/* SLIDE 4: LIFTING & SHIFTING */}
+        <SwiperSlide>
+          <div className="relative h-full w-full">
+            <img src="/src/assets/images/lifting_shifting_service_1781519192459.jpg" className="absolute inset-0 w-full h-full object-cover will-change-transform" alt="Professional Lifting and Shifting Service in Karachi - Relocation and Heavy Machinery Movers" />
+            <div className="slide-overlay absolute inset-0 flex items-center px-6 md:px-20 z-10 pt-16 lg:pt-0">
+              <div className={cn("max-w-4xl animate-hero", isUrdu && "text-right ml-auto")}>
+                 <h2 className={cn("text-4xl sm:text-5xl md:text-7xl font-black text-white leading-tight mb-4 uppercase font-outfit", isUrdu && "urdu-text leading-tight")}>
+                    {isUrdu ? "لفٹنگ اور" : "LIFTING &"} <span className="text-yellow-400">{isUrdu ? "شفٹنگ سروس" : "SHIFTING SERVICE"}</span>
+                </h2>
+                <p className={cn("text-gray-300 text-base md:text-xl max-w-2xl font-poppins", isUrdu && "urdu-text ml-auto")}>
+                  {isUrdu
+                    ? "آفِس ریلوکیشن، فیکٹری شفٹنگ اور بھاری مشینری کی منتقلی کے لیے انتہائی پیشہ ورانہ اور محفوظ خدمات۔"
+                    : "Expert, fully-managed solutions for office relocation, factory shifting, and heavy machinery moving with complete safety guarantees."}
+                </p>
+                
+                <div className={cn("glass-button-container flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-fit mt-6", isUrdu ? "sm:flex-row-reverse sm:ml-auto" : "flex-wrap")}>
+                  <a href="https://wa.me/923152227331" target="_blank" rel="noopener noreferrer" className="bg-green-500 text-white hover:bg-green-600 px-6 py-3.5 md:px-8 md:py-4 rounded-xl font-bold transition-all text-center text-sm md:text-base whitespace-nowrap order-1 flex justify-center w-full sm:w-auto">
+                    WhatsApp For Shifting
+                  </a>
+                  <Link to="/service/shifting" className="bg-white/10 text-white/90 hover:text-white border border-white/30 hover:border-white px-6 py-3.5 md:px-8 md:py-4 rounded-xl font-bold transition-all text-center text-sm md:text-base whitespace-nowrap order-2 flex justify-center w-full sm:w-auto mt-2 sm:mt-0">
+                    {isUrdu ? "تفصیلات دیکھیں" : "View Shifting Details"}
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+
 
         
         <div className="swiper-pagination !bottom-10"></div>

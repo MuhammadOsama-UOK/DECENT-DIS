@@ -26,12 +26,20 @@ export default function AboutCompany() {
 
   return (
     <div className="bg-[#f8f9fa] min-h-screen pt-20 pb-12 font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] selection:bg-emerald-500 selection:text-white relative">
-      <button 
-        onClick={() => navigate(-1)}
-        className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-800 transition-all shadow-md", isUrdu && "left-auto right-8")}
+      <motion.button 
+        whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          navigate(-1);
+          window.scrollTo(0, 0);
+        }}
+        className={cn(
+          "fixed top-24 z-50 p-2.5 rounded-full bg-white/90 hover:bg-white text-emerald-800 border border-emerald-100 hover:border-emerald-200 transition-all shadow-md backdrop-blur-md flex items-center justify-center",
+          isUrdu ? "right-4 md:right-8" : "left-4 md:left-8"
+        )}
       >
-        <ArrowLeft className="w-6 h-6" />
-      </button>
+        <ArrowLeft className={cn("w-5 h-5", isUrdu && "rotate-180")} />
+      </motion.button>
 
       {/* Hero Header */}
       <section className="max-w-[1200px] mx-auto px-6 mb-10 text-center">

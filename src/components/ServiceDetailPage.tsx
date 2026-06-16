@@ -13,6 +13,7 @@ const SERVICE_DATA: Record<string, any> = {
     title: 'Glass Work',
     titleUr: 'گلاس ورک',
     desc: 'Smart Partitions, Glass Cabins & Toughened Glass Solutions.',
+    romanUrdu: 'Ghar ya office me khubsurat glass partition aur cabins lagwayen taake space modern aur shaandar lage. Pure Karachi me sab se behtareen fitting aur hardware warranty k sath.',
     fullDesc: 'We provide premium glass work solutions for modern offices and commercial spaces. Our services include frameless glass partitions, toughened glass doors, smart switchable glass cabins, and custom decorative glass installations. Enhance your workspace aesthetics and bring in natural light with our durable, high-quality, and expertly engineered glass solutions.',
     fullDescUr: 'ہم جدید دفاتر اور تجارتی مقامات کے لیے پریمیم گلاس ورک سلوشنز فراہم کرتے ہیں۔ ہماری خدمات میں فریم لیس شیشے کے پارٹیشنز، سخت شیشے کے دروازے، اور کسٹم ڈیکوریٹو شیشے کی تنصیب شامل ہیں۔',
     image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80',
@@ -31,6 +32,7 @@ const SERVICE_DATA: Record<string, any> = {
     title: 'Designer Ceilings',
     titleUr: 'سیلنگ ڈیزائن',
     desc: 'Designer Gypsum ceilings, POP works & Grid Ceilings.',
+    romanUrdu: 'Apne office ya ghar me fancy Gypsum ceilings banwayen jo mazboot aur behad khubsurat hon. Hamara kaam behtareen laser alignment k sath hota hai jis me koi jhol ya bending nahi ati.',
     fullDesc: 'Transform your office or residential space with our elegant designer ceiling solutions. We specialize in intricate Gypsum board ceilings, POP work, false ceilings, and acoustic grid ceilings. Proper ceiling design not only improves aesthetic appeal but also optimizes lighting and sound distribution within your environment.',
     fullDescUr: 'ہم بہترین ڈیزائنر سیلنگ، جپسم بورڈ سیلنگ اور پی او پی کے کام میں مہارت رکھتے ہیں۔ ایک اچھی سیلنگ نہ صرف خوبصورتی بڑھاتی ہے بلکہ روشنی اور آواز کی تقسیم کو بھی بہتر بناتی ہے۔',
     image: 'https://images.unsplash.com/photo-1660492039236-4e660d5a1a14?w=1200&auto=format&fit=crop&q=80',
@@ -49,6 +51,7 @@ const SERVICE_DATA: Record<string, any> = {
     title: 'Premium Paint',
     titleUr: 'پریمیم پینٹ',
     desc: 'Luxury textures, Royal shine & Corporate finish paints.',
+    romanUrdu: 'Seep (seepage) ya deewaron ki kharabi door kr k luxury wall finishes aur texture paints lagwayen. Hum professional putty layers aur high-quality weather shield use krtay hain taake paint saalo saal chalta rahay.',
     fullDesc: 'Revitalize your walls with our premium painting services. We offer a comprehensive range of painting solutions including luxury textures, corporate finishes, royal shine coats, and weather-resistant exterior paints. Our expert painters ensure flawless execution, using high-quality materials to guarantee long-lasting vibrance.',
     fullDescUr: 'ہمارے پریمیم پینٹ کی خدمات سے اپنی دیواروں کو نیا روپ دیں۔ ہم لگژری ٹیکسچر، کارپوریٹ فنشز اور پائیدار پینٹ سلوشنز پیش کرتے ہیں۔',
     image: 'https://images.unsplash.com/photo-1562619371-b67725b6fde2?auto=format&fit=crop&w=1200&q=80',
@@ -67,6 +70,7 @@ const SERVICE_DATA: Record<string, any> = {
     title: 'Flooring',
     titleUr: 'فلورنگ',
     desc: 'Vinyl flooring, Italian Marble & High-end Tile works.',
+    romanUrdu: 'Stylish aur lambay chalnay wale Vinyl floors, Italian Marble aur customized tiles lagwayen. Leveling aur joints bilkul zero error k sath fix hotay hain.',
     fullDesc: 'Upgrade your floors with our high-end flooring solutions. We supply and install imported vinyl flooring, premium hardwood, Italian marble, and corporate-grade carpeting. Whether you need a highly durable industrial floor or luxurious aesthetic finishes for an executive suite, we have the perfect solution.',
     fullDescUr: 'ہم اعلیٰ معیار کی فلورنگ سروسز فراہم کرتے ہیں، جن میں ونائل فلورنگ، ماربل، اور جدید ٹائل ورک شامل ہیں۔ اپنے دفتر یا گھر کے فرشوں کو ہمارے ساتھ جدید بنائیں۔',
     image: regeneratedImg, // using regenerated image
@@ -85,6 +89,7 @@ const SERVICE_DATA: Record<string, any> = {
     title: 'Electric Work',
     titleUr: 'الیکٹریکل ورک',
     desc: 'Smart Lighting, Concealed Wiring & Server setup.',
+    romanUrdu: 'Safety k sath androni wiring, smart lightning setup aur heavy database server configuration karwayen. Pakistan Cables k genuine wires aur brand safety switchgears use krtay hain.',
     fullDesc: 'Ensure seamless operations with our professional electrical work services. We handle concealed wiring, smart lighting installations, server room power configurations, and load balancing for commercial and industrial setups. Safety and efficiency are our top priorities.',
     fullDescUr: 'ہم پیشہ ورانہ الیکٹریکل ورک، سمارٹ لائٹنگ، وائرنگ اور سرور روم سیٹ اپ کی بہترین خدمات فراہم کرتے ہیں۔ حفاظت اور کارکردگی ہماری اولین ترجیح ہے۔',
     image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80',
@@ -96,13 +101,14 @@ const SERVICE_DATA: Record<string, any> = {
     ratesTitle: "Electrical Deployment Costs",
     ratesTitleUr: "الیکٹریکل کام کے اخراجات",
     ratesDesc: "Electrical work is usually quoted on a per-point or per-board basis rather than square feet. Standard light/plug points cost between PKR 1,000 to 2,500 in labor. When combined with premium switchgears, raw Pakistan cables, distribution boards and safety breakers, a holistic office estimation requires our engineer's audit.",
-    ratesDescUr: "عام طور پر الیکٹریکل کام مربع فٹ کے بجائے فی پوائنٹ پر ماپا جاتا ہے۔ عام لائٹ اور پلگ پوائنٹ کی لیبر 1,000 سے 2,500 روپے کے درمیان ہوتی ہے۔ پریمیم تاریں، ڈسٹریبیوشن بورڈز اور سیفٹی بریکرز کے ساتھ دفتر کے مکمل تخمینے کے لیے ہمارے انجینئر کا معائنہ ضروری ہے۔"
+    ratesDescUr: "عام طور پر الیکٹریکل کام مربع فٹ کے بجائے فی پوائنٹ پر ماپا جاتا ہے۔ عام لائٹ اور پلگ پوائنٹ کی لیبر 1,000 سے 2,500 روپے کے درمیان ہوتی ہے۔ پریمیم تاریں, ڈسٹریبیوشن بورڈز اور سیفٹی بریکرز کے ساتھ دفتر کے مکمل تخمینے کے لیے ہمارے انجینئر کا معائنہ ضروری ہے۔"
   },
   'wood': {
     type: 'renovation',
     title: 'Wood Work',
     titleUr: 'وڈ ورک',
     desc: 'Custom Designer Tables, Cabinets & Modular Furniture.',
+    romanUrdu: 'High-quality designer tables, wooden wardrobes aur customize office cabinets jo saalo saal chalain. Scratch-resistant laminates aur imported components use krtay hain.',
     fullDesc: 'Craftsmanship meets durability in our custom woodworking solutions. We design, build, and install modular office furniture, executive desks, custom cabinetry, and premium wooden partitions. Whether a contemporary minimal style or a traditional heavy corporate look, our artisans bring your vision to life.',
     fullDescUr: 'ہمارا وڈ ورک پائیداری اور خوبصورتی کا بہترین امتزاج ہے۔ ہم درزی ساختہ دفتری فرنیچر، کیبنٹ اور لکڑی کے پارٹیشنز تیار اور نصب کرتے ہیں۔',
     image: 'https://images.unsplash.com/photo-1659930087003-2d64e33181f7?w=1200&auto=format&fit=crop&q=80',
@@ -123,6 +129,7 @@ const SERVICE_DATA: Record<string, any> = {
     title: 'AC & Chillers',
     titleUr: 'اے سی اور Chillers',
     desc: 'Split AC, AHU systems, copper piping.',
+    romanUrdu: 'Purane ya used AC, Split units aur heavy chillers becho aur instant cash kamao. State Bank aur NADRA k trusted partner hone k naate, hum on-site digital weighing k sath highest payouts daitay hain.',
     fullDesc: 'We buy all kinds of used, non-functional, or obsolete air conditioning units and chiller plants. From split ACs to massive industrial AHU systems, we provide the best market rates in Pakistan. Turn your defunct cooling equipment and copper piping into instant cash while supporting sustainable recycling efforts.',
     fullDescUr: 'ہم استعمال شدہ یا خراب اے سی اور چِلر پلانٹس بہترین قیمت پر خریدتے ہیں۔ فالتو کولنگ آلات سے فوری نقد رقم حاصل کریں۔',
     image: 'https://images.unsplash.com/photo-1762341123870-d706f257a12e?auto=format&fit=crop&q=80&w=1200',
@@ -141,6 +148,7 @@ const SERVICE_DATA: Record<string, any> = {
     title: 'Office Furniture',
     titleUr: 'دفتری فرنیچر',
     desc: 'Chairs, tables, workstations.',
+    romanUrdu: 'Purane office chairs, workstations, wooden tables aur bulky safe cabinets bulk me sale krain. PTCL aur National Bank k authorized buyer hone k naate hum poori laant bina kisi takleef k aik transaction me clear krtay hain.',
     fullDesc: 'Upgrading your corporate workspace? We buy scrap and used office furniture in bulk. Dispose of old chairs, unneeded workstations, broken desks, and steel cabinets easily. We provide hassle-free pickup and immediate payment, making your office liquidation quick and profitable.',
     fullDescUr: 'اگر آپ اپنا دفتری فرنیچر تبدیل کر رہے ہیں، تو ہم پرانا اور سکریپ فرنیچر تھوک میں خریدتے ہیں۔ پرانی کرسیوں اور میزوں سے نجات پائیں۔',
     image: 'https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&q=80&w=1200',
@@ -159,6 +167,7 @@ const SERVICE_DATA: Record<string, any> = {
     title: 'E-Waste',
     titleUr: 'ای ویسٹ',
     desc: 'Computers, UPS, batteries.',
+    romanUrdu: 'Purane servers, towers, networking systems, UPS systems aur dead batteries nikalain. Absolute data security aur modern IT recycling k standard k sath direct high rates paen.',
     fullDesc: 'Responsibly dispose of your electronic waste with our secure IT equipment buying program. We purchase old computers, servers, UPS systems, dead batteries, and electronic scrap. We ensure safe, environmentally compliant handling of all E-waste from corporate liquidations.',
     fullDescUr: 'اپنا پرانا آئی ٹی سامان، کمپیوٹرز، یو پی ایس اور بیٹریاں محفوظ طریقے سے ہمیں فروخت کریں۔ ہم ای ویسٹ کی ذمہ دارانہ ری سائیکلنگ کو یقینی بناتے ہیں۔',
     image: 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&q=80&w=1200',
@@ -177,6 +186,7 @@ const SERVICE_DATA: Record<string, any> = {
     title: 'Metal Scrap',
     titleUr: 'دھات کا کچرا',
     desc: 'Iron, aluminium, steel.',
+    romanUrdu: 'Factory shed, loha, sarya, scrap machinery, aluminum frames aur stainless steel frames dukan ya site se heavy lifting aur on-the-spot payment k sath bechain.',
     fullDesc: 'We offer highly competitive scrap rates for ferrous and non-ferrous metals. Whether it’s iron rebars from demolition, aluminum frames, stainless steel machinery, or brass components, our scrap acquisition team handles bulk lifting from industrial and commercial sites with immediate cash payouts.',
     fullDescUr: 'ہم لوہے، ایلومینیم اور سٹیل کے سکریپ کی بہترین قیمت پیش کرتے ہیں۔ صنعتی سائیٹس سے سکریپ اٹھانے اور فوری ادائیگی کی سہولت دستیاب ہے۔',
     image: 'https://images.unsplash.com/photo-1516382799247-87df95d790b7?auto=format&fit=crop&q=80&w=1200',
@@ -195,6 +205,7 @@ const SERVICE_DATA: Record<string, any> = {
     title: 'Electrical',
     titleUr: 'الیکٹریکل',
     desc: 'Copper wiring, cables.',
+    romanUrdu: 'Purani copper cables (bina cheeli hui ya stripped), used transformers aur panels ki highest scrap value paen. K-Electric aur PTCL projects k behtareen direct rates available hain.',
     fullDesc: 'Get top value for old electrical scrap. We rapidly acquire decommissioned cables, power transformers, switchboards, and copper wiring. Our transparent weighing and appraisal process guarantees you receive fair market value based on live scrap rates.',
     fullDescUr: 'پرانے الیکٹریکل سکریپ کی اعلیٰ قیمت حاصل کریں۔ ہم تانبے کی تاریں، ٹرانسفارمرز اور بجلی کا پرانا سامان خریدتے ہیں۔',
     image: 'https://images.unsplash.com/photo-1584774354932-62ceb99e6053?auto=format&fit=crop&q=80&w=1200',
@@ -202,7 +213,7 @@ const SERVICE_DATA: Record<string, any> = {
     seoTitle: "The Highest Value in Scrap: Cables, Transformers & Copper",
     seoTitleUr: "سکریپ کا سب سے قیمتی اثاثہ: کیبلز، ٹرانسفارمرز اور تانبا",
     seoContent: "Electrical scrap is the most lucrative category in industrial liquidations. Stripped copper wires, heavy-duty armored cables, defunct panel boards, and commercial oil-filled transformers hold immense value. We have safely extracted thousands of metric tons of electrical scrap for major grids and institutions including K-Electric, PTCL, and National Bank, ensuring optimal core copper valuation.",
-    seoContentUr: "انڈسٹریل سکریپ میں الیکٹریکل سامان سب سے زیادہ منافع بخش ہوتا ہے۔ بجلی کی تانبے کی موٹی تاریں اور پرانے ٹرانسفارمرز انتہائی قیمتی ہوتے ہیں۔ ہم کے-الیکٹرک، پی ٹی سی ایل، اور نیشنل بینک جیسے بڑے کلائنٹس کے لیے الیکٹریکل سکریپ کی کامیابی سے خریداری کر چکے ہیں۔ ہم تار کے اندر मौजूद تانبے کی خالص قیمت ادا کرتے ہیں۔",
+    seoContentUr: "انڈسٹریل سکریپ میں الیکٹریکل سامان سب سے زیادہ منافع بخش ہوتا ہے۔ بجلی کی تانبے کی موٹی تاریں اور پرانے ٹرانسفارمرز انتہائی قیمتی ہوتے ہیں۔ ہم کے-الیکٹرک، پی ٹی سی ایل، اور نیشنل بینک جیسے بڑے کلائنٹس کے لیے الیکٹریکل سکریپ کی کامیابی سے خریداری کر چکے ہیں۔ ہم تار کے اندر موجود تانبے کی خالص قیمت ادا کرتے ہیں۔",
     ratesTitle: "Copper & Wire Recovery Pricing",
     ratesTitleUr: "تانبے اور تاروں کی وصولی کی قیمتیں",
     ratesDesc: "Because copper stands as the highest-priced common industrial metal, cables are priced either 'with insulation' based on projected recovery rates or 'stripped bare'. Bare bright copper wire fetches exceptional rates per kg. Transformers are bought generally by weight and core assessment.",
@@ -225,6 +236,24 @@ const SERVICE_DATA: Record<string, any> = {
     ratesTitleUr: "بھاری مشینری کی قیمت کیسے بنتی ہے؟",
     ratesDesc: "Industrial machinery involves a blend of MS Iron, cast iron, and valuable internal copper windings (especially in motors and generators). For very heavy equipment, we dispatch an appraiser to give you a lump-sum offer or set an agreed per-kg rate before commencing complex on-site dismantling.",
     ratesDescUr: "بھاری انڈسٹریل مشینری عام لوہے اور اندر موجود قیمتی تانبے (موٹرز اور جنریٹرز میں) کا مرکب ہوتی ہے۔ بڑے پلانٹس کے لیے، ہمارا ماہر موقع پر پہنچ کر مکمل جائزہ لیتا ہے اور کٹائی شروع کرنے سے پہلے ایک واضح پیکج یا فی کلو کا ریٹ طے کر لیا جاتا ہے جو عام لوہے کے ریٹ سے زیادہ ہوتا ہے۔"
+  },
+  'shifting': {
+    type: 'renovation',
+    title: 'Professional Lifting & Shifting',
+    titleUr: 'پیشہ ورانہ لِفٹنگ اور شفٹنگ',
+    desc: 'Safe item lifting, office relocation & professional shifting.',
+    fullDesc: 'We provide specialized lifting and shifting services for office relocation, heavy machine moving, and general logistics. Professional renovation solutions to make your business environment modern and impressive.',
+    fullDescUr: 'ہم آفس ریلوکیشن، بھاری مشینری کی منتقلی اور جنرل لاجسٹکس کے لیے ماہرانہ لِفٹنگ اور شفٹنگ کی خدمات فراہم کرتے ہیں۔ آپ کے کاروباری ماحول کو جدید اور متاثر کن بنانے کے لیے پریمیم رینوویشن حل۔',
+    image: '/src/assets/images/lifting_shifting_service_1781519192459.jpg',
+    features: ['Office Relocation', 'Heavy Machine Moving', 'Component Lifting & Positioning', 'Reliable Transportation'],
+    seoTitle: "Professional Lifting & Shifting Services",
+    seoTitleUr: "پیشہ ورانہ لِفٹنگ اور شفٹنگ کی خدمات",
+    seoContent: "Moving items, especially heavy ones, requires professional expertise. We ensure your valuable assets, whether it's office cubicles, machinery, or furniture, are moved with care. Our lifting and shifting service is fully managed with safety, precision, and reliable transportation across your location.",
+    seoContentUr: "بھاری سامان کی منتقلی کے لیے مہارت اور احتیاط کی ضرورت ہوتی ہے۔ ہم آپ کے دفتر کے فرنیچر، مشینوں یا دیگر اثاثوں کو پوری حفاظت کے ساتھ منتقل کرتے ہیں۔ ہماری شفٹنگ سروس محفوظ اور قابل اعتماد ہے۔",
+    ratesTitle: "Estimated Shifting Rates",
+    ratesTitleUr: "شفٹنگ کے تخمینہ جات",
+    ratesDesc: "Shifting rates are calculated based on volume, distance, and weight of equipment/goods. For local moves or internal relocations, we provide a competitive day-rate or hourly package. For complex large-scale shifts, site visits are requested to provide a fixed quote.",
+    ratesDescUr: "شفٹنگ کے اخراجات سامان کے حجم، وزن اور فاصلے پر منحصر ہیں۔ مقامی منتقلی یا اندرونی شفٹنگ کے لیے ہم مناسب گھنٹہ وار یا ایوریج پیکیج دیتے ہیں۔ بڑے کاموں کے لیے سائٹ کا دورہ ضروری ہے تاکہ حتمی قیمت بتائی جا سکے۔"
   }
 };
 
@@ -258,15 +287,24 @@ export default function ServiceDetailPage() {
   const themeColor = isRenovation ? 'blue' : 'green';
 
   return (
-    <div className="pt-20 bg-[#f8f9fa] min-h-screen font-poppins">
+    <div className="pt-20 bg-[#f8f9fa] min-h-screen font-poppins relative">
+      <motion.button 
+        whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          navigate(-1);
+          window.scrollTo(0, 0);
+        }}
+        className={cn(
+          "fixed top-24 z-50 p-2.5 rounded-full bg-black/40 hover:bg-black/65 text-white border border-white/15 hover:border-white/25 backdrop-blur-md transition-all shadow-md flex items-center justify-center",
+          isUrdu ? "right-4 md:right-8" : "left-4 md:left-8"
+        )}
+      >
+        <ArrowLeft className={cn("w-5 h-5", isUrdu && "rotate-180")} />
+      </motion.button>
+
       {/* Hero Section */}
       <section className="relative h-[50vh] min-h-[400px] flex items-center overflow-hidden">
-        <button 
-          onClick={() => navigate(-1)}
-          className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-md transition-all", isUrdu && "left-auto right-8")}
-        >
-          <ArrowLeft className="w-6 h-6" />
-        </button>
         <div className="absolute inset-0 bg-black z-10 opacity-60"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
@@ -311,6 +349,17 @@ export default function ServiceDetailPage() {
                 <p className={cn("text-gray-600 leading-relaxed text-lg mb-8", isUrdu && "urdu-text leading-[1.8]")}>
                   {isUrdu ? service.fullDescUr : service.fullDesc}
                 </p>
+
+                {!isUrdu && service.romanUrdu && (
+                  <div className="mb-8 p-6 rounded-2xl bg-gradient-to-r from-[#64ffda]/5 via-[#64ffda]/10 to-transparent border border-[#64ffda]/20 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 bg-[#070b14] text-[#64ffda] font-mono font-bold text-[9px] uppercase px-3 py-1 rounded-bl-xl tracking-wider">
+                      Aasan Lafzon Me
+                    </div>
+                    <p className="text-gray-800 font-medium text-base leading-relaxed italic pr-12">
+                      "{service.romanUrdu}"
+                    </p>
+                  </div>
+                )}
                 <div className="h-px bg-gray-100 w-full mb-8"></div>
                 
                 <h3 className={cn("text-2xl font-bold text-gray-900 mb-6 font-montserrat", isUrdu && "urdu-text")}>
@@ -376,11 +425,16 @@ export default function ServiceDetailPage() {
                 <p className="text-white/80 mb-8 text-sm">
                   {isUrdu ? "بہترین قیمت اور معیاری کام کے لیے ہم سے رابطہ کریں۔" : "Contact us today for the best value and premium services."}
                 </p>
-                <Link to="/quote" className={cn("w-full block py-4 rounded-xl font-bold text-lg transition-transform hover:scale-105 shadow-xl",
-                  themeColor === 'blue' ? "bg-white text-[#0056b3]" : "bg-white text-green-700"
-                )}>
+                <a 
+                  href={`https://wa.me/923152227331?text=${encodeURIComponent(isUrdu ? "ہیلو، میں سروس کے بارے میں معلومات چاہتا ہوں۔" : "Hi, I'm interested in this service: " + (isUrdu ? service.titleUr : service.title))}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn("w-full block py-4 rounded-xl font-bold text-lg transition-transform hover:scale-105 shadow-xl text-center",
+                    themeColor === 'blue' ? "bg-white text-[#0056b3]" : "bg-white text-green-700"
+                  )}
+                >
                   {isUrdu ? "تخمینہ حاصل کریں" : "Request an Estimate"}
-                </Link>
+                </a>
                 <div className="mt-6 flex items-center justify-center gap-2 opacity-90">
                   <Phone className="w-5 h-5" />
                   <span className="font-bold">+92 315 222 7331</span>

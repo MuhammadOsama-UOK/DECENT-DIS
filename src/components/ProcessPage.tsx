@@ -125,12 +125,20 @@ export default function ProcessPage() {
 
   return (
     <div className="bg-white min-h-screen pt-32 pb-24 overflow-hidden selection:bg-primary-green selection:text-white relative">
-      <button 
-        onClick={() => navigate(-1)}
-        className={cn("absolute top-8 left-8 z-30 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 transition-all shadow-md", isUrdu && "left-auto right-8")}
+      <motion.button 
+        whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          navigate(-1);
+          window.scrollTo(0, 0);
+        }}
+        className={cn(
+          "fixed top-24 z-50 p-2.5 rounded-full bg-white/90 hover:bg-white text-gray-800 border border-gray-100 hover:border-gray-200 transition-all shadow-md backdrop-blur-md flex items-center justify-center",
+          isUrdu ? "right-4 md:right-8" : "left-4 md:left-8"
+        )}
       >
-        <ArrowLeft className="w-6 h-6" />
-      </button>
+        <ArrowLeft className={cn("w-5 h-5", isUrdu && "rotate-180")} />
+      </motion.button>
       {/* Hero Section */}
       <section className="container mx-auto px-6 max-w-7xl mb-24 text-center">
         <motion.div
@@ -228,7 +236,7 @@ export default function ProcessPage() {
                   <div className="flex items-center gap-3 mb-8"><Scale className="w-8 h-8 text-primary-green" /><h2 className="text-2xl font-black text-gray-900 font-montserrat uppercase">Scrap Disposal Request</h2></div>
                   <form onSubmit={scrapForm.handleSubmit(onScrapSubmit)} className="space-y-6">
                      <FormGroup register={scrapForm.register('fullName')} label="Full Name" placeholder="Enter your full name" error={scrapForm.formState.errors.fullName?.message} />
-                     <FormGroup register={scrapForm.register('phone')} label="Phone Number" placeholder="e.g. 03313141853" type="tel" error={scrapForm.formState.errors.phone?.message} />
+                     <FormGroup register={scrapForm.register('phone')} label="Phone Number" placeholder="e.g. 0331314853" type="tel" error={scrapForm.formState.errors.phone?.message} />
                      <FormGroup register={scrapForm.register('email')} label="Email Address" placeholder="yourname@gmail.com" type="email" error={scrapForm.formState.errors.email?.message} />
                      <FormGroup register={scrapForm.register('quantity')} label="Estimated Quantity" placeholder="e.g. 100kg" error={scrapForm.formState.errors.quantity?.message} />
                      <div className="space-y-2">
@@ -258,7 +266,7 @@ export default function ProcessPage() {
                   <div className="flex items-center gap-3 mb-8"><HardHat className="w-8 h-8 text-primary-blue" /><h2 className="text-2xl font-black text-gray-900 font-montserrat uppercase">Interior & Renovation</h2></div>
                   <form onSubmit={renovationForm.handleSubmit(onRenovationSubmit)} className="space-y-6">
                      <FormGroup register={renovationForm.register('fullName')} label="Full Name" placeholder="Enter your full name" error={renovationForm.formState.errors.fullName?.message} />
-                     <FormGroup register={renovationForm.register('phone')} label="Phone Number" placeholder="e.g. 03313141853" type="tel" error={renovationForm.formState.errors.phone?.message} />
+                     <FormGroup register={renovationForm.register('phone')} label="Phone Number" placeholder="e.g. 0331314853" type="tel" error={renovationForm.formState.errors.phone?.message} />
                      <FormGroup register={renovationForm.register('email')} label="Email Address" placeholder="example@mail.com" type="email" error={renovationForm.formState.errors.email?.message} />
                      <FormGroup register={renovationForm.register('corporateName')} label="Corporate Name" placeholder="Your company name" error={renovationForm.formState.errors.corporateName?.message} />
                      <div className="space-y-2">

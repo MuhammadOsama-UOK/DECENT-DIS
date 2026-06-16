@@ -1,11 +1,12 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/src/lib/utils';
-import { Scale, HardHat, CheckCircle2, MessageCircle, X } from 'lucide-react';
+import { Scale, HardHat, CheckCircle2, MessageCircle, X, ArrowLeft } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useSiteSettings } from '@/src/lib/SiteContext';
+import { useNavigate } from 'react-router-dom';
 
 interface RenovationLead {
   fullName: string;
@@ -28,6 +29,7 @@ interface ScrapLead {
 
 export default function QuotePage() {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const isUrdu = i18n.language === 'ur';
   const siteSettings = useSiteSettings();
 
@@ -36,7 +38,7 @@ export default function QuotePage() {
   const [successLead, setSuccessLead] = useState<{ type: 'renovation' | 'scrap'; data: any } | null>(null);
 
   const contactPhone = siteSettings?.phone1 || "03152227331 (Tanveer)";
-  const contactPhone2 = siteSettings?.phone2 || "03313141853";
+  const contactPhone2 = siteSettings?.phone2 || "0331314853";
   const contactAddress = "M.A Jinnah Road, Gulshan-e-Zahoor, Numaish, Karachi.";
   const contactAddress2 = "H.12, St-8, Qasba Colony, Muslimabad No. 2, SITE, Karachi.";
   const contactEmail = "muhammad.adnan2625@yahoo.com";
@@ -104,6 +106,21 @@ export default function QuotePage() {
 
   return (
     <div className="bg-[#f8f9fa] min-h-screen pt-32 pb-24 selection:bg-primary-blue selection:text-white relative">
+      <motion.button 
+        whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          navigate(-1);
+          window.scrollTo(0, 0);
+        }}
+        className={cn(
+          "fixed top-24 z-50 p-2.5 rounded-full bg-white/90 hover:bg-white text-gray-800 border border-gray-150 transition-all shadow-md backdrop-blur-md flex items-center justify-center",
+          isUrdu ? "right-4 md:right-8" : "left-4 md:left-8"
+        )}
+      >
+        <ArrowLeft className={cn("w-5 h-5", isUrdu && "rotate-180")} />
+      </motion.button>
+
       <div className="container mx-auto px-6 max-w-7xl">
         <header className="text-center mb-16 space-y-4">
            <h1 className="text-4xl md:text-5xl font-black text-gray-900 font-montserrat uppercase tracking-tight">
@@ -180,49 +197,7 @@ export default function QuotePage() {
           </motion.div>
         </div>
 
-        <div className="mt-12 md:mt-20 flex flex-col gap-8 md:gap-12 w-full max-w-5xl mx-auto">
-           {/* Primary Contact Card */}
-           <div className="bg-dark-bg p-8 md:p-10 rounded-[30px] border border-white/10 shadow-2xl overflow-hidden relative group">
-              <div className="absolute top-0 left-0 w-full h-1 bg-yellow-400"></div>
-              <p className="text-yellow-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-6 text-center md:text-left">Primary Office</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center md:text-left">
-                 <div>
-                    <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-2">Direct Phone</p>
-                    <p className="text-lg md:text-xl font-black text-white">{contactPhone}</p>
-                 </div>
-                 <div>
-                    <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-2">Location</p>
-                    <p className="text-sm font-medium text-white/90 leading-relaxed">{contactAddress}</p>
-                 </div>
-                 <div>
-                    <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-2">Email Address</p>
-                    <p className="text-sm font-black text-white break-all">{contactEmail}</p>
-                 </div>
-              </div>
-           </div>
 
-           {/* Secondary Contact Card */}
-           <div className="bg-dark-bg p-8 md:p-10 rounded-[30px] border border-white/5 shadow-xl overflow-hidden relative group opacity-90">
-              <div className="absolute top-0 left-0 w-full h-1 bg-white/20"></div>
-              <p className="text-white/60 font-bold uppercase tracking-[0.2em] text-[10px] mb-6 text-center md:text-left">Secondary Office / Plant</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center md:text-left">
-                 <div>
-                    <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-2">Direct Phone</p>
-                    <p className="text-lg md:text-xl font-black text-white">{contactPhone2}</p>
-                 </div>
-                 <div>
-                    <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-2">Location</p>
-                    <p className="text-sm font-medium text-white/90 leading-relaxed">{contactAddress2}</p>
-                 </div>
-                 <div>
-                    <p className="text-[10px] uppercase font-bold tracking-widest text-gray-500 mb-2">Email Address</p>
-                    <p className="text-sm font-black text-white break-all">{contactEmail2}</p>
-                 </div>
-              </div>
-           </div>
-        </div>
       </div>
 
       <AnimatePresence>
