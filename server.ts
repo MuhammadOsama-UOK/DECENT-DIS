@@ -284,6 +284,15 @@ async function startServer() {
       appType: "spa",
     });
     app.use(vite.middlewares);
+    
+    // Fallback for SPA routing in development
+    app.get('*', async (req, res, next) => {
+      if (req.path.startsWith('/api')) return next();
+      const template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
+      const transformedTemplate = await vite.transformIndexHtml(req.url, template);
+      res.status(200).set({ 'Content-Type': 'text/html' }).send(transformedTemplate);
+    });
+
     console.log("Vite middleware loaded");
   } else {
     const distPath = path.resolve(__dirname, 'dist');
