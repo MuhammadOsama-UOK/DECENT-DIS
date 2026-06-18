@@ -184,7 +184,7 @@ function MainLayout() {
                   <p className="text-xs">Email Address: muhammad.adnan2625@yahoo.com</p>
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-2">Secondary Office / Plant</h4>
+                  <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-2">Secondary Office</h4>
                   <p className="text-xs">Direct Phone: 0331 3141853</p>
                   <p className="text-xs">Location: H.12, St-8, Qasba Colony, Muslimabad No. 2, SITE, Karachi.</p>
                   <p className="text-xs">Email Address: ahmed786awan@gmail.com</p>

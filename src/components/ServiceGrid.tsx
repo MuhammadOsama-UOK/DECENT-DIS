@@ -83,7 +83,7 @@ const SERVICES = [
     descUr: 'آفس رینوویشن، بھاری مشینری کی منتقلی اور سامان کی محفوظ نقل و حمل کے لیے ماہرانہ خدمات۔ تفصیلات کے لیے کلک کریں۔',
     descRoman: 'Office relocation, factory shifting ya bhaari saaman uthana aur usko mehfooz tareeqay se nayi jagah shift karna.',
     icon: <Truck className="w-8 h-8" />,
-    image: '/src/assets/images/lifting_shifting_service_1781519192459.jpg'
+    image: '/images/lifting_shifting_service_1781519192459.jpg'
   }
 ];
 

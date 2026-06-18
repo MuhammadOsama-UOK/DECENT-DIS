@@ -136,7 +136,7 @@ export default function HeroSlider() {
         {/* SLIDE 4: LIFTING & SHIFTING */}
         <SwiperSlide>
           <div className="relative h-full w-full">
-            <img src="/src/assets/images/lifting_shifting_service_1781519192459.jpg" className="absolute inset-0 w-full h-full object-cover will-change-transform" alt="Professional Lifting and Shifting Service in Karachi - Relocation and Heavy Machinery Movers" />
+            <img src="/images/lifting_shifting_service_1781519192459.jpg" className="absolute inset-0 w-full h-full object-cover will-change-transform" alt="Professional Lifting and Shifting Service in Karachi - Relocation and Heavy Machinery Movers" />
             <div className="slide-overlay absolute inset-0 flex items-center px-6 md:px-20 z-10 pt-16 lg:pt-0">
               <div className={cn("max-w-4xl animate-hero", isUrdu && "text-right ml-auto")}>
                  <h2 className={cn("text-4xl sm:text-5xl md:text-7xl font-black text-white leading-tight mb-4 uppercase font-outfit", isUrdu && "urdu-text leading-tight")}>
