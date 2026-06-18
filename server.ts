@@ -286,7 +286,7 @@ async function startServer() {
     app.use(vite.middlewares);
     console.log("Vite middleware loaded");
   } else {
-    const distPath = path.join(process.cwd(), "dist");
+    const distPath = path.resolve(__dirname, 'dist');
     app.use(express.static(distPath));
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
