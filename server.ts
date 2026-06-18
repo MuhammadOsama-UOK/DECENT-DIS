@@ -295,10 +295,20 @@ async function startServer() {
 
     console.log("Vite middleware loaded");
   } else {
-    const distPath = path.resolve(__dirname);
+    // Production: Serve from dist
+    const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
+    
+    app.get("*", (req, res, next) => {
+      // Don't interfere with API routes
+      if (req.path.startsWith('/api')) return next();
+      
+      const filePath = path.join(distPath, "index.html");
+      if (fs.existsSync(filePath)) {
+        res.sendFile(filePath);
+      } else {
+        res.status(404).send(`index.html not found: ${filePath}`);
+      }
     });
   }
 
