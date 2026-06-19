@@ -17,30 +17,18 @@ const __dirname = path.dirname(__filename);
 // Initialize Firebase Admin (Server-side)
 let db: FirebaseFirestore.Firestore | null = null;
 
-const serviceAccount = {
-  type: "service_account",
-  project_id: "decent-disposal",
-  private_key_id: "eb027216cdfde7e26dd3e08ccb8c2d430f1f991d",
-  private_key: "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDIHkefo2TYBV6a\naZm6CGPPAOLt2jsF3AlJI2oblpP1AYARoLoWY1fmo1+5SjN0VpRE6F3I8/XCtVmg\n3+5z0MkXCSsE7EFxPlPLg+F0Yz2DM6ueXuzyO0FjE7orKmtgWrxLuBHLUvRE/Cqw\nKvHU+lgO9EZRuadw7DQ9PGykwS1UjzBR6PezMryJ9Le7OJsqTl1TVEPCb7/XpBnU\nVXE38mjxdrKBBcblSpJqXe1j5LHPuI1pM2v5tw0MiN9GBMFiP/IIpaQ/MWpKmWre\nuut0/T48CK5lXNMRq2HsORbhzXc0RwvHhzIlRvevKK3flvr4DN3eAnVvE3D7dUYW\nSxLeoCM/AgMBAAECggEAA0oarRzqSFrBJm+KqyxbZ6WviZ4YiS/wkJcGzR8cV97Y\nznFfjD8G5CQztyiMLW6oWxduun8VM6Waw74HrH3fAcocm9OP0I2iRYdpnphVMxAu\n6ozL0Kj5Dl0kd+jQO2aCbGceXH0QaKnjBhzaPSnPlL9ZAI//DShR5yTgCWX+ax+/\n9TUtYtx2fHAl1PXjV3FBjb0eFP3lLrirWYE7PKZIG7838j9oAIeMB65ZN4HN7I5A\nFoOkItOofIh6/dclcRJYrDZnywk8ddGaVHWGmtZr9f8p+2TPUZw4v0RDYT5fyW6b\nimhhoqb1cXF/R9hc+rNHoU0QvNqjqyGO/k5sswJ+cQKBgQD3Qn9PNVpD5LBo4SGA\n23ta1XycWAu3s0A2utSJGv6RdTN4YudROaFtXoAuNZLWkBnaGrglD2W5Hto4FmAF\ngocMSzlyKGULPniGOaWsLOkJAjHLqu7m4ra3Ov9m/KmoiZwT4c85W2dW1KvwXow3\nsz9Tf2J0QHQM04sakJM3BRmpRQKBgQDPMTCdHnsggXh7F2yJgiQ3vsCUuWvaoOdv\nTq6+4QJwNucj0fg/rWjkl64BiaHWdBMeiW/NZKRGchjhvc3dTq8xhXkR5zL6NhxH\nJDtGilSGnUsS242566mTLgaMq00glupASV83BRkzRaHxKa0cUwrx+JQG8qB6ErYI\neHZgrAwoswKBgB+32Qr5Jh4lfPfHQXv9K8LINhb8OGyVQvyCVPdNjjBsn3CnB1Nl\nGC8mezzyRGbfz2EqIksmwX7Q1V9yh1jNmLNcBv987RFXLzDQvk7q5+3u6SJeSA04\nMgYpPFAiw0TKekoWonWSIxyBZZkNF+GhTdNROPj+t6RZkrOSrj/VmKgdAoGAdIPu\nGb2Fcm88yMQQdnfoVC0CceCgRY+M9uxhmthAnchSTbOLjou/XCXsZdL3Xvlhsx+I\n7xF0zGTnlzM87QKNxSSRRD8nTMxXNK6sYuvxws375PvxBKgBcdJFPqAqvHQCAesB\nD5jfZhT3j/5m6nHMyuyGmi2hj2SsV7EeqRi3sb8CgYEA0avQDtXN0MhbhlE6EKeQ\njTwpt8tZhoU8Rk93iD3Sg7zD3HG87/Ik9dgu2gC2T5M4j4ra0f9ABwghFsojz3CO\n3AT/6SFUKJSRk0SQ9eAV1xGpInVyho9lYJccmXuzlMO96TK1ohQeaemoz5qUH+Jf\nrEuw3HOHMSArysljzs9fiio=\n-----END PRIVATE KEY-----\n",
-  "client_email": "firebase-adminsdk-fbsvc@decent-disposal.iam.gserviceaccount.com",
-  "client_id": "117530749172829733584",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40decent-disposal.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
-};
-
 async function initAdmin() {
   if (db) return db;
   try {
     const configPath = path.join(process.cwd(), 'firebase-applet-config.json');
     const firebaseConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
+    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}');
+
     let appInstance;
     if (getApps().length === 0) {
       appInstance = initializeApp({
-        credential: cert(serviceAccount as any),
+        credential: cert(serviceAccount),
         projectId: firebaseConfig.projectId
       });
     } else {
@@ -287,27 +275,40 @@ async function startServer() {
     
     // Fallback for SPA routing in development
     app.get('*', async (req, res, next) => {
-      if (req.path.startsWith('/api')) return next();
-      const template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
-      const transformedTemplate = await vite.transformIndexHtml(req.url, template);
-      res.status(200).set({ 'Content-Type': 'text/html' }).send(transformedTemplate);
+      try {
+        if (req.path.startsWith('/api')) return next();
+        
+        // CHANGE: __dirname ki jagah process.cwd() use karein
+        const templatePath = path.resolve(process.cwd(), 'index.html');
+        const template = fs.readFileSync(templatePath, 'utf-8');
+        
+        const transformedTemplate = await vite.transformIndexHtml(req.url, template);
+        res.status(200).set({ 'Content-Type': 'text/html' }).send(transformedTemplate);
+      } catch (e) {
+        next(e);
+      }
     });
 
     console.log("Vite middleware loaded");
   } else {
     // Production: Serve from dist
     const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
-    
+    const clientPath = path.join(distPath, 'client'); // Often Vite builds to dist/client
+  
+    // Try to find which one exists
+    const finalStaticPath = fs.existsSync(clientPath) ? clientPath : distPath;
+  
+    app.use(express.static(finalStaticPath));
+  
     app.get("*", (req, res, next) => {
       // Don't interfere with API routes
       if (req.path.startsWith('/api')) return next();
-      
-      const filePath = path.join(distPath, "index.html");
-      if (fs.existsSync(filePath)) {
-        res.sendFile(filePath);
+    
+      const indexPath = path.join(finalStaticPath, "index.html");
+      if (fs.existsSync(indexPath)) {
+        res.sendFile(indexPath);
       } else {
-        res.status(404).send(`index.html not found: ${filePath}`);
+        res.status(404).send("Frontend build not found.");
       }
     });
   }
