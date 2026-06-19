@@ -20,16 +20,25 @@ let db: FirebaseFirestore.Firestore | null = null;
 async function initAdmin() {
   if (db) return db;
   try {
+    let firebaseConfig: any = {};
     const configPath = path.join(process.cwd(), 'firebase-applet-config.json');
-    const firebaseConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    if (fs.existsSync(configPath)) {
+      firebaseConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    } else {
+      console.warn("firebase-applet-config.json not found, relying on FIREBASE_SERVICE_ACCOUNT and environment variables.");
+    }
 
     const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}');
 
     let appInstance;
     if (getApps().length === 0) {
+      if (!serviceAccount.project_id && !firebaseConfig.projectId) {
+         console.warn("Missing Firebase project ID config. Admin SDK initialization skipped.");
+         return null;
+      }
       appInstance = initializeApp({
         credential: cert(serviceAccount),
-        projectId: firebaseConfig.projectId
+        projectId: firebaseConfig.projectId || serviceAccount.project_id
       });
     } else {
       appInstance = getApps()[0];
