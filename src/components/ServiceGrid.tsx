@@ -14,7 +14,7 @@ import { cn } from '@/src/lib/utils';
 
 import regeneratedImg from '../assets/images/regenerated_image_1778789751238.png';
 
-const SERVICES = [
+export const SERVICES = [
   {
     id: 'glass',
     title: 'Glass Work',

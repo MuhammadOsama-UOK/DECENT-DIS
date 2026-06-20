@@ -13,6 +13,7 @@ import AdminDashboard from './components/AdminDashboard';
 import AdminLogin from './components/AdminLogin';
 import SitemapPage from './components/SitemapPage';
 import ServiceDetailPage from './components/ServiceDetailPage';
+import SearchPage from './components/SearchPage';
 import { Phone, MapPin, X, Menu, Globe, Search } from 'lucide-react';
 import { cn } from './lib/utils';
 import React, { useState, useEffect, useRef } from 'react';
@@ -116,7 +117,7 @@ function MainLayout() {
                      onSubmit={(e) => {
                        e.preventDefault();
                        if (searchQuery.trim()) {
-                         toast(`Search functionality coming soon for: ${searchQuery}`, { icon: '🔍' });
+                         navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
                          setIsSearchOpen(false);
                          setSearchQuery('');
                        }
@@ -159,6 +160,28 @@ function MainLayout() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="xl:hidden bg-[#050505] border-t border-white/10 p-6 flex flex-col gap-6 animate-fade-in text-center absolute w-full left-0">
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (searchQuery.trim()) {
+                  navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+                  setIsMenuOpen(false);
+                  setSearchQuery('');
+                }
+              }}
+              className="flex items-center bg-[#111] border border-white/10 rounded-full px-4 py-2"
+            >
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search..."
+                className="w-full bg-transparent border-none outline-none text-white text-sm placeholder:text-gray-500"
+              />
+              <button type="submit" className="text-gray-400 hover:text-yellow-400">
+                <Search size={18} />
+              </button>
+            </form>
             <Link to="/" onClick={() => setIsMenuOpen(false)} className="text-gray-300 hover:text-yellow-400 transition-colors font-bold uppercase tracking-widest text-sm">Home</Link>
             <Link to="/process" onClick={() => setIsMenuOpen(false)} className="text-gray-300 hover:text-yellow-400 transition-colors font-bold uppercase tracking-widest text-sm">Our Process</Link>
             <Link to="/portfolio" onClick={() => setIsMenuOpen(false)} className="text-gray-300 hover:text-yellow-400 transition-colors font-bold uppercase tracking-widest text-sm">Portfolio</Link>
@@ -182,6 +205,7 @@ function MainLayout() {
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/sitemap" element={<SitemapPage />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/service/:id" element={<ServiceDetailPage />} />
       </Routes>
 
