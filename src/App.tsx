@@ -13,10 +13,10 @@ import AdminDashboard from './components/AdminDashboard';
 import AdminLogin from './components/AdminLogin';
 import SitemapPage from './components/SitemapPage';
 import ServiceDetailPage from './components/ServiceDetailPage';
-import { Phone, MapPin, X, Menu, Globe } from 'lucide-react';
+import { Phone, MapPin, X, Menu, Globe, Search } from 'lucide-react';
 import { cn } from './lib/utils';
 import React, { useState, useEffect, useRef } from 'react';
-import { Toaster } from 'react-hot-toast';
+import { Toaster, toast } from 'react-hot-toast';
 import { db } from './lib/firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 
@@ -36,6 +36,8 @@ function MainLayout() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const [logoClicks, setLogoClicks] = useState(0);
   const clickTimerRef = useRef<NodeJS.Timeout | null>(null);
   const isUrdu = i18n.language === 'ur';
@@ -99,6 +101,44 @@ function MainLayout() {
           </nav>
 
           <div className="flex items-center justify-end gap-3 shrink-0">
+             {/* Search Button */}
+             <div className="relative">
+               <button 
+                 onClick={() => setIsSearchOpen(!isSearchOpen)}
+                 className="p-2 text-white hover:text-yellow-400 transition-colors"
+                 aria-label="Search"
+               >
+                 <Search size={20} />
+               </button>
+               {isSearchOpen && (
+                 <div className="absolute right-0 top-full mt-4 w-64 bg-[#111] border border-white/10 rounded-lg shadow-xl overflow-hidden z-50">
+                   <form 
+                     onSubmit={(e) => {
+                       e.preventDefault();
+                       if (searchQuery.trim()) {
+                         toast(`Search functionality coming soon for: ${searchQuery}`, { icon: '🔍' });
+                         setIsSearchOpen(false);
+                         setSearchQuery('');
+                       }
+                     }}
+                     className="flex items-center p-2"
+                   >
+                     <input
+                       type="text"
+                       value={searchQuery}
+                       onChange={(e) => setSearchQuery(e.target.value)}
+                       placeholder="Search..."
+                       className="w-full bg-transparent border-none outline-none text-white text-sm px-2 placeholder:text-gray-500"
+                       autoFocus
+                     />
+                     <button type="submit" className="p-1 text-gray-400 hover:text-yellow-400">
+                       <Search size={16} />
+                     </button>
+                   </form>
+                 </div>
+               )}
+             </div>
+
              <Link to="/quote" className="hidden lg:flex px-4 py-2 bg-yellow-400/10 border border-yellow-400/20 rounded-full hover:bg-yellow-400 hover:text-black hover:border-yellow-400 transition-all uppercase tracking-widest text-[10px] font-bold text-yellow-400 shadow-[0_0_15px_rgba(234,179,8,0.1)] whitespace-nowrap">Contact Us</Link>
             
             <button 
