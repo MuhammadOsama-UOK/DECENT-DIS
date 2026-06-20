@@ -4,6 +4,7 @@ import { Loader2, TrendingUp, RefreshCw, ArrowLeft } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import SEO from './SEO';
 
 interface ScrapRate {
   material: string;
@@ -51,6 +52,11 @@ export default function ScrapRatesPage() {
 
   return (
     <div className="min-h-screen bg-black text-white py-24 px-6 md:px-12 relative">
+      <SEO 
+        title="Current Scrap Rates | Decent Disposal"
+        description="Check the latest daily scrap rates for various materials including iron, steel, copper, and more in Pakistan."
+        url="https://decentdisposal.pk/scrap-rates"
+      />
       <motion.button 
         whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
         whileTap={{ scale: 0.95 }}

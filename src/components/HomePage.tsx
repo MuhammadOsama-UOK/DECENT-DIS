@@ -10,6 +10,7 @@ import { cn } from '@/src/lib/utils';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, Link } from 'react-router-dom';
 import { PackageOpen, ArrowRight } from 'lucide-react';
+import SEO from './SEO';
 
 export default function HomePage() {
   const { i18n } = useTranslation();
@@ -18,6 +19,7 @@ export default function HomePage() {
 
   return (
     <main>
+      <SEO />
       <HeroSlider />
 
       {/* Decent Disposal Core Services Widget */}

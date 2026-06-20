@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { CheckCircle, Phone, ArrowLeft, ArrowRight } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import regeneratedImg from '../assets/images/regenerated_image_1778789751238.png';
+import SEO from './SEO';
 
 const SERVICE_DATA: Record<string, any> = {
   // Renovation
@@ -288,6 +289,12 @@ export default function ServiceDetailPage() {
 
   return (
     <div className="pt-20 bg-[#f8f9fa] min-h-screen font-poppins relative">
+      <SEO 
+        title={`${isUrdu ? service.titleUr : service.title} | Decent Disposal`}
+        description={isUrdu ? service.fullDescUr : service.fullDesc}
+        url={`https://decentdisposal.pk/service/${id}`}
+        image={service.image}
+      />
       <motion.button 
         whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
         whileTap={{ scale: 0.95 }}

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '@/src/lib/utils';
 import { ShieldCheck, Zap, CreditCard, Building2, Landmark, CheckCircle2, Award, Briefcase, Globe, TrendingUp, ArrowLeft } from 'lucide-react';
+import SEO from './SEO';
 
 const TRUSTED_PARTNERS_CONTENT = {
   en: {
@@ -75,6 +76,11 @@ export default function PortfolioPage() {
 
   return (
     <div className="bg-[#050505] min-h-screen pt-32 pb-24 overflow-hidden selection:bg-primary-blue selection:text-white relative">
+      <SEO 
+        title="Our Portfolio | Decent Disposal"
+        description="View our latest projects and trusted partners. We have built a legacy of trust with Pakistan's leading national institutions and multinational corporations."
+        url="https://decentdisposal.pk/portfolio"
+      />
       <motion.button 
         whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
         whileTap={{ scale: 0.95 }}

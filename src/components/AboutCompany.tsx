@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Shield, Target, Trophy, Building2, HardHat, Briefcase, ArrowLeft } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { Link, useNavigate } from 'react-router-dom';
+import SEO from './SEO';
 
 const STATS = [
   { value: "11+", label: "Years Experience" },
@@ -26,6 +27,11 @@ export default function AboutCompany() {
 
   return (
     <div className="bg-[#f8f9fa] min-h-screen pt-20 pb-12 font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] selection:bg-emerald-500 selection:text-white relative">
+      <SEO 
+        title="About Us | Decent Disposal"
+        description="Learn more about Decent Disposal. We are premium asset management and renovation experts."
+        url="https://decentdisposal.pk/about-company"
+      />
       <motion.button 
         whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
         whileTap={{ scale: 0.95 }}

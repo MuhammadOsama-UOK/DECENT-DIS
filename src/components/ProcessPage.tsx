@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { Smartphone, Truck, Scale, Banknote, ShieldCheck, Zap, Clock, ThumbsUp, ArrowRight, HardHat, CheckCircle2, MessageCircle, X, ArrowLeft } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { renovationSchema, scrapSchema, type RenovationLead, type ScrapLead } from '@/src/lib/schemas';
+import SEO from './SEO';
 
 const STEPS = [
   {
@@ -125,6 +126,11 @@ export default function ProcessPage() {
 
   return (
     <div className="bg-white min-h-screen pt-32 pb-24 overflow-hidden selection:bg-primary-green selection:text-white relative">
+      <SEO 
+        title="Our Process | Decent Disposal"
+        description="Learn about our simple and transparent working process for office renovation, scrap management, and commercial lifting services."
+        url="https://decentdisposal.pk/process"
+      />
       <motion.button 
         whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
         whileTap={{ scale: 0.95 }}
