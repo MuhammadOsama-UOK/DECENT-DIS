@@ -4,43 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { cn } from '@/src/lib/utils';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { BLOG_POSTS } from '../data/blogs';
+import SEO from './SEO';
 
-const BLOG_POSTS = [
-  {
-    id: 1,
-    category: 'Renovation',
-    title: '10 Trends in Office Design for 2024',
-    excerpt: 'Transform your workspace into a productivity hub. Learn about modern design trends, flexible workspaces, and ergonomic solutions for the modern office.',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600',
-    link: 'https://www.workdesign.com/2023/12/2024-office-design-trends/'
-  },
-  {
-    id: 2,
-    category: 'Scrap Buying',
-    title: 'How to Price and Grade Scrap Metal',
-    excerpt: 'Don\'t settle for less! Learn how to grade your metal, furniture, and electronic scrap to get the best market price from the iScrap App blog.',
-    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=600',
-    link: 'https://iscrapapp.com/blog/how-to-price-scrap-metal/'
-  },
-  {
-    id: 3,
-    category: 'Renovation',
-    title: 'Small Office Spaces: How to Maximize Efficiency',
-    excerpt: 'Renovating a small office? Discover how clever lighting, modular furniture, and smart layouts can make your space look huge and boost productivity.',
-    image: 'https://images.unsplash.com/photo-1590247813693-5541d1c609fd?auto=format&fit=crop&w=600',
-    link: 'https://www.techtarget.com/searchcio/tip/Tips-for-designing-a-modern-office-space'
-  },
-  {
-    id: 4,
-    category: 'Sustainability',
-    title: 'Electronics Donation and Recycling',
-    excerpt: 'Old computers and printers contain hazardous materials. Learn from the EPA why professional e-waste recycling is crucial for modern businesses.',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600',
-    link: 'https://www.epa.gov/recycle/electronics-donation-and-recycling'
-  }
-];
-
-const CATEGORIES = ['All', 'Office Renovation', 'Scrap Buying', 'Sustainability'];
+const CATEGORIES = ['All', 'Renovation', 'Scrap Buying', 'Sustainability', 'Renovation & Scrap'];
 
 export default function BlogPage() {
   const { i18n } = useTranslation();
@@ -54,7 +21,13 @@ export default function BlogPage() {
 
   return (
     <div className="bg-[#f8f9fa] min-h-screen pt-32 pb-24 font-['Segoe_UI',_Tahoma,_Geneva,_Verdana,_sans-serif] text-[#333] relative">
+      <SEO 
+        title="Blog & Articles | Decent Disposal"
+        description="Read the latest articles about office renovation trends, scrap market prices, and sustainability practices in Pakistan."
+        url="https://decentdisposal.pk/blog"
+      />
       <motion.button 
+
         whileHover={{ scale: 1.1, x: isUrdu ? 4 : -4 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => {

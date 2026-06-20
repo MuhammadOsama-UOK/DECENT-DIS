@@ -25,6 +25,8 @@ const FAQS = [
   }
 ];
 
+import { BLOG_POSTS, BLOG_CONTENT } from '../data/blogs';
+
 export default function SearchPage() {
   const [searchParams] = useSearchParams();
   const q = searchParams.get('q') || '';
@@ -126,29 +128,23 @@ export default function SearchPage() {
         }
       });
 
-      // 3. Search Blog Posts (Firestore)
-      try {
-        const postsRef = collection(db, 'posts');
-        const qSnap = await getDocs(query(postsRef, orderBy('createdAt', 'desc')));
-        qSnap.forEach(doc => {
-          const data = doc.data();
-          const matchesBlog = searchTerms.some(term => 
-            (data.title && data.title.toLowerCase().includes(term)) ||
-            (data.excerpt && data.excerpt.toLowerCase().includes(term)) ||
-            (data.content && data.content.toLowerCase().includes(term))
-          );
-          if (matchesBlog) {
-            found.push({
-              type: 'Blog',
-              title: data.title,
-              desc: data.excerpt || 'Read more in this blog post',
-              link: `/blog/${doc.id}`
-            });
-          }
-        });
-      } catch (err) {
-        console.error("Error searching blog posts:", err);
-      }
+      // 3. Search Blog Posts (Local)
+      BLOG_POSTS.forEach(post => {
+        const fullContent = BLOG_CONTENT[post.id]?.content || '';
+        const matchesBlog = searchTerms.some(term => 
+          post.title.toLowerCase().includes(term) ||
+          post.excerpt.toLowerCase().includes(term) ||
+          fullContent.toLowerCase().includes(term)
+        );
+        if (matchesBlog) {
+          found.push({
+            type: 'Blog',
+            title: post.title,
+            desc: post.excerpt,
+            link: `/blog/${post.id}`
+          });
+        }
+      });
 
       // 4. Smart AI Fallback if no specific matches found or if conversational
       if (found.length === 0) {
