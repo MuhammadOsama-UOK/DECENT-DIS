@@ -27,7 +27,7 @@ export default function HomePage() {
         {/* Lighter Background instead of Video */}
         <div className="absolute inset-0 w-full h-full z-0 bg-[#050505]">
           <div className="absolute inset-0 bg-gradient-to-br from-[#082f1f]/20 to-[#0f2027]/20"></div>
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none"></div>
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none"></div>
           <div className="absolute top-0 left-0 w-full h-[100px] bg-gradient-to-b from-[#050505] to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full h-[100px] bg-gradient-to-t from-[#050505] to-transparent"></div>
         </div>
@@ -42,7 +42,7 @@ export default function HomePage() {
              {/* Section Title */}
              <div className={cn("bg-gradient-to-br from-yellow-500/10 via-black/40 to-black/60 border border-yellow-500/20 rounded-[2.5rem] p-6 sm:p-8 lg:p-12 flex flex-col justify-center relative overflow-hidden shadow-[0_0_80px_rgba(234,179,8,0.1)] group", isUrdu && "text-right lg:order-last")}>
                 <div className="absolute -top-10 -right-10 w-64 h-64 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-500/20 to-transparent rounded-full pointer-events-none group-hover:scale-110 transition-transform duration-700"></div>
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none"></div>
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none"></div>
                 
                 <div className="flex flex-col mb-6 relative z-10">
                   <div className={cn("flex items-center gap-3 mb-4", isUrdu && "justify-end")}>
@@ -67,6 +67,15 @@ export default function HomePage() {
                     ? "ہم انتہائی پروفیشنل لفٹنگ اور فیکٹری شفٹنگ کی خدمات بھی فراہم کرتے ہیں!" 
                     : "We also offer Professional Heavy Lifting & Shifting Services!"}
                 </p>
+                <div className={cn("mt-6 relative z-10", isUrdu && "text-right")}>
+                  <Link 
+                    to="/service/shifting" 
+                    className="inline-flex items-center gap-2 bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500 hover:text-black border border-yellow-500/50 px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-all"
+                  >
+                    {isUrdu ? "مزید تفصیلات" : "View Details"}
+                    <ArrowRight className={cn("w-4 h-4", isUrdu && "rotate-180")} />
+                  </Link>
+                </div>
              </div>
 
              {/* We Buy */}
@@ -127,7 +136,7 @@ export default function HomePage() {
       
       {/* Global Clients Marquee */}
       <div className="bg-[#050505] py-16 border-y border-white/5 overflow-hidden relative">
-         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
+         <div className="absolute inset-0 opacity-5 pointer-events-none"></div>
          
          <div className="container mx-auto px-6 text-center mb-10 relative z-10">
             <h3 className="text-[10px] uppercase tracking-[0.4em] font-black text-yellow-500/80">Trusted By National Entities</h3>
@@ -158,7 +167,7 @@ export default function HomePage() {
 
       {/* LOCAL SEO CONTENT SECTION */}
       <section className="bg-[#080808] py-24 border-t border-white/5 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
+        <div className="absolute inset-0 opacity-5 pointer-events-none"></div>
         <div className="absolute -left-40 top-20 w-96 h-96 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-yellow-500/10 to-transparent rounded-full pointer-events-none"></div>
         
         <div className="container mx-auto px-6 max-w-[1400px] relative z-10">

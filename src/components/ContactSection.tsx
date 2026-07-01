@@ -53,7 +53,7 @@ export default function ContactSection() {
        {/* Background */}
        <div className="absolute inset-0 -z-10">
           <img 
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=75&w=1600" 
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600" 
             className="w-full h-full object-cover animate-zoom-bg" 
             alt="Premium Interior" 
           />
@@ -152,20 +152,32 @@ export default function ContactSection() {
                 </p>
              </div>
 
-             <div className="w-[220px] h-[440px] rounded-[35px] bg-white/10 backdrop-blur-md border border-white/20 flex flex-col items-center justify-center gap-4 animate-float shadow-2xl relative">
-                <a 
-                   href={`https://wa.me/${waNum}`} 
-                   target="_blank" 
-                   rel="noopener" 
-                   className="flex flex-col items-center gap-3 text-white no-underline text-center group"
-                >
-                   <MessageCircle className="w-16 h-16 text-[#25D366] fill-green-500/20 group-hover:scale-110 transition-transform" />
-                   <span className="font-bold text-xl block">WhatsApp Us</span>
-                   <p className="text-[11px] opacity-80 uppercase tracking-widest font-black">Available 24/7</p>
-                </a>
-                
-                <div className="absolute top-4 w-12 h-1.5 bg-white/20 rounded-full" />
-                <div className="absolute bottom-6 w-8 h-8 border border-white/20 rounded-full" />
+             <div className="w-full h-[440px] rounded-[35px] bg-white/10 backdrop-blur-md border border-white/20 flex flex-col overflow-hidden shadow-2xl relative">
+                <div className="flex-1 w-full relative">
+                   <iframe 
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.3804828114565!2d67.0345679!3d24.8848419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e5b3060c231%3A0x1d4d39e248b1d9c3!2sM.A%20Jinnah%20Rd%2C%20Karachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+                      className="absolute inset-0 w-full h-full"
+                      style={{ border: 0 }} 
+                      allowFullScreen={true} 
+                      loading="lazy" 
+                      referrerPolicy="no-referrer-when-downgrade"
+                   ></iframe>
+                </div>
+                <div className="p-4 bg-black/60 flex items-center justify-between">
+                   <div className="text-left max-w-[200px]">
+                      <h4 className="font-bold text-white text-sm">Decent Disposal</h4>
+                      <p className="text-white/70 text-[10px] leading-tight mt-1">M.A Jinnah Road, Gulshan-e-Zahoor, Numaish, Karachi</p>
+                   </div>
+                   <a 
+                      href={`https://wa.me/${waNum}`} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="flex items-center justify-center bg-[#25D366] hover:bg-white hover:text-[#25D366] text-white p-3 rounded-full transition-all group"
+                      title="WhatsApp Us"
+                   >
+                      <MessageCircle className="w-6 h-6" />
+                   </a>
+                </div>
              </div>
           </div>
        </div>

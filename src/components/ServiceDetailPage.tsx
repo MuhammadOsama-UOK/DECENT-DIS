@@ -425,7 +425,7 @@ export default function ServiceDetailPage() {
               <div className={cn("rounded-3xl p-8 relative overflow-hidden text-center",
                 themeColor === 'blue' ? "bg-gradient-to-br from-[#0056b3] to-[#003d82] text-white" : "bg-gradient-to-br from-green-600 to-green-800 text-white"
               )}>
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none"></div>
+                <div className="absolute inset-0 opacity-10 pointer-events-none"></div>
                 <h3 className="text-2xl font-black mb-4 uppercase">
                   {isUrdu ? "ابھی رابطہ کریں" : "Get a Quote Now"}
                 </h3>

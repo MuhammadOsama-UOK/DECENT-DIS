@@ -1,27 +1,28 @@
 import { useTranslation } from 'react-i18next';
 import './i18n';
 import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import PortfolioPage from './components/PortfolioPage';
-import QuotePage from './components/QuotePage';
-import ProcessPage from './components/ProcessPage';
-import ScrapRatesPage from './components/ScrapRatesPage';
-import BlogPage from './components/BlogPage';
-import BlogPostPage from './components/BlogPostPage';
-import AboutCompany from './components/AboutCompany';
-import AdminDashboard from './components/AdminDashboard';
-import AdminLogin from './components/AdminLogin';
-import SitemapPage from './components/SitemapPage';
-import ServiceDetailPage from './components/ServiceDetailPage';
-import SearchPage from './components/SearchPage';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { Phone, MapPin, X, Menu, Globe, Search } from 'lucide-react';
 import { cn } from './lib/utils';
-import React, { useState, useEffect, useRef } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import { db } from './lib/firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 
 import { SiteSettingsProvider, useSiteSettings } from './lib/SiteContext';
+
+const HomePage = React.lazy(() => import('./components/HomePage'));
+const PortfolioPage = React.lazy(() => import('./components/PortfolioPage'));
+const QuotePage = React.lazy(() => import('./components/QuotePage'));
+const ProcessPage = React.lazy(() => import('./components/ProcessPage'));
+const ScrapRatesPage = React.lazy(() => import('./components/ScrapRatesPage'));
+const BlogPage = React.lazy(() => import('./components/BlogPage'));
+const BlogPostPage = React.lazy(() => import('./components/BlogPostPage'));
+const AboutCompany = React.lazy(() => import('./components/AboutCompany'));
+const AdminDashboard = React.lazy(() => import('./components/AdminDashboard'));
+const AdminLogin = React.lazy(() => import('./components/AdminLogin'));
+const SitemapPage = React.lazy(() => import('./components/SitemapPage'));
+const ServiceDetailPage = React.lazy(() => import('./components/ServiceDetailPage'));
+const SearchPage = React.lazy(() => import('./components/SearchPage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -193,25 +194,27 @@ function MainLayout() {
         )}
       </header>
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/process" element={<ProcessPage />} />
-        <Route path="/portfolio" element={<PortfolioPage />} />
-        <Route path="/about-company" element={<AboutCompany />} />
-        <Route path="/scrap-rates" element={<ScrapRatesPage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:id" element={<BlogPostPage />} />
-        <Route path="/quote" element={<QuotePage />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/sitemap" element={<SitemapPage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/service/:id" element={<ServiceDetailPage />} />
-      </Routes>
+      <Suspense fallback={<div className="h-screen w-full flex items-center justify-center bg-[#050505]"><div className="w-8 h-8 border-4 border-yellow-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/process" element={<ProcessPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/about-company" element={<AboutCompany />} />
+          <Route path="/scrap-rates" element={<ScrapRatesPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<BlogPostPage />} />
+          <Route path="/quote" element={<QuotePage />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/sitemap" element={<SitemapPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/service/:id" element={<ServiceDetailPage />} />
+        </Routes>
+      </Suspense>
 
       <footer className="bg-[#0a0a0a] border-t border-white/5 relative overflow-hidden">
         {/* Decorative Grid and Glows */}
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none"></div>
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4/5 h-[1px] bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-500/5 blur-[60px] rounded-full pointer-events-none"></div>
 

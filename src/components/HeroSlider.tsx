@@ -7,11 +7,6 @@ import { useState, useEffect } from 'react';
 import { db } from '@/src/lib/firebase';
 import { doc, onSnapshot } from 'firebase/firestore';
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/pagination';
-
 import { useSiteSettings } from '@/src/lib/SiteContext';
 
 export default function HeroSlider() {
@@ -52,7 +47,7 @@ export default function HeroSlider() {
         {/* SLIDE 1: COMPANY BRAND */}
         <SwiperSlide>
           <div className="relative h-full w-full">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover will-change-transform" alt="Decent Disposal Corporate Office Building - Leading Scrap Buyers and Renovation Experts in Karachi" />
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" loading="eager" fetchPriority="high" className="absolute inset-0 w-full h-full object-cover will-change-transform" alt="Decent Disposal Corporate Office Building - Leading Scrap Buyers and Renovation Experts in Karachi" />
             <div className="slide-overlay absolute inset-0 flex items-center px-6 md:px-20 z-10 pt-16 lg:pt-0">
               <div className={cn("max-w-4xl animate-hero", isUrdu && "text-right ml-auto")}>
                 <h1 className={cn("text-4xl sm:text-5xl md:text-8xl font-black text-white leading-tight mb-4 uppercase font-outfit", isUrdu && "urdu-text leading-tight")}>
@@ -80,7 +75,7 @@ export default function HeroSlider() {
         {/* SLIDE 2: OFFICE RENOVATION */}
         <SwiperSlide>
           <div className="relative h-full w-full">
-            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover will-change-transform" alt="Modern Premium Office Renovation Karachi - Wood and Marble Interior Design" />
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" loading="lazy" className="absolute inset-0 w-full h-full object-cover will-change-transform" alt="Modern Premium Office Renovation Karachi - Wood and Marble Interior Design" />
             <div className="slide-overlay absolute inset-0 flex items-center px-6 md:px-32 z-10 pt-16 lg:pt-0">
               <div className={cn("max-w-4xl animate-hero", isUrdu && "text-right ml-auto")}>
                 <h2 className={cn("text-4xl sm:text-5xl md:text-7xl font-black text-white leading-tight mb-4 uppercase font-outfit", isUrdu && "urdu-text leading-tight")}>
@@ -108,7 +103,7 @@ export default function HeroSlider() {
         {/* SLIDE 3: SCRAP BUYING */}
         <SwiperSlide>
           <div className="relative h-full w-full">
-            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=2070&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover will-change-transform" alt="Industrial Scrap Material Acquisition Karachi - Metal and Copper Scrap Buyers" />
+            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=2070&auto=format&fit=crop" loading="lazy" className="absolute inset-0 w-full h-full object-cover will-change-transform" alt="Industrial Scrap Material Acquisition Karachi - Metal and Copper Scrap Buyers" />
             <div className="slide-overlay absolute inset-0 flex items-center px-6 md:px-20 z-10 pt-16 lg:pt-0">
               <div className={cn("max-w-4xl animate-hero", isUrdu && "text-right ml-auto")}>
                  <h2 className={cn("text-4xl sm:text-5xl md:text-7xl font-black text-white leading-tight mb-4 uppercase font-outfit", isUrdu && "urdu-text leading-tight")}>
@@ -136,7 +131,7 @@ export default function HeroSlider() {
         {/* SLIDE 4: LIFTING & SHIFTING */}
         <SwiperSlide>
           <div className="relative h-full w-full">
-            <img src="/images/lifting_shifting_service_1781519192459.jpg" className="absolute inset-0 w-full h-full object-cover will-change-transform" alt="Professional Lifting and Shifting Service in Karachi - Relocation and Heavy Machinery Movers" />
+            <img src="/images/lifting_shifting_service_1781519192459.jpg" loading="lazy" className="absolute inset-0 w-full h-full object-cover will-change-transform" alt="Professional Lifting and Shifting Service in Karachi - Relocation and Heavy Machinery Movers" />
             <div className="slide-overlay absolute inset-0 flex items-center px-6 md:px-20 z-10 pt-16 lg:pt-0">
               <div className={cn("max-w-4xl animate-hero", isUrdu && "text-right ml-auto")}>
                  <h2 className={cn("text-4xl sm:text-5xl md:text-7xl font-black text-white leading-tight mb-4 uppercase font-outfit", isUrdu && "urdu-text leading-tight")}>

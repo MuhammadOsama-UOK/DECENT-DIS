@@ -340,7 +340,7 @@ export default function PortfolioPage() {
             viewport={{ once: true }}
             className="mt-20 bg-gradient-to-br from-green-500/20 to-primary-blue/20 border border-green-500/30 rounded-[2.5rem] p-6 sm:p-10 text-center relative overflow-hidden group"
           >
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
+            <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none"></div>
             <div className="relative z-10 flex flex-col items-center">
               <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(34,197,94,0.4)] group-hover:scale-110 transition-transform">
                 <Zap className="w-8 h-8 text-white fill-current" />

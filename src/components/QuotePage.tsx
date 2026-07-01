@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/src/lib/utils';
-import { Scale, HardHat, CheckCircle2, MessageCircle, X, ArrowLeft } from 'lucide-react';
+import { Scale, HardHat, CheckCircle2, MessageCircle, X, ArrowLeft, MapPin } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -197,6 +197,47 @@ export default function QuotePage() {
           </motion.div>
         </div>
 
+        {/* Map & Contact Info Section */}
+        <div className="mt-16 bg-white rounded-[32px] p-6 sm:p-8 md:p-12 shadow-2xl border border-gray-100 overflow-hidden relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-black text-gray-900 font-montserrat uppercase tracking-tight">Our Office Location</h2>
+              <p className="text-gray-500 max-w-sm">Visit our corporate office in Karachi for face-to-face consultation, or drop off smaller scrap items directly at our facility.</p>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                  <div className="bg-primary-yellow/20 p-2 rounded-lg mt-1">
+                    <MapPin className="w-5 h-5 text-yellow-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-sm">Head Office</h4>
+                    <p className="text-sm text-gray-500 mt-1">{contactAddress}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                  <div className="bg-primary-blue/10 p-2 rounded-lg mt-1">
+                    <MapPin className="w-5 h-5 text-primary-blue" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-sm">SITE Area Facility</h4>
+                    <p className="text-sm text-gray-500 mt-1">{contactAddress2}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="h-[350px] w-full rounded-[24px] overflow-hidden border border-gray-200 shadow-inner relative">
+              <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.3804828114565!2d67.0345679!3d24.8848419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e5b3060c231%3A0x1d4d39e248b1d9c3!2sM.A%20Jinnah%20Rd%2C%20Karachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+                  className="absolute inset-0 w-full h-full"
+                  style={{ border: 0 }} 
+                  allowFullScreen={true} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
 
       </div>
 
